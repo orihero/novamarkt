@@ -1,15 +1,15 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Text from "./src/components/general/Text";
+import Text from "../../../components/general/Text";
 
-const App = () => {
+const LoginView = () => {
 	return (
 		<View>
-			<Text>Novamarkt</Text>
+			<Text></Text>
 		</View>
 	);
 };
 
-export default App;
+export default LoginView;
 
 const styles = StyleSheet.create({});
