@@ -5,5 +5,9 @@ export const STRINGS = new LocalizedStrings({
 		continue: "Продолжить",
 		name: "Имя",
 		yourName: "Ваше имя",
+		number: "Номер",
+		password: "Пароль",
+		yourNumber: "Ваш номер",
+		yourPassword: "Ваш пароль"
 	},
 });

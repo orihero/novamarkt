@@ -35,7 +35,8 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		padding: 12,
 		justifyContent: "center",
-		marginHorizontal: 40,
+		marginHorizontal: 25,
+		marginTop: 10,
 		borderRadius: 8,
 	},
 	text: {
