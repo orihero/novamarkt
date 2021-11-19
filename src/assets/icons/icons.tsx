@@ -1,7 +1,29 @@
 import React from "react";
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path, Circle } from "react-native-svg";
 
-export function BasketIcon(props) {
+export function EyeIcon(props: any) {
+	return (
+		<Svg
+			width={16}
+			height={10}
+			viewBox="0 0 16 10"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M11.028 5.9c.13-.266.197-.55.195-.834 0-.633-.327-1.24-.91-1.687-.584-.448-1.376-.7-2.2-.7-.368.001-.732.052-1.075.15l.73.578c.11-.014.223-.021.335-.021.584-.001 1.144.175 1.559.49.414.315.65.742.654 1.19 0 .086-.01.172-.027.257l.74.578z"
+				fill="#C4C4C4"
+			/>
+			<Path
+				d="M15.155 4.902c-1.528-2.167-4.208-3.478-7.174-3.478a9.763 9.763 0 00-2.377.295l.73.564a8.637 8.637 0 011.647-.164c2.553 0 4.875 1.093 6.258 2.933a6.986 6.986 0 01-1.982 1.774l.644.494c.928-.575 1.699-1.284 2.268-2.087l.118-.167-.132-.164zM1.814.815l2.022 1.551C2.558 2.998 1.513 3.871.802 4.902l-.117.164.117.167C2.331 7.4 5.011 8.71 7.977 8.71c1.157 0 2.3-.201 3.342-.588l2.267 1.74.794-.523L2.59.297l-.776.518zm4.421 3.391L9.251 6.52c-.34.162-.733.249-1.134.25-.29 0-.58-.043-.848-.129a2.339 2.339 0 01-.718-.37 1.738 1.738 0 01-.478-.553 1.357 1.357 0 01-.164-.651c.005-.304.118-.601.326-.86zm-.657-.504c-.424.459-.623 1.018-.562 1.579.062.56.38 1.086.9 1.484.518.398 1.203.642 1.934.69.731.047 1.46-.106 2.059-.431l.725.556a8.563 8.563 0 01-2.657.418c-2.553 0-4.875-1.092-6.258-2.932.663-.902 1.62-1.657 2.775-2.192l1.084.828z"
+				fill="#C4C4C4"
+			/>
+		</Svg>
+	);
+}
+
+export function BasketIcon(props: any) {
 	return (
 		<Svg
 			width={22}
@@ -18,48 +40,9 @@ export function BasketIcon(props) {
 			/>
 		</Svg>
 	);
-export function EyeIcon() {
-    return (
-        <Svg
-            width={16}
-            height={10}
-            viewBox="0 0 16 10"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            {...props}
-        >
-            <Path
-                d="M11.028 5.9c.13-.266.197-.55.195-.834 0-.633-.327-1.24-.91-1.687-.584-.448-1.376-.7-2.2-.7-.368.001-.732.052-1.075.15l.73.578c.11-.014.223-.021.335-.021.584-.001 1.144.175 1.559.49.414.315.65.742.654 1.19 0 .086-.01.172-.027.257l.74.578z"
-                fill="#C4C4C4"
-            />
-            <Path
-                d="M15.155 4.902c-1.528-2.167-4.208-3.478-7.174-3.478a9.763 9.763 0 00-2.377.295l.73.564a8.637 8.637 0 011.647-.164c2.553 0 4.875 1.093 6.258 2.933a6.986 6.986 0 01-1.982 1.774l.644.494c.928-.575 1.699-1.284 2.268-2.087l.118-.167-.132-.164zM1.814.815l2.022 1.551C2.558 2.998 1.513 3.871.802 4.902l-.117.164.117.167C2.331 7.4 5.011 8.71 7.977 8.71c1.157 0 2.3-.201 3.342-.588l2.267 1.74.794-.523L2.59.297l-.776.518zm4.421 3.391L9.251 6.52c-.34.162-.733.249-1.134.25-.29 0-.58-.043-.848-.129a2.339 2.339 0 01-.718-.37 1.738 1.738 0 01-.478-.553 1.357 1.357 0 01-.164-.651c.005-.304.118-.601.326-.86zm-.657-.504c-.424.459-.623 1.018-.562 1.579.062.56.38 1.086.9 1.484.518.398 1.203.642 1.934.69.731.047 1.46-.106 2.059-.431l.725.556a8.563 8.563 0 01-2.657.418c-2.553 0-4.875-1.092-6.258-2.932.663-.902 1.62-1.657 2.775-2.192l1.084.828z"
-                fill="#C4C4C4"
-            />
-        </Svg>
-    )
 }
 
-export function BasketIcon() {
-    return (
-        <Svg
-            width={22}
-            height={21}
-            viewBox="0 0 22 21"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            {...props}
-        >
-            <Path
-                d="M21.465 4.5a2.25 2.25 0 00-1.913-1.124h-14.4L4.5.833A1.125 1.125 0 003.375.001h-2.25a1.125 1.125 0 100 2.25H2.52l3.105 11.542a1.125 1.125 0 001.125.833h10.125a1.126 1.126 0 001.001-.62l3.69-7.38a2.251 2.251 0 00-.101-2.125zM6.188 20.25a1.687 1.687 0 100-3.374 1.687 1.687 0 000 3.375zM17.438 20.25a1.687 1.687 0 100-3.374 1.687 1.687 0 000 3.375z"
-                fill="#717171"
-                fillOpacity={0.7}
-            />
-        </Svg>
-    )
-}
-
-export function BottomArrow(props) {
+export function BottomArrow(props: any) {
 	return (
 		<Svg
 			width={12}
@@ -77,7 +60,7 @@ export function BottomArrow(props) {
 	);
 }
 
-export function CancelIcon(props) {
+export function CancelIcon(props: any) {
 	return (
 		<Svg
 			width={12}
@@ -95,7 +78,7 @@ export function CancelIcon(props) {
 	);
 }
 
-export function CatalogIcon(props) {
+export function CatalogIcon(props: any) {
 	return (
 		<Svg
 			width={23}
@@ -114,7 +97,7 @@ export function CatalogIcon(props) {
 	);
 }
 
-export function CrashIcon(props) {
+export function CrashIcon(props: any) {
 	return (
 		<Svg
 			width={20}
@@ -133,7 +116,7 @@ export function CrashIcon(props) {
 	);
 }
 
-export function DeliveryIcon(props) {
+export function DeliveryIcon(props: any) {
 	return (
 		<Svg
 			width={26}
@@ -151,7 +134,7 @@ export function DeliveryIcon(props) {
 	);
 }
 
-export function DotBorderIcon(props) {
+export function DotBorderIcon(props: any) {
 	return (
 		<Svg
 			width={15}
@@ -166,7 +149,7 @@ export function DotBorderIcon(props) {
 	);
 }
 
-export function EnteredDotIcon(props) {
+export function EnteredDotIcon(props: any) {
 	return (
 		<Svg
 			width={15}
@@ -182,7 +165,7 @@ export function EnteredDotIcon(props) {
 	);
 }
 
-export function FbIcon(props) {
+export function FbIcon(props: any) {
 	return (
 		<Svg
 			width={14}
@@ -200,7 +183,7 @@ export function FbIcon(props) {
 	);
 }
 
-export function FilterIcon(props) {
+export function FilterIcon(props: any) {
 	return (
 		<Svg
 			width={13}
@@ -218,7 +201,7 @@ export function FilterIcon(props) {
 	);
 }
 
-export function GeoIcon(props) {
+export function GeoIcon(props: any) {
 	return (
 		<Svg
 			width={18}
@@ -236,7 +219,7 @@ export function GeoIcon(props) {
 	);
 }
 
-export function GmailIcon(props) {
+export function GmailIcon(props: any) {
 	return (
 		<Svg
 			width={25}
@@ -254,7 +237,7 @@ export function GmailIcon(props) {
 	);
 }
 
-export function HeartIcon(props) {
+export function HeartIcon(props: any) {
 	return (
 		<Svg
 			width={18}
@@ -272,7 +255,7 @@ export function HeartIcon(props) {
 	);
 }
 
-export function HomeIcon(props) {
+export function HomeIcon(props: any) {
 	return (
 		<Svg
 			width={21}
@@ -290,7 +273,7 @@ export function HomeIcon(props) {
 	);
 }
 
-export function LeftArrow(props) {
+export function LeftArrow(props: any) {
 	return (
 		<Svg
 			width={18}
@@ -309,7 +292,7 @@ export function LeftArrow(props) {
 	);
 }
 
-export function LikeIcon(props) {
+export function LikeIcon(props: any) {
 	return (
 		<Svg
 			width={23}
@@ -328,7 +311,7 @@ export function LikeIcon(props) {
 	);
 }
 
-export function OkIcon(props) {
+export function OkIcon(props: any) {
 	return (
 		<Svg
 			width={35}
@@ -366,7 +349,7 @@ export function OkIcon(props) {
 	);
 }
 
-export function PersonBorderIcon(props) {
+export function PersonBorderIcon(props: any) {
 	return (
 		<Svg
 			width={20}
@@ -384,7 +367,7 @@ export function PersonBorderIcon(props) {
 	);
 }
 
-export function PersonIcon(props) {
+export function PersonIcon(props: any) {
 	return (
 		<Svg
 			width={21}
@@ -403,7 +386,7 @@ export function PersonIcon(props) {
 	);
 }
 
-export function PinIcon(props) {
+export function PinIcon(props: any) {
 	return (
 		<Svg
 			width={14}
@@ -421,7 +404,7 @@ export function PinIcon(props) {
 	);
 }
 
-export function RightArrow(props) {
+export function RightArrow(props: any) {
 	return (
 		<Svg
 			width={8}
@@ -439,7 +422,7 @@ export function RightArrow(props) {
 	);
 }
 
-export function SearchIcon(props) {
+export function SearchIcon(props: any) {
 	return (
 		<Svg
 			width={21}
@@ -460,7 +443,7 @@ export function SearchIcon(props) {
 	);
 }
 
-export function SendIcon(props) {
+export function SendIcon(props: any) {
 	return (
 		<Svg
 			width={18}
@@ -479,7 +462,7 @@ export function SendIcon(props) {
 	);
 }
 
-export function StarIcon(props) {
+export function StarIcon(props: any) {
 	return (
 		<Svg
 			width={11}
@@ -498,7 +481,7 @@ export function StarIcon(props) {
 	);
 }
 
-export function TopArrow(props) {
+export function TopArrow(props: any) {
 	return (
 		<Svg
 			width={16}
