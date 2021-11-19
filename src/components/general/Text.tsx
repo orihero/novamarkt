@@ -9,8 +9,21 @@ import {
 } from "react-native";
 
 export default function Text({ children, style }: TextProps): JSX.Element {
+	let fontFamily = "Montserrat-Medium";
+	//@ts-ignore
+	switch (style?.fontWeight) {
+		case "bold":
+			fontFamily = "Montserrat-Bold";
+			break;
+		case "400":
+			fontFamily = "Montserrat-Thin";
+			break;
+		default:
+			break;
+	}
 	let styl: StyleProp<TextStyle> = StyleSheet.compose(style, {
-		fontFamily: "Montserrat-Medium",
+		fontFamily,
 	});
+
 	return <RNText style={styl}>{children}</RNText>;
 }
