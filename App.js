@@ -1,13 +1,9 @@
+import AppRouter from "@novomarkt/routes/AppRouter";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Text from "./src/components/general/Text";
 
 const App = () => {
-	return (
-		<View>
-			<Text>Novamarkt</Text>
-		</View>
-	);
+	return <AppRouter />;
 };
 
 export default App;

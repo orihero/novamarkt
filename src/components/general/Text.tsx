@@ -10,7 +10,7 @@ import {
 
 export default function Text({ children, style }: TextProps): JSX.Element {
 	let styl: StyleProp<TextStyle> = StyleSheet.compose(style, {
-		fontFamily: "Montserrat",
+		fontFamily: "Montserrat-Medium",
 	});
 	return <RNText style={styl}>{children}</RNText>;
 }
