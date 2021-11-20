@@ -19,6 +19,10 @@ export const STRINGS = new LocalizedStrings({
 		searching: "Я ищу...",
 		code: 'Введите sms-код полученный через sms',
 		yourCode: "Ваш код",
-		resend: "Переотправить"
+		resend: "Переотправить",
+		email: "Э-маил",
+		phone: "Телефон",
+		dateOfBirth: "Дата рождения",
+		sex: "Пол",
 	},
 });
