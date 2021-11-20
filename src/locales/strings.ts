@@ -6,5 +6,11 @@ export const STRINGS = new LocalizedStrings({
 		name: "Имя",
 		yourName: "Ваше имя",
 		home: "Главная",
+		number: "Номер",
+		password: "Пароль",
+		yourNumber: "Ваш номер",
+		yourPassword: "Ваш пароль",
+		registration: "Регистрация",
+		auth: "Авторизоваться",
 	},
 });

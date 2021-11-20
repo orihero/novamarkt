@@ -1,5 +1,5 @@
 import React from "react";
-import Svg, { Path, Circle } from "react-native-svg";
+import Svg, { Path, Circle, Image, Pattern, Defs, Use } from "react-native-svg";
 
 export function EyeIcon(props: any) {
 	return (
