@@ -8,6 +8,8 @@ export const STRINGS = new LocalizedStrings({
 		number: "Номер",
 		password: "Пароль",
 		yourNumber: "Ваш номер",
-		yourPassword: "Ваш пароль"
+		yourPassword: "Ваш пароль",
+		registration: "Регистрация",
+		auth: "Авторизоваться"
 	},
 });

@@ -13,7 +13,7 @@ export default function Text({ children, style }: TextProps): JSX.Element {
 	//@ts-ignore
 	switch (style?.fontWeight) {
 		case "bold":
-			fontFamily = "Montserrat-Bold";
+			fontFamily = "Montserrat-Thin";
 			break;
 		case "400":
 			fontFamily = "Montserrat-Thin";
