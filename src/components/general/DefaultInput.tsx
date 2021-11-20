@@ -1,7 +1,7 @@
 import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import React from "react";
-import { Dimensions, StyleProp, StyleSheet, TextInput, TextStyle, View } from "react-native";
+import { StyleProp, StyleSheet, TextInput, TextStyle, View } from "react-native";
 import Text from "./Text";
 
 export interface DefaultInputProps {

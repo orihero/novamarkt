@@ -24,5 +24,9 @@ export const STRINGS = new LocalizedStrings({
 		popularProducts: "Популярные товары",
 		yourShops: "Ваши магазины",
 		addToCart: "В корзину",
+		email: "Э-маил",
+		phone: "Телефон",
+		dateOfBirth: "Дата рождения",
+		sex: "Пол",
 	},
 });

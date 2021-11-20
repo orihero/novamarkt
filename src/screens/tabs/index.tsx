@@ -13,6 +13,7 @@ import React, { useCallback } from "react";
 import { StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
 import { HomeScreen } from "./home";
+import ProfileView from "./profile/view";
 
 let Tab = createBottomTabNavigator();
 
@@ -20,7 +21,6 @@ const TabNavigation = () => {
 	let renderTabIcon = useCallback((Component: React.FC<SvgProps>) => {
 		return (props: { focused: boolean; color: string; size: number }) => {
 			let { color, focused, size } = props;
-			console.log(color);
 
 			return <Component fill={color} width={size} height={size} />;
 		};
@@ -67,7 +67,7 @@ const TabNavigation = () => {
 			/>
 			<Tab.Screen
 				name={ROUTES.PROFILE}
-				component={HomeScreen}
+				component={ProfileView}
 				options={{
 					tabBarIcon: renderTabIcon(PersonIcon),
 					tabBarLabel: STRINGS.home,
