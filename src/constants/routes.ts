@@ -8,4 +8,5 @@ export const ROUTES = {
 	PROFILE: "profile",
 	AUTH: "auth",
 	TABS: "tabs",
+	VERIFICATION: "verification"
 };
