@@ -5,5 +5,6 @@ export const STRINGS = new LocalizedStrings({
 		continue: "Продолжить",
 		name: "Имя",
 		yourName: "Ваше имя",
+		home: "Главная",
 	},
 });
