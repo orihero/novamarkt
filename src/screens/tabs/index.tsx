@@ -1,5 +1,6 @@
 import { HomeIcon } from "@novomarkt/assets/icons/icons";
 import { ROUTES } from "@novomarkt/constants/routes";
+import { STRINGS } from "@novomarkt/locales/strings";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React from "react";
 import { StyleSheet } from "react-native";
@@ -15,6 +16,7 @@ const TabNavigation = () => {
 				component={HomeScreen}
 				options={{
 					tabBarIcon: HomeIcon,
+					tabBarLabel: STRINGS.home,
 				}}
 			/>
 		</Tab.Navigator>
