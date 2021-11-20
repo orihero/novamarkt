@@ -12,5 +12,8 @@ export const STRINGS = new LocalizedStrings({
 		yourPassword: "Ваш пароль",
 		registration: "Регистрация",
 		auth: "Авторизоваться",
+		code: 'Введите sms-код полученный через sms',
+		yourCode: "Ваш код",
+		resend: "Переотправить"
 	},
 });

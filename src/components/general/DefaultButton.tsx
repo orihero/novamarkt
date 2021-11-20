@@ -38,6 +38,15 @@ const styles = StyleSheet.create({
 		marginHorizontal: 25,
 		marginTop: 10,
 		borderRadius: 8,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 0,
+			height: 2,
+		},
+		shadowOpacity: 0.25,
+		shadowRadius: 4.84,
+
+		elevation: 5,
 	},
 	text: {
 		color: COLORS.white,

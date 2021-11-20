@@ -2,8 +2,8 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LoginScreen } from "./login";
 import { ROUTES } from "@novomarkt/constants/routes";
-import AskView from "./ask/view";
-import RegisterView from "./ask/view";
+import AskView from "./register/view";
+import RegisterView from "./register/view";
 
 let Stack = createNativeStackNavigator();
 
