@@ -9,6 +9,42 @@ import Svg, {
 	SvgProps,
 } from "react-native-svg";
 
+export function EditIcon(props: SvgProps) {
+	return (
+		<Svg
+			width={16}
+			height={16}
+			viewBox="0 0 16 16"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M5.256 14.422L13 6.678 9.322 3l-7.744 7.744a.836.836 0 00-.22.387L.5 15.5l4.368-.858a.835.835 0 00.388-.22zM15.5 4.178a1.666 1.666 0 000-2.356L14.178.5a1.667 1.667 0 00-2.356 0L10.5 1.822 14.178 5.5 15.5 4.178z"
+				fill="#0052FF"
+			/>
+		</Svg>
+	);
+}
+
+export function PlusIcon(props: SvgProps) {
+	return (
+		<Svg
+			width={20}
+			height={20}
+			viewBox="0 0 19 19"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M18.462 11.054h-7.07V18.3h-3.71v-7.245H.612v-3.36h7.07V.45h3.71v7.245h7.07v3.36z"
+				fill="#fff"
+			/>
+		</Svg>
+	);
+}
+
 export function EyeIcon(props: SvgProps) {
 	return (
 		<Svg
