@@ -12,5 +12,10 @@ export const STRINGS = new LocalizedStrings({
 		yourPassword: "Ваш пароль",
 		registration: "Регистрация",
 		auth: "Авторизоваться",
+		categories: "Каталог",
+		cart: "Корзина",
+		favorites: "Избранные",
+		login: "Войти",
+		searching: "Я ищу...",
 	},
 });

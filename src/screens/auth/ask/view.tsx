@@ -1,11 +1,11 @@
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import DefaultInput from "@novomarkt/components/general/DefaultInput";
+import Text from "@novomarkt/components/general/Text";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import Text from "../../../components/general/Text";
 
 const RegisterView = () => {
 	let navigation = useNavigation();
