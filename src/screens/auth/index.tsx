@@ -1,17 +1,18 @@
-import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { LoginScreen } from "./login";
 import { ROUTES } from "@novomarkt/constants/routes";
-import AskView from "./register/view";
-import RegisterView from "./register/view";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
+import { LoginScreen } from "./login";
+import { RegisterScreen } from "./register";
+import { VerificationScreen } from "./verification";
 
 let Stack = createNativeStackNavigator();
 
 let AuthStack = () => {
 	return (
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
-			<Stack.Screen name={ROUTES.REGISTER} component={RegisterView} />
+			<Stack.Screen name={ROUTES.REGISTER} component={RegisterScreen} />
 			<Stack.Screen name={ROUTES.LOGIN} component={LoginScreen} />
+			<Stack.Screen name={ROUTES.LOGIN} component={VerificationScreen} />
 		</Stack.Navigator>
 	);
 };

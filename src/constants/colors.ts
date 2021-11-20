@@ -7,6 +7,8 @@ export const COLORS = {
 	defaultBlack: "#023047",
 	darkBorder: "#15626B",
 	gray: "#666666",
+	blue: "#0052FF",
+	lightGray:'#f3f3f3'
 };
 
 export const GRADIENT_COLORS = [
