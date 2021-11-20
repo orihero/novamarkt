@@ -17,5 +17,8 @@ export const STRINGS = new LocalizedStrings({
 		favorites: "Избранные",
 		login: "Войти",
 		searching: "Я ищу...",
+		code: 'Введите sms-код полученный через sms',
+		yourCode: "Ваш код",
+		resend: "Переотправить"
 	},
 });

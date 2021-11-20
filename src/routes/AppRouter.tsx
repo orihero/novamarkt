@@ -1,7 +1,8 @@
 import { ROUTES } from "@novomarkt/constants/routes";
 import AuthStack from "@novomarkt/screens/auth";
-import RegisterView from "@novomarkt/screens/auth/ask/view";
+import RegisterView from "@novomarkt/screens/auth/register/view";
 import LoginView from "@novomarkt/screens/auth/login/view";
+import Verification from "@novomarkt/screens/auth/verification/view";
 import TabNavigation from "@novomarkt/screens/tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";

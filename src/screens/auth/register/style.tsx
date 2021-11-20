@@ -3,16 +3,16 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingVertical: 50,
 		backgroundColor: "#fff",
-		justifyContent: 'center',
+		justifyContent: "center",
 	},
 
 	logoText: {
 		alignSelf: "center",
 		fontSize: 40,
 		color: "#0057FF",
-		fontFamily: "Montserrat-Bold",
+		// fontFamily: "Montserrat-Bold",
+		fontWeight: "bold",
 		marginBottom: 20,
 	},
 
@@ -37,18 +37,23 @@ export const styles = StyleSheet.create({
 		elevation: 15,
 	},
 
-	rowLogos: {
-		// borderWidth: 1,
-		marginHorizontal: 20,
-		flexDirection: 'row',
-		justifyContent: 'space-around',
-		marginTop: 20,
+	rowText: {
+		// alignSelf: "center",
+		marginVertical: 10,
+		marginHorizontal: 27,
+		flexDirection: "row",
+		justifyContent: "space-between",
 	},
-	logo: {
-		width: 50,
-		height: 40,
-		alignItems: "center",
-		justifyContent: 'center',
-		borderRadius: 8,
-	}
+
+	blueText: {
+		fontSize: 14,
+		color: "#0052FF",
+		textDecorationLine: "underline",
+		textDecorationStyle: "solid",
+	},
+
+	askText: {
+		color: "#023047",
+		fontSize: 14,
+	},
 });
