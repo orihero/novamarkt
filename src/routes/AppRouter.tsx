@@ -19,13 +19,11 @@ const AppRouter = () => {
 					headerShown: false,
 				}}
 			>
-				<Stack.Screen name={ROUTES.TABS} component={TabNavigation} />
 				<Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
+				<Stack.Screen name={ROUTES.TABS} component={TabNavigation} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
 };
 
 export default AppRouter;
-
-const styles = StyleSheet.create({});

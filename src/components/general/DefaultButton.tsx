@@ -1,9 +1,12 @@
 import { COLORS, GRADIENT_COLORS } from "@novomarkt/constants/colors";
-import React from "react";
+import React, { ReactElement } from "react";
 import {
 	GestureResponderEvent,
+	StyleProp,
 	StyleSheet,
 	TouchableWithoutFeedback,
+	View,
+	ViewStyle,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Text from "./Text";
@@ -11,18 +14,34 @@ import Text from "./Text";
 export interface DefaultButtonProps {
 	text?: string;
 	onPress?: (event: GestureResponderEvent) => void;
+	containerStyle?: StyleProp<ViewStyle>;
+	secondary?: boolean;
+	children?: ReactElement | null;
 }
 
-const DefaultButton = ({ onPress, text }: DefaultButtonProps) => {
+const DefaultButton = ({
+	onPress,
+	text,
+	children,
+	secondary,
+	containerStyle = {},
+}: DefaultButtonProps) => {
 	return (
 		<TouchableWithoutFeedback onPress={onPress}>
 			<LinearGradient
 				start={{ x: 0, y: 0 }}
 				end={{ x: 1.2, y: 1 }}
 				colors={GRADIENT_COLORS}
-				style={styles.container}
+				style={[styles.container, containerStyle]}
 			>
-				<Text style={styles.text}>{text}</Text>
+				<View
+					style={[
+						styles.content,
+						secondary && styles.inactiveContainer,
+					]}
+				>
+					{children || <Text style={styles.text}>{text}</Text>}
+				</View>
 			</LinearGradient>
 		</TouchableWithoutFeedback>
 	);
@@ -31,9 +50,21 @@ const DefaultButton = ({ onPress, text }: DefaultButtonProps) => {
 export default DefaultButton;
 
 const styles = StyleSheet.create({
+	content: {
+		padding: 12,
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	inactiveContainer: {
+		backgroundColor: "white",
+		flex: 1,
+		borderRadius: 8,
+		justifyContent: "center",
+		alignItems: "center",
+	},
 	container: {
 		flexDirection: "row",
-		padding: 12,
+		padding: 1,
 		justifyContent: "center",
 		marginHorizontal: 25,
 		marginTop: 10,
