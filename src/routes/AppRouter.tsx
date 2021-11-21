@@ -27,5 +27,3 @@ const AppRouter = () => {
 };
 
 export default AppRouter;
-
-const styles = StyleSheet.create({});

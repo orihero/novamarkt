@@ -48,7 +48,7 @@ const TabNavigation = () => {
 				component={HomeScreen}
 				options={{
 					tabBarIcon: renderTabIcon(CatalogIcon),
-					tabBarLabel: STRINGS.home,
+					tabBarLabel: STRINGS.categories,
 				}}
 			/>
 			<Tab.Screen
@@ -56,7 +56,7 @@ const TabNavigation = () => {
 				component={HomeScreen}
 				options={{
 					tabBarIcon: renderTabIcon(BasketIcon),
-					tabBarLabel: STRINGS.home,
+					tabBarLabel: STRINGS.cart,
 				}}
 			/>
 			<Tab.Screen
@@ -64,7 +64,7 @@ const TabNavigation = () => {
 				component={HomeScreen}
 				options={{
 					tabBarIcon: renderTabIcon(HeartIcon),
-					tabBarLabel: STRINGS.home,
+					tabBarLabel: STRINGS.favorites,
 				}}
 			/>
 			<Tab.Screen
@@ -72,7 +72,7 @@ const TabNavigation = () => {
 				component={SettingsStack}
 				options={{
 					tabBarIcon: renderTabIcon(PersonIcon),
-					tabBarLabel: STRINGS.home,
+					tabBarLabel: STRINGS.login,
 				}}
 			/>
 		</Tab.Navigator>
