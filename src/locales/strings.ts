@@ -28,5 +28,10 @@ export const STRINGS = new LocalizedStrings({
 		phone: "Телефон",
 		dateOfBirth: "Дата рождения",
 		sex: "Пол",
+		popularCategories: "Популярные категории",
+		productsOnSale: "Товары со скидкой",
+		recentlyWatched: "Вы недавно смотрели",
+		news: "Новости",
+		detailed: "Подробно",
 	},
 });

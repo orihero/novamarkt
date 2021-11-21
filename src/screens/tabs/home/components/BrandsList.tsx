@@ -14,7 +14,7 @@ let brandsData: BrandItemProps[] = [
 	"https://www.vhv.rs/dpng/d/405-4052243_nike-logo-png-nike-logo-design-transparent-png.png",
 ];
 
-const Brands = () => {
+const BrandsList = () => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>{STRINGS.brands}</Text>
@@ -24,12 +24,13 @@ const Brands = () => {
 				data={brandsData}
 				renderItem={BrandItem}
 				style={styles.container}
+				contentContainerStyle={styles.contentContainerStyle}
 			/>
 		</View>
 	);
 };
 
-export default Brands;
+export default BrandsList;
 
 const styles = StyleSheet.create({
 	title: {
@@ -37,5 +38,8 @@ const styles = StyleSheet.create({
 		fontSize: 19,
 		marginLeft: 16,
 	},
-	container: { paddingLeft: 10, marginBottom: 20 },
+	container: { marginBottom: 20 },
+	contentContainerStyle: {
+		paddingLeft: 12,
+	},
 });

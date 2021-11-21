@@ -4,6 +4,7 @@ import {
 	GestureResponderEvent,
 	StyleProp,
 	StyleSheet,
+	TextStyle,
 	TouchableWithoutFeedback,
 	View,
 	ViewStyle,
@@ -15,6 +16,7 @@ export interface DefaultButtonProps {
 	text?: string;
 	onPress?: (event: GestureResponderEvent) => void;
 	containerStyle?: StyleProp<ViewStyle>;
+	textStyle?: StyleProp<TextStyle>;
 	secondary?: boolean;
 	children?: ReactElement | null;
 }
@@ -25,6 +27,7 @@ const DefaultButton = ({
 	children,
 	secondary,
 	containerStyle = {},
+	textStyle,
 }: DefaultButtonProps) => {
 	return (
 		<TouchableWithoutFeedback onPress={onPress}>
@@ -40,7 +43,9 @@ const DefaultButton = ({
 						secondary && styles.inactiveContainer,
 					]}
 				>
-					{children || <Text style={styles.text}>{text}</Text>}
+					{children || (
+						<Text style={[styles.text, textStyle]}>{text}</Text>
+					)}
 				</View>
 			</LinearGradient>
 		</TouchableWithoutFeedback>

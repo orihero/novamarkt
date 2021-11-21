@@ -1,3 +1,4 @@
+import { BasketIcon, HeartIcon } from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
@@ -11,14 +12,24 @@ export interface ProductItemProps {
 	shopName: string;
 	category: string;
 	name: string;
+	discount?: number;
 }
 
 const ProductItem = ({
-	item: { image, category, price, shopName, name },
+	item: { image, category, price, shopName, name, discount },
 }: ListRenderItemInfo<ProductItemProps>): ReactElement => {
+	let secondary = true;
 	return (
 		<View style={styles.container}>
 			<Image source={{ uri: image }} style={styles.image} />
+			<View style={styles.absolute}>
+				<HeartIcon fill={COLORS.red} />
+				{discount && (
+					<View style={styles.discount}>
+						<Text style={styles.dscountText}>{discount}%</Text>
+					</View>
+				)}
+			</View>
 			<View style={styles.details}>
 				<View style={styles.row}>
 					<Text style={styles.brand}>{category}</Text>
@@ -26,8 +37,24 @@ const ProductItem = ({
 				</View>
 				<Text style={styles.name}>{name}</Text>
 				<Text style={styles.price}>{price}</Text>
-				<DefaultButton containerStyle={styles.button} >
-					<Text>{STRINGS.addToCart}</Text>
+				<DefaultButton
+					containerStyle={styles.button}
+					secondary={secondary}
+				>
+					<View style={styles.buttonContainer}>
+						<Text
+							style={[
+								secondary
+									? styles.inactiveCartText
+									: styles.cartText,
+							]}
+						>
+							{STRINGS.addToCart}
+						</Text>
+						<BasketIcon
+							fill={secondary ? COLORS.blue : COLORS.white}
+						/>
+					</View>
 				</DefaultButton>
 			</View>
 		</View>
@@ -37,6 +64,28 @@ const ProductItem = ({
 export default ProductItem;
 
 const styles = StyleSheet.create({
+	dscountText: { fontSize: 12, color: COLORS.defaultBlack },
+	discount: {
+		borderRadius: 8,
+		padding: 4,
+		backgroundColor: COLORS.white,
+	},
+	absolute: {
+		position: "absolute",
+		right: 10,
+		top: 10,
+		justifyContent: "space-between",
+		height: 162,
+		alignItems: "flex-end",
+	},
+	cartText: {
+		color: COLORS.white,
+		marginRight: 4,
+	},
+	inactiveCartText: {
+		color: COLORS.blue,
+		marginRight: 4,
+	},
 	button: {
 		marginHorizontal: 0,
 	},
@@ -59,8 +108,8 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 	},
 	image: {
-		width: 160,
-		height: 160,
+		width: 180,
+		height: 180,
 		borderTopLeftRadius: 8,
 		borderTopRightRadius: 8,
 	},
@@ -69,11 +118,14 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		elevation: 2,
 		width: 180,
-		margin: 16,
+		margin: 4,
 	},
 	details: {
 		paddingHorizontal: 8,
 		paddingBottom: 24,
 		paddingTop: 8,
+	},
+	buttonContainer: {
+		flexDirection: "row",
 	},
 });

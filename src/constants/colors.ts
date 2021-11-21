@@ -8,8 +8,9 @@ export const COLORS = {
 	darkBorder: "#15626B",
 	gray: "#666666",
 	blue: "#0052FF",
-	lightGray:'#f3f3f3',
-	purple: '#C211A7',
+	lightGray: "#f3f3f3",
+	purple: "#C211A7",
+	red: "rgba(255, 27, 27, 1)",
 };
 
 export const GRADIENT_COLORS = [

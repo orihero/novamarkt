@@ -14,7 +14,7 @@ let shopsData: BrandItemProps[] = [
 	"https://logobank.uz:8005/media/logos_png/TERRA_PRO-01.png",
 ];
 
-const Shops = () => {
+const ShopsList = () => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>{STRINGS.yourShops}</Text>
@@ -24,12 +24,13 @@ const Shops = () => {
 				data={shopsData}
 				renderItem={BrandItem}
 				style={styles.container}
+				contentContainerStyle={styles.contentContainerStyle}
 			/>
 		</View>
 	);
 };
 
-export default Shops;
+export default ShopsList;
 
 const styles = StyleSheet.create({
 	title: {
@@ -37,5 +38,8 @@ const styles = StyleSheet.create({
 		fontSize: 19,
 		marginLeft: 16,
 	},
-	container: { paddingLeft: 10, marginBottom: 20 },
+	container: { marginBottom: 20 },
+	contentContainerStyle: {
+		paddingLeft: 12,
+	},
 });

@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
 		width: WINDOW_WIDTH - 32,
 		height: 200,
 		borderRadius: 8,
+		marginHorizontal: 16,
 	},
 	dot: {
 		width: 20,
