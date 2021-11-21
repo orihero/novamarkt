@@ -12,7 +12,10 @@ let AuthStack = () => {
 		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Stack.Screen name={ROUTES.REGISTER} component={RegisterScreen} />
 			<Stack.Screen name={ROUTES.LOGIN} component={LoginScreen} />
-			<Stack.Screen name={ROUTES.LOGIN} component={VerificationScreen} />
+			<Stack.Screen
+				name={ROUTES.VERIFICATION}
+				component={VerificationScreen}
+			/>
 		</Stack.Navigator>
 	);
 };
