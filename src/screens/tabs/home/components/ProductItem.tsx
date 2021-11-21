@@ -7,6 +7,7 @@ import React, { ReactElement } from "react";
 import { Image, ListRenderItemInfo, StyleSheet, View } from "react-native";
 
 export interface ProductItemProps {
+	id?: number;
 	image: string;
 	price: string;
 	shopName: string;
