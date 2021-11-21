@@ -4,7 +4,7 @@ import DefaultInput from "@novomarkt/components/general/DefaultInput";
 import { GRADIENT_COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Text from "../../../components/general/Text";
 import { styles } from "./style";
