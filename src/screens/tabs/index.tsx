@@ -13,7 +13,9 @@ import React, { useCallback } from "react";
 import { StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
 import { HomeScreen } from "./home";
-import ProfileView from "./profile/view";
+import { SettingsStack } from "./settings";
+import ProfileView from "./settings/moduels/profile/view";
+import SettingsView from "./settings/view";
 
 let Tab = createBottomTabNavigator();
 
@@ -66,8 +68,8 @@ const TabNavigation = () => {
 				}}
 			/>
 			<Tab.Screen
-				name={ROUTES.PROFILE}
-				component={ProfileView}
+				name={ROUTES.SETTINGSSTACK}
+				component={SettingsStack}
 				options={{
 					tabBarIcon: renderTabIcon(PersonIcon),
 					tabBarLabel: STRINGS.login,
