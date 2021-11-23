@@ -1,4 +1,5 @@
 import { PlusIcon } from "@novomarkt/assets/icons/icons";
+import { COLORS } from "@novomarkt/constants/colors";
 import React, { useState } from "react";
 import {
 	Image,
@@ -29,7 +30,7 @@ const Avatar = () => {
 					}}
 				/>
 				<View style={styles.opacity}>
-					<PlusIcon />
+					<PlusIcon fill={COLORS.white} />
 				</View>
 			</View>
 		</TouchableWithoutFeedback>

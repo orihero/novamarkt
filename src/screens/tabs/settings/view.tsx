@@ -27,10 +27,12 @@ const SettingsView = ({}) => {
 			<Text style={styles.headerText}>Доброе утро</Text>
 			<View style={styles.itemsBox}>
 				<SettingsItem
+					onPress={() => navigation.navigate(ROUTES.ORDER)}
 					text={"Мои заказы"}
 					icon={() => <ShopIcon fill={COLORS.defaultBlack} />}
 				/>
 				<SettingsItem
+					onPress={() => navigation.navigate(ROUTES.COMMENT)}
 					text={"Отзывы"}
 					icon={() => <BorderedStarIcon fill={COLORS.defaultBlack} />}
 				/>
@@ -39,6 +41,7 @@ const SettingsView = ({}) => {
 					icon={() => <BorderedLikeIcon fill={COLORS.defaultBlack} />}
 				/>
 				<SettingsItem
+					onPress={() => navigation.navigate(ROUTES.MESSAGE)}
 					text={"Мои сообщения"}
 					icon={() => <CommentIcon fill={COLORS.defaultBlack} />}
 				/>
@@ -48,6 +51,7 @@ const SettingsView = ({}) => {
 				/>
 				<SettingsItem
 					text={"FAQ"}
+					onPress={() => navigation.navigate(ROUTES.QUESTIONS)}
 					icon={() => <QuestionMarkIcon fill={COLORS.defaultBlack} />}
 				/>
 				<SettingsItem

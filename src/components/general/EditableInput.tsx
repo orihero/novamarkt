@@ -2,9 +2,10 @@ import { EditIcon, SaveIcon } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
 	Dimensions,
+	KeyboardType,
 	StyleProp,
 	StyleSheet,
 	TextInput,
@@ -20,6 +21,7 @@ export interface EditableInputProps {
 	value?: string;
 	bigger?: boolean;
 	onChange?: (t: string) => void;
+	keyboardType?: KeyboardType;
 }
 
 const EditableInput = ({
@@ -29,11 +31,16 @@ const EditableInput = ({
 	value,
 	bigger,
 	onChange,
+	keyboardType,
 }: EditableInputProps) => {
 	const [isEditing, setIsEditing] = useState(false);
 	let onEditPress = () => {
 		setIsEditing((e) => !e);
 	};
+	const ref = useRef(null);
+	useEffect(() => {
+		if (ref.current && isEditing) ref.current.focus();
+	}, [isEditing]);
 	return (
 		<View style={[styles.container, bigger && { paddingLeft: 10 }]}>
 			<Text style={[styles.title, titleStyle]}>{title}</Text>
@@ -44,9 +51,12 @@ const EditableInput = ({
 							styles.value,
 							bigger && { fontSize: 20, marginTop: 0 },
 						]}
+						ref={ref}
 						value={value}
 						onChangeText={onChange}
 						placeholder={placeholder}
+						onBlur={onEditPress}
+						keyboardType={keyboardType}
 					/>
 				) : (
 					<Text
@@ -101,13 +111,14 @@ const styles = StyleSheet.create({
 	},
 
 	icon: {
-		marginLeft: 20,
+		marginLeft: 10,
 		marginTop: 10,
 		alignSelf: "center",
 	},
 
 	box: {
 		flexDirection: "row",
+		// justifyContent: 'space-between',
 	},
 
 	textStyle: {
@@ -119,8 +130,10 @@ const styles = StyleSheet.create({
 	},
 
 	iconContainer: {
-		width: 30,
+		width: 1,
 		height: 30,
 		alignSelf: "center",
+		marginLeft: 10,
+		// backgroundColor: "#000",
 	},
 });

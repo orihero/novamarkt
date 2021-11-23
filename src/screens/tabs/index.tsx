@@ -3,7 +3,7 @@ import {
 	CatalogIcon,
 	HeartIcon,
 	HomeIcon,
-	PersonIcon,
+	PersonIcon
 } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
@@ -14,8 +14,6 @@ import { StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
 import { HomeScreen } from "./home";
 import { SettingsStack } from "./settings";
-import ProfileView from "./settings/moduels/profile/view";
-import SettingsView from "./settings/view";
 
 let Tab = createBottomTabNavigator();
 

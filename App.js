@@ -1,5 +1,5 @@
 import AppRouter from "@novomarkt/routes/AppRouter";
-import { store, persistor } from "@novomarkt/store/configureStore";
+import { persistor, store } from "@novomarkt/store/configureStore";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Provider } from "react-redux";
