@@ -10,5 +10,9 @@ export const ROUTES = {
 	TABS: "tabs",
 	VERIFICATION: "verification",
 	SETTINGS: "settings",
-	SETTINGSSTACK: "settingsstack"
+	SETTINGSSTACK: "settingsstack",
+	ORDER: "order",
+	COMMENT: "comment",
+	MESSAGE: "message",
+	QUESTIONS: "questions",
 };

@@ -5,7 +5,7 @@ import React from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import ProductItem, { ProductItemProps } from "./ProductItem";
 
-let productsData: ProductItemProps[] = [
+export let productsData: ProductItemProps[] = [
 	{
 		category: "Костюми",
 		image: "https://static.theblacktux.com/products/suits/black-suit/2_161129_TBT_Ecom_Black_Suit_1_1664_w1_1812x1875.jpg",

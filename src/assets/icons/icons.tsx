@@ -1,13 +1,187 @@
 import React from "react";
 import Svg, {
-	Path,
 	Circle,
-	Image,
-	Pattern,
 	Defs,
-	Use,
+	Ellipse,
+	Image,
+	LinearGradient,
+	Path,
+	Pattern,
+	Stop,
 	SvgProps,
+	Use,
 } from "react-native-svg";
+
+export function PlayIcon(props: SvgProps) {
+	return (
+		<Svg
+			width={25}
+			height={25}
+			viewBox="0 0 25 25"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Circle
+				cx={12.5}
+				cy={12.5}
+				r={12.5}
+				fill="url(#paint0_linear_0_1045)"
+			/>
+			<Path d="M17.5 12.5L10 16.83V8.17l7.5 4.33z" fill={props?.fill} />
+			<Defs>
+				<LinearGradient
+					id="paint0_linear_0_1045"
+					x1={-0.70862}
+					y1={0.159817}
+					x2={26.0359}
+					y2={1.39439}
+					gradientUnits="userSpaceOnUse"
+				>
+					<Stop stopColor="#B9D5FD" />
+					<Stop offset={0.0001} stopColor="#384F81" />
+					<Stop offset={0.572917} stopColor="#49679F" />
+					<Stop offset={1} stopColor="#729EDB" />
+				</LinearGradient>
+			</Defs>
+		</Svg>
+	);
+}
+
+export function TelegramIcon(props: SvgProps) {
+	return (
+		<Svg
+			width={35}
+			height={37}
+			viewBox="0 0 35 37"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Ellipse
+				cx={17.5}
+				cy={18.7795}
+				rx={17.5}
+				ry={17.7966}
+				fill="#D9D9D9"
+				fillOpacity={0.5}
+			/>
+			<Path
+				d="M23.2 11.173l-14.712 6.56c-1.005.465-.999 1.113-.185 1.402l3.778 1.362 8.74-6.375c.413-.29.79-.134.48.184l-7.08 7.388h-.002.001l-.26 4.502c.381 0 .55-.203.764-.441l1.835-2.063 3.816 3.259c.704.448 1.21.218 1.384-.753l2.506-13.649c.256-1.189-.393-1.727-1.064-1.376z"
+				fill={props?.fill}
+				fillOpacity={0.5}
+			/>
+		</Svg>
+	);
+}
+
+export function SaveIconMessage(props: SvgProps) {
+	return (
+		<Svg
+			width={18}
+			height={18}
+			viewBox="0 0 14 14"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M12.22 1.456C10.382-.2 7.386-.2 5.548 1.456L.449 6.04a.15.15 0 000 .225l.721.649c.033.03.077.046.124.046a.186.186 0 00.124-.046L6.516 2.33c.633-.57 1.474-.883 2.369-.883.894 0 1.736.313 2.367.883.633.569.98 1.327.98 2.13 0 .805-.347 1.56-.98 2.13l-5.195 4.675-.842.757c-.787.708-2.067.708-2.854 0a1.715 1.715 0 01-.59-1.283c0-.485.21-.94.59-1.283l5.155-4.637a.73.73 0 01.486-.181h.002c.184 0 .354.065.482.18.131.118.202.273.202.438a.583.583 0 01-.202.434L4.273 9.48a.15.15 0 000 .225l.721.648c.033.03.078.046.124.046a.186.186 0 00.124-.046l4.211-3.79c.389-.35.602-.814.602-1.307 0-.494-.215-.96-.602-1.308-.803-.723-2.107-.721-2.91 0l-.5.451-4.652 4.186a3.029 3.029 0 00-.737.989c-.17.37-.257.767-.256 1.168 0 .814.354 1.578.993 2.153.662.594 1.529.891 2.396.891s1.735-.297 2.395-.891l6.039-5.432c.889-.801 1.38-1.868 1.38-3.002.003-1.136-.49-2.203-1.38-3.004z"
+				fill={props?.fill}
+			/>
+		</Svg>
+	);
+}
+
+export function Checked(props: SvgProps) {
+	return (
+		<Svg
+			width={14}
+			height={14}
+			viewBox="0 0 14 14"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M14 7A7 7 0 110 7a7 7 0 0114 0zM10.527 4.35a.656.656 0 00-.946.02L6.543 8.24 4.71 6.408a.656.656 0 00-.927.927l2.315 2.316a.656.656 0 00.944-.017l3.493-4.366a.656.656 0 00-.009-.92z"
+				fill={props?.fill}
+			/>
+		</Svg>
+	);
+}
+
+export function NotMarkedStar(props: SvgProps) {
+	return (
+		<Svg
+			width={11}
+			height={11}
+			viewBox="0 0 11 11"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M5.585 0l1.47 3.806 3.795.34-2.886 2.692.875 4.016-3.254-2.142-3.254 2.142.874-4.016L.32 4.146l3.794-.34L5.584 0z"
+				fill={props?.fill}
+			/>
+		</Svg>
+	);
+}
+
+export function MarkedStar(props: SvgProps) {
+	return (
+		<Svg
+			width={11}
+			height={11}
+			viewBox="0 0 11 11"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M5.536 0l1.47 3.806 3.795.34-2.885 2.692.874 4.016-3.254-2.142-3.254 2.142.874-4.016L.271 4.146l3.794-.34L5.535 0z"
+				fill={props?.fill}
+			/>
+		</Svg>
+	);
+}
+
+export function ArrowBottomMarked(props: SvgProps) {
+	return (
+		<Svg
+			width={8}
+			height={12}
+			viewBox="0 0 8 12"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M6.625 7.94l-2.25 2.25V.41h-.75v9.78l-2.25-2.25-.53.53L4 11.625 7.155 8.47l-.53-.53z"
+				fill={props?.fill}
+			/>
+		</Svg>
+	);
+}
+
+export function LocationIcon(props: SvgProps) {
+	return (
+		<Svg
+			width={14}
+			height={16}
+			viewBox="0 0 14 16"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				d="M7.124.271C5.32.273 3.59.917 2.314 2.061 1.04 3.205.323 4.757.32 6.375c-.003 1.323.479 2.61 1.37 3.663 0 0 .186.219.216.25l5.218 5.521 5.22-5.523.213-.248v-.002c.892-1.053 1.373-2.339 1.37-3.66-.001-1.62-.719-3.17-1.994-4.315C10.657.917 8.928.273 7.123.271zm0 8.324c-.49 0-.968-.13-1.375-.374a2.29 2.29 0 01-.911-.996 2.009 2.009 0 01-.141-1.283 2.16 2.16 0 01.677-1.136c.346-.31.787-.522 1.267-.608.48-.085.977-.042 1.43.126.452.168.838.453 1.11.818.272.365.417.794.417 1.233 0 .589-.262 1.153-.726 1.569a2.628 2.628 0 01-1.748.651z"
+				fill={props?.fill}
+			/>
+		</Svg>
+	);
+}
 
 export function SaveIcon(props: SvgProps) {
 	return (
@@ -270,7 +444,7 @@ export function PlusIcon(props: SvgProps) {
 		>
 			<Path
 				d="M18.462 11.054h-7.07V18.3h-3.71v-7.245H.612v-3.36h7.07V.45h3.71v7.245h7.07v3.36z"
-				fill="#fff"
+				fill={props?.fill}
 			/>
 		</Svg>
 	);

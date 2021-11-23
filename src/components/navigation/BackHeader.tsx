@@ -1,21 +1,27 @@
 import { LeftArrow } from "@novomarkt/assets/icons/icons";
+import { STRINGS } from "@novomarkt/locales/strings";
 import { useNavigation } from "@react-navigation/core";
 import React from "react";
-import { StyleSheet, TouchableWithoutFeedback, View } from "react-native";
+import { StyleProp, StyleSheet, TextStyle, TouchableWithoutFeedback, View, ViewStyle } from "react-native";
 import { COLORS } from "../../constants/colors";
 import Text from "../general/Text";
 
-const BackHeader = (props) => {
+export interface BackHeaderProps {
+	name?: string;
+	style?: StyleProp<ViewStyle>;
+}
+
+const BackHeader = ({name=STRINGS.backHeaderName, style}: BackHeaderProps) => {
 	let navigation = useNavigation();
 	return (
-		<View {...props} style={{ ...styles.container, ...props.style }}>
+		<View style={[styles.container, style,]}>
 			<TouchableWithoutFeedback
-				hitSlop={{ bottom: 5, top: 5, left: 5, right: 5 }}
+				hitSlop={{ bottom: 10, top: 10, left: 10, right: 10 }}
 				onPress={navigation.goBack}
 			>
 				<LeftArrow />
 			</TouchableWithoutFeedback>
-			<Text style={styles.text}>Мои данные</Text>
+			<Text style={styles.text}>{name}</Text>
 		</View>
 	);
 };
@@ -26,6 +32,7 @@ const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",
+		// marginHorizontal: 20,
 	},
 
 	text: {
