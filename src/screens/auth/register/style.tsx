@@ -4,43 +4,28 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: "#fff",
-		justifyContent: "center",
 	},
 
 	logoText: {
 		alignSelf: "center",
-		fontSize: 40,
+		fontSize: 45,
 		color: "#0057FF",
-		// fontFamily: "Montserrat-Bold",
 		fontWeight: "bold",
-		marginBottom: 20,
+		marginVertical: 30,
 	},
 
 	inputBox: {
-		// borderWidth: 1,
 		borderRadius: 10,
-		paddingVertical: 20,
-		marginHorizontal: 15,
-		marginVertical: 20,
+		paddingVertical: 30,
+		marginHorizontal: 20,
+		marginVertical: 40,
 		backgroundColor: "#fff",
-	},
-
-	elevation: {
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.25,
-		shadowRadius: 4.84,
-
-		elevation: 15,
+		elevation: 5,
 	},
 
 	rowText: {
-		// alignSelf: "center",
-		marginVertical: 10,
-		marginHorizontal: 27,
+		marginVertical: 15,
+		marginHorizontal: 20,
 		flexDirection: "row",
 		justifyContent: "space-between",
 	},
@@ -52,8 +37,24 @@ export const styles = StyleSheet.create({
 		textDecorationStyle: "solid",
 	},
 
+	inputStyle: {
+		paddingHorizontal: 10,
+	},
+
 	askText: {
 		color: "#023047",
 		fontSize: 14,
 	},
+
+	button: {
+		marginHorizontal: 20,
+	},
+
+	input: {
+		marginHorizontal: 20,
+	},
+
+	buttonTxt: {
+		fontSize: 18,
+	}
 });

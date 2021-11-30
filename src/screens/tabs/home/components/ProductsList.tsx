@@ -13,6 +13,20 @@ export let productsData: ProductItemProps[] = [
 		shopName: "ZARA",
 		name: "Элегантный Костюм с брюками ZARA стиль",
 		discount: -21,
+		options: [
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+		],
 	},
 	{
 		category: "Костюми",
@@ -21,6 +35,20 @@ export let productsData: ProductItemProps[] = [
 		shopName: "ZARA",
 		name: "Элегантный Костюм с брюками ZARA стиль",
 		discount: -50,
+		options: [
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+		],
 	},
 	{
 		category: "Костюми",
@@ -29,6 +57,20 @@ export let productsData: ProductItemProps[] = [
 		shopName: "ZARA",
 		discount: -46,
 		name: "Элегантный Костюм с брюками ZARA стиль",
+		options: [
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+		],
 	},
 	{
 		category: "Костюми",
@@ -36,6 +78,20 @@ export let productsData: ProductItemProps[] = [
 		price: "1400  ₽",
 		shopName: "ZARA",
 		name: "Элегантный Костюм с брюками ZARA стиль",
+		options: [
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+		],
 	},
 	{
 		category: "Костюми",
@@ -43,6 +99,20 @@ export let productsData: ProductItemProps[] = [
 		price: "1400  ₽",
 		shopName: "ZARA",
 		name: "Элегантный Костюм с брюками ZARA стиль",
+		options: [
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+		],
 	},
 	{
 		category: "Костюми",
@@ -50,6 +120,20 @@ export let productsData: ProductItemProps[] = [
 		price: "1400  ₽",
 		shopName: "ZARA",
 		name: "Элегантный Костюм с брюками ZARA стиль",
+		options: [
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+		],
 	},
 	{
 		category: "Костюми",
@@ -57,6 +141,20 @@ export let productsData: ProductItemProps[] = [
 		price: "1400  ₽",
 		shopName: "ZARA",
 		name: "Элегантный Костюм с брюками ZARA стиль",
+		options: [
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+			{
+				key: "эластан",
+				value: " 5%",
+			},
+			{ key: "Комплектация", value: "рубашка" },
+			{ key: "Крой", value: "средняя посадка" },
+		],
 	},
 ];
 

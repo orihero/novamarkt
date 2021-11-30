@@ -3,7 +3,7 @@ import {
 	CatalogIcon,
 	HeartIcon,
 	HomeIcon,
-	PersonIcon
+	PersonIcon,
 } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
@@ -12,7 +12,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useCallback } from "react";
 import { StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
-import { HomeScreen } from "./home";
+import CartStack from "./cart";
+import CatalogStack, { CatalogScreen } from "./catalog";
+import { FavoriteScreen } from "./favorites";
+import { HomeStack } from "./home";
 import { SettingsStack } from "./settings";
 
 let Tab = createBottomTabNavigator();
@@ -35,7 +38,7 @@ const TabNavigation = () => {
 		>
 			<Tab.Screen
 				name={ROUTES.HOME}
-				component={HomeScreen}
+				component={HomeStack}
 				options={{
 					tabBarIcon: renderTabIcon(HomeIcon),
 					tabBarLabel: STRINGS.home,
@@ -43,7 +46,7 @@ const TabNavigation = () => {
 			/>
 			<Tab.Screen
 				name={ROUTES.CATEGORIES}
-				component={HomeScreen}
+				component={CatalogStack}
 				options={{
 					tabBarIcon: renderTabIcon(CatalogIcon),
 					tabBarLabel: STRINGS.categories,
@@ -51,7 +54,7 @@ const TabNavigation = () => {
 			/>
 			<Tab.Screen
 				name={ROUTES.CART}
-				component={HomeScreen}
+				component={CartStack}
 				options={{
 					tabBarIcon: renderTabIcon(BasketIcon),
 					tabBarLabel: STRINGS.cart,
@@ -59,7 +62,7 @@ const TabNavigation = () => {
 			/>
 			<Tab.Screen
 				name={ROUTES.FAVORITES}
-				component={HomeScreen}
+				component={FavoriteScreen}
 				options={{
 					tabBarIcon: renderTabIcon(HeartIcon),
 					tabBarLabel: STRINGS.favorites,
@@ -79,4 +82,8 @@ const TabNavigation = () => {
 
 export default TabNavigation;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	cont: {
+		// paddingVertical: 10,
+	},
+});

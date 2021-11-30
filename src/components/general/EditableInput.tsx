@@ -50,6 +50,7 @@ const EditableInput = ({
 						style={[
 							styles.value,
 							bigger && { fontSize: 20, marginTop: 0 },
+							,
 						]}
 						ref={ref}
 						value={value}
@@ -57,6 +58,7 @@ const EditableInput = ({
 						placeholder={placeholder}
 						onBlur={onEditPress}
 						keyboardType={keyboardType}
+						placeholderTextColor={COLORS.gray}
 					/>
 				) : (
 					<Text

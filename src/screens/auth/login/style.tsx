@@ -3,9 +3,8 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		paddingVertical: 50,
 		backgroundColor: "#fff",
-		justifyContent: 'center',
+		justifyContent: "center",
 	},
 
 	logoText: {
@@ -17,10 +16,9 @@ export const styles = StyleSheet.create({
 	},
 
 	inputBox: {
-		// borderWidth: 1,
 		borderRadius: 10,
 		paddingVertical: 20,
-		marginHorizontal: 15,
+		marginHorizontal: 20,
 		marginVertical: 20,
 		backgroundColor: "#fff",
 	},
@@ -38,17 +36,34 @@ export const styles = StyleSheet.create({
 	},
 
 	rowLogos: {
-		// borderWidth: 1,
 		marginHorizontal: 20,
-		flexDirection: 'row',
-		justifyContent: 'space-around',
-		marginTop: 20,
+		flexDirection: "row",
+		justifyContent: "space-around",
+		marginVertical: 20,
 	},
 	logo: {
 		width: 50,
 		height: 40,
 		alignItems: "center",
-		justifyContent: 'center',
+		justifyContent: "center",
 		borderRadius: 8,
-	}
+	},
+
+	input: {
+		marginHorizontal: 20,
+	},
+
+	inputStyle: {
+		paddingHorizontal: 10,
+	},
+
+	button: {
+		marginVertical: 10,
+		marginHorizontal: 20,
+	},
+
+	text: {
+		padding: 0,
+		fontSize: 18,
+	},
 });

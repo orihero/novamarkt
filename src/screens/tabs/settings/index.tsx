@@ -8,6 +8,7 @@ import OrderView from "./moduels/orders/view";
 import CommentView from "./moduels/comments/view";
 import MessageView from "./moduels/messages/view";
 import QuestionsView from "./moduels/questions/view";
+import ContactsView from "./moduels/contacts/view";
 
 let Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ export let SettingsStack = () => {
 			<Stack.Screen component={CommentView} name={ROUTES.COMMENT} />
 			<Stack.Screen component={MessageView} name={ROUTES.MESSAGE} />
 			<Stack.Screen component={QuestionsView} name={ROUTES.QUESTIONS} />
+			<Stack.Screen component={ContactsView} name={ROUTES.CONTACTS} />
 		</Stack.Navigator>
 	);
 };
