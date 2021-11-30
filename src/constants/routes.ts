@@ -15,4 +15,12 @@ export const ROUTES = {
 	COMMENT: "comment",
 	MESSAGE: "message",
 	QUESTIONS: "questions",
+	CONTACTS: "contacts",
+	PRODUCT_DETAILS: "product-details",
+	CATALOG_DETAILS: "catalog-details",
+	CATALOG: "catalog",
+	CATALOG_PRODUCTS: "catalog-products",
+	CHECKOUT: "checkout",
+	CHECKOUT_POINT: "сheckout-point"
+	
 };

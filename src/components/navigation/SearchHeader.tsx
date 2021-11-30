@@ -12,6 +12,7 @@ const SearchHeader = () => {
 				<TextInput
 					style={styles.input}
 					placeholder={STRINGS.searching}
+					placeholderTextColor={COLORS.gray}
 				/>
 				<SearchIcon fill={COLORS.gray} />
 			</View>

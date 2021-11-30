@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
 		flex: 1,
 		backgroundColor: COLORS.white,
 		paddingVertical: 20,
+		height: "100%",
 	},
 
 	header: {
@@ -28,6 +29,7 @@ export const styles = StyleSheet.create({
 		borderTopRightRadius: 8,
 		borderBottomLeftRadius: 8,
 		borderBottomRightRadius: 8,
+		flex: 1,
 	},
 
 	top: {
@@ -44,6 +46,7 @@ export const styles = StyleSheet.create({
 
 	inner: {
 		padding: 15,
+		flex: 1,
 	},
 
 	innerBox: {
@@ -65,7 +68,7 @@ export const styles = StyleSheet.create({
 		borderBottomLeftRadius: 8,
 		borderBottomRightRadius: 8,
 		paddingHorizontal: 15,
-		marginTop: 50,
+		// marginTop: 50,
 		paddingVertical: 10,
 	},
 

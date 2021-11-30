@@ -4,19 +4,33 @@ import { COLORS } from "@novomarkt/constants/colors";
 import React from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 
-const QuestionBox = () => {
+export interface QuestionBoxProps {
+	title?: string;
+	button?: string;
+}
+
+const QuestionBox = ({ title, button }: QuestionBoxProps) => {
 	return (
 		<View style={{ backgroundColor: COLORS.white }}>
 			<View style={styles.footer}>
-				<Text style={styles.footerTxt}>У вас есть вопросы ?</Text>
-				<TextInput style={styles.input} placeholder={"Ваше имя"} />
+				<Text style={styles.footerTxt}>{title}</Text>
 				<TextInput
+					style={styles.input}
+					placeholder={"Ваше имя"}
+					placeholderTextColor={COLORS.gray}
+				/>
+				<TextInput
+					placeholderTextColor={COLORS.gray}
 					style={styles.input}
 					keyboardType="email-address"
 					placeholder={"Ваш  e-mail"}
 				/>
-				<TextInput style={styles.bigger} placeholder={"Ваш отзыв"} />
-                <DefaultButton containerStyle={styles.button} text={"Отправить отзыв"} />
+				<TextInput
+					style={styles.bigger}
+					placeholder={"Ваш отзыв"}
+					placeholderTextColor={COLORS.gray}
+				/>
+				<DefaultButton containerStyle={styles.button} text={button} />
 			</View>
 		</View>
 	);
@@ -28,10 +42,10 @@ const styles = StyleSheet.create({
 	footer: {
 		backgroundColor: COLORS.skyBlue,
 		marginHorizontal: 20,
-        marginVertical: 40,
+		marginVertical: 40,
 		borderRadius: 10,
 		padding: 15,
-        paddingRight: 40,
+		paddingRight: 40,
 		elevation: 8,
 	},
 
@@ -56,9 +70,9 @@ const styles = StyleSheet.create({
 		fontStyle: "italic",
 	},
 
-    button: {
-        marginTop: 20,
-        marginBottom: 10,
-        marginHorizontal: 50,
-    }
+	button: {
+		marginTop: 20,
+		marginBottom: 10,
+		marginHorizontal: 20,
+	},
 });

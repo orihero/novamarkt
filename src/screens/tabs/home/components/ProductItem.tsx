@@ -2,10 +2,21 @@ import { BasketIcon, HeartIcon } from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
+import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
+import { useNavigation } from "@react-navigation/core";
 import React, { ReactElement } from "react";
-import { Image, ListRenderItemInfo, StyleSheet, View } from "react-native";
+import {
+	Image,
+	ListRenderItemInfo,
+	StyleSheet,
+	TouchableNativeFeedback,
+	TouchableOpacity,
+	TouchableWithoutFeedback,
+	View,
+} from "react-native";
 
+let navigation = useNavigation();
 export interface ProductItemProps {
 	id?: number;
 	image: string;
@@ -14,51 +25,62 @@ export interface ProductItemProps {
 	category: string;
 	name: string;
 	discount?: number;
+	options?: {
+		key?: string;
+		value?: string;
+	}[];
 }
 
 const ProductItem = ({
-	item: { image, category, price, shopName, name, discount },
+	item,
 }: ListRenderItemInfo<ProductItemProps>): ReactElement => {
 	let secondary = true;
+	let { image, category, price, shopName, name, discount } = item;
 	return (
-		<View style={styles.container}>
-			<Image source={{ uri: image }} style={styles.image} />
-			<View style={styles.absolute}>
-				<HeartIcon fill={COLORS.red} />
-				{discount && (
-					<View style={styles.discount}>
-						<Text style={styles.dscountText}>{discount}%</Text>
-					</View>
-				)}
-			</View>
-			<View style={styles.details}>
-				<View style={styles.row}>
-					<Text style={styles.brand}>{category}</Text>
-					<Text style={styles.brand}>{shopName}</Text>
+		<TouchableWithoutFeedback
+			onPress={() =>
+				navigation.navigate(ROUTES.PRODUCT_DETAILS, { item })
+			}
+		>
+			<View style={styles.container}>
+				<Image source={{ uri: image }} style={styles.image} />
+				<View style={styles.absolute}>
+					<HeartIcon fill={COLORS.red} />
+					{discount && (
+						<View style={styles.discount}>
+							<Text style={styles.dscountText}>{discount}%</Text>
+						</View>
+					)}
 				</View>
-				<Text style={styles.name}>{name}</Text>
-				<Text style={styles.price}>{price}</Text>
-				<DefaultButton
-					containerStyle={styles.button}
-					secondary={secondary}
-				>
-					<View style={styles.buttonContainer}>
-						<Text
-							style={[
-								secondary
-									? styles.inactiveCartText
-									: styles.cartText,
-							]}
-						>
-							{STRINGS.addToCart}
-						</Text>
-						<BasketIcon
-							fill={secondary ? COLORS.blue : COLORS.white}
-						/>
+				<View style={styles.details}>
+					<View style={styles.row}>
+						<Text style={styles.brand}>{category}</Text>
+						<Text style={styles.brand}>{shopName}</Text>
 					</View>
-				</DefaultButton>
+					<Text style={styles.name}>{name}</Text>
+					<Text style={styles.price}>{price}</Text>
+					<DefaultButton
+						containerStyle={styles.button}
+						secondary={secondary}
+					>
+						<View style={styles.buttonContainer}>
+							<Text
+								style={[
+									secondary
+										? styles.inactiveCartText
+										: styles.cartText,
+								]}
+							>
+								{STRINGS.addToCart}
+							</Text>
+							<BasketIcon
+								fill={secondary ? COLORS.blue : COLORS.white}
+							/>
+						</View>
+					</DefaultButton>
+				</View>
 			</View>
-		</View>
+		</TouchableWithoutFeedback>
 	);
 };
 

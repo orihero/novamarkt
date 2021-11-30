@@ -61,6 +61,7 @@ const SettingsView = ({}) => {
 				/>
 				<SettingsItem
 					text={"Контакты"}
+					onPress={() => navigation.navigate(ROUTES.CONTACTS)}
 					icon={() => <ContactIcon stroke={COLORS.defaultBlack} />}
 				/>
 				<SettingsItem

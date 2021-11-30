@@ -1,16 +1,123 @@
 import React from "react";
 import Svg, {
 	Circle,
+	ClipPath,
 	Defs,
 	Ellipse,
+	G,
 	Image,
 	LinearGradient,
 	Path,
 	Pattern,
+	Rect,
 	Stop,
 	SvgProps,
 	Use,
 } from "react-native-svg";
+
+export function PlusCounterIcon(props: SvgProps) {
+	return (
+		<Svg
+			width={13}
+			height={10}
+			viewBox="0 0 13 12"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M7.754 0H5.317v4.5H.445v2.25h4.872v4.5h2.437v-4.5h4.875V4.5H7.754V0z"
+				fill={props?.fill}
+			/>
+		</Svg>
+	);
+}
+
+export function MinusIcon(props: SvgProps) {
+	return (
+		<Svg
+			width={10}
+			height={10}
+			viewBox="0 0 13 3"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path d="M.032 2.25V0h12.184v2.25H.032z" fill={props?.fill} />
+		</Svg>
+	);
+}
+
+export function CheckedItem(props: SvgProps) {
+	return (
+		<Svg
+			width={29}
+			height={29}
+			viewBox="0 0 29 29"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Rect
+				width={29}
+				height={29}
+				rx={2}
+				fill="url(#paint0_linear_0_1413)"
+			/>
+			<G clipPath="url(#clip0_0_1413)">
+				<Path
+					d="M11.454 14.24l2.108 2.109 3.984-3.983"
+					stroke="#fff"
+					strokeLinecap="square"
+				/>
+			</G>
+			<Circle cx={14.4998} cy={14.4998} r={8.88235} stroke="#fff" />
+			<Defs>
+				<LinearGradient
+					id="paint0_linear_0_1413"
+					x1={0.035815}
+					y1={0.185394}
+					x2={30.4688}
+					y2={1.76951}
+					gradientUnits="userSpaceOnUse"
+				>
+					<Stop stopColor="#BED9FF" stopOpacity={0} />
+					<Stop stopColor="#729EDB" />
+					<Stop offset={1} stopColor="#274784" />
+				</LinearGradient>
+				<ClipPath id="clip0_0_1413">
+					<Path
+						fill="#fff"
+						transform="translate(10.235 10.235)"
+						d="M0 0H8.52941V8.52941H0z"
+					/>
+				</ClipPath>
+			</Defs>
+		</Svg>
+	);
+}
+
+export function UploadIcon(props: SvgProps) {
+	return (
+		<Svg
+			width={16}
+			height={16}
+			viewBox="0 0 16 16"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+			{...props}
+		>
+			<Path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M8 0l5.359 5.274-.872.857L8.615 2.32v11.258h-1.23V2.319L3.513 6.13l-.872-.857L8 0zm8 14.789V16H0v-1.211h16z"
+				fill={props?.fill}
+			/>
+		</Svg>
+	);
+}
 
 export function PlayIcon(props: SvgProps) {
 	return (
@@ -857,7 +964,7 @@ export function RightArrow(props: SvgProps) {
 		>
 			<Path
 				d="M2 0L.59 1.41 5.17 6 .59 10.59 2 12l6-6-6-6z"
-				fill="#999"
+				fill={props?.fill}
 			/>
 		</Svg>
 	);

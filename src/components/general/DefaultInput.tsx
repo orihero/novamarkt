@@ -1,25 +1,36 @@
 import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import React from "react";
-import { StyleProp, StyleSheet, TextInput, TextStyle, View } from "react-native";
+import {
+	StyleProp,
+	StyleSheet,
+	TextInput,
+	TextStyle,
+	View,
+	ViewStyle,
+} from "react-native";
 import Text from "./Text";
 
 export interface DefaultInputProps {
 	title?: string;
 	placeholder?: string;
 	titleStyle?: StyleProp<TextStyle>;
+	containerStyle?: ViewStyle;
+	inputStyle?: TextStyle;
 }
 
 const DefaultInput = ({
 	placeholder,
 	title,
 	titleStyle,
+	containerStyle,
+	inputStyle,
 }: DefaultInputProps) => {
 	return (
-		<View style={styles.container}>
+		<View style={[styles.container, containerStyle]}>
 			<Text style={[styles.title, titleStyle]}>{title}</Text>
 			<TextInput
-				style={styles.input}
+				style={[styles.input, inputStyle]}
 				placeholder={placeholder}
 				placeholderTextColor={COLORS.gray}
 			/>

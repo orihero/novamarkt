@@ -4,9 +4,19 @@ import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
 import React, { useState } from "react";
 import {
+	LayoutAnimation,
+	Platform,
 	StyleSheet,
-	TouchableOpacity, View
+	TouchableOpacity,
+	UIManager,
+	View,
 } from "react-native";
+
+// if (Platform.OS === "android") {
+// 	if (UIManager.setLayoutAnimationEnabledExperimental) {
+// 		UIManager.setLayoutAnimationEnabledExperimental(true);
+// 	}
+// }
 
 const HandlingTextBox = () => {
 	const [shouldShow, setShouldShow] = useState(true);
@@ -15,7 +25,12 @@ const HandlingTextBox = () => {
 			<View>
 				<TouchableOpacity
 					style={styles.row}
-					onPress={() => setShouldShow(!shouldShow)}
+					onPress={() => {
+						LayoutAnimation.configureNext(
+							LayoutAnimation.Presets.easeInEaseOut
+						);
+						setShouldShow(!shouldShow);
+					}}
 				>
 					<PlayIcon fill={COLORS.white} />
 					<Text style={styles.text}>
@@ -23,9 +38,7 @@ const HandlingTextBox = () => {
 					</Text>
 				</TouchableOpacity>
 				{!shouldShow ? (
-					<Text style={styles.textBox}>
-						{STRINGS.answer}
-					</Text>
+					<Text style={styles.textBox}>{STRINGS.answer}</Text>
 				) : null}
 			</View>
 		</View>

@@ -20,7 +20,7 @@ const QuestionsView = () => {
 			<HandlingTextBox />
 			<HandlingTextBox />
 			<HandlingTextBox />
-			<QuestionBox />
+			<QuestionBox title={"У вас есть вопросы"} button={"Отправить отзыв"} />
 		</ScrollView>
 	);
 };

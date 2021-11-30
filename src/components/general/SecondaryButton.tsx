@@ -4,23 +4,30 @@ import {
 	GestureResponderEvent,
 	StyleProp,
 	StyleSheet,
+	TextStyle,
 	TouchableWithoutFeedback,
 	View,
-    ViewStyle,
+	ViewStyle,
 } from "react-native";
 import Text from "./Text";
 
 export interface SecondaryButtonProps {
 	text?: string;
-    containerStyle?:StyleProp<ViewStyle>
+	textStyle?: TextStyle;
+	containerStyle?: StyleProp<ViewStyle>;
 	onPress?: (event: GestureResponderEvent) => void;
 }
 
-const SecondaryButton = ({ onPress, text, containerStyle }: SecondaryButtonProps) => {
+const SecondaryButton = ({
+	onPress,
+	text,
+	textStyle,
+	containerStyle,
+}: SecondaryButtonProps) => {
 	return (
 		<TouchableWithoutFeedback onPress={onPress}>
 			<View style={[styles.container, containerStyle]}>
-				<Text style={styles.text}>{text}</Text>
+				<Text style={[styles.text, textStyle]}>{text}</Text>
 			</View>
 		</TouchableWithoutFeedback>
 	);
@@ -37,7 +44,7 @@ const styles = StyleSheet.create({
 		marginTop: 10,
 		borderRadius: 8,
 		borderWidth: 1,
-        borderColor: "#517EBD"
+		borderColor: "#517EBD",
 	},
 	text: {
 		color: COLORS.gray,

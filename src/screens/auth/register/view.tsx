@@ -14,26 +14,34 @@ const RegisterView = () => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.logoText}>Novamarkt</Text>
-			<View style={[styles.inputBox, styles.elevation]}>
+			<View style={styles.inputBox}>
 				<DefaultInput
+					containerStyle={styles.input}
+					inputStyle={styles.inputStyle}
 					title={STRINGS.number}
 					placeholder={STRINGS.yourNumber}
 				/>
 				<DefaultInput
+					containerStyle={styles.input}
+					inputStyle={styles.inputStyle}
 					title={STRINGS.password}
 					placeholder={STRINGS.yourPassword}
 				/>
 				<DefaultButton
+					textStyle={styles.buttonTxt}
 					text={STRINGS.auth}
 					onPress={() => navigation.navigate(ROUTES.VERIFICATION)}
+					containerStyle={styles.button}
 				/>
 				<View style={styles.rowText}>
 					<Text style={styles.blueText}>Забыли пароль?</Text>
 					<Text style={styles.askText}>Нет учетной записи?</Text>
 				</View>
 				<DefaultButton
+					textStyle={styles.buttonTxt}
 					text={STRINGS.registration}
 					onPress={() => navigation.navigate(ROUTES.LOGIN)}
+					containerStyle={styles.button}
 				/>
 			</View>
 		</View>

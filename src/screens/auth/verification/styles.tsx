@@ -1,39 +1,40 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    txt: {
-        fontWeight: 'bold',
-    },
+	txt: {
+		fontWeight: "bold",
+	},
 
-    btn: {
-        marginBottom: 12,
-    },
+	btn: {
+		marginHorizontal: 20,
+		marginBottom: 12,
+	},
 
-    timer:{
-        marginHorizontal: 25,
-        marginTop: -15,
-        color: "#0052FF",
-    },
+	timer: {
+		marginHorizontal: 20,
+		marginTop: -15,
+		color: "#0052FF",
+	},
 
-    end: {
-        color: "#0052FF",
-        textDecorationLine: "underline",
+	end: {
+		color: "#0052FF",
+		textDecorationLine: "underline",
 		textDecorationStyle: "solid",
-        marginTop: 10,
-        marginHorizontal: 25,
-    },
+		marginVertical: 15,
+		marginHorizontal: 20,
+	},
 
-    textView: {
-        marginHorizontal: 23,
-    },
+	textView: {
+		marginHorizontal: 20,
+	},
 
 	endText: {
 		alignSelf: "flex-end",
 	},
-    
+
 	blueEnd: {
-        alignSelf: "flex-end",
-        marginVertical: 10,
+		alignSelf: "flex-end",
+		marginVertical: 10,
 		color: "#0057FF",
 	},
 
@@ -49,34 +50,27 @@ export const styles = StyleSheet.create({
 		color: "#0057FF",
 		// fontFamily: "Montserrat-Bold",
 		fontWeight: "bold",
-		marginBottom: 20,
+		marginVertical: 20,
 	},
 
 	inputBox: {
 		// borderWidth: 1,
 		borderRadius: 10,
 		paddingVertical: 20,
-		marginHorizontal: 15,
+		marginHorizontal: 20,
 		marginVertical: 20,
 		backgroundColor: "#fff",
+		elevation: 5,
 	},
 
-	elevation: {
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 0,
-			height: 2,
-		},
-		shadowOpacity: 0.25,
-		shadowRadius: 4.84,
-
-		elevation: 15,
+	input: {
+		marginHorizontal: 20,
 	},
 
 	rowText: {
 		// alignSelf: "center",
 		marginVertical: 10,
-		marginHorizontal: 27,
+		marginHorizontal: 20,
 		flexDirection: "row",
 		justifyContent: "space-between",
 	},
@@ -97,4 +91,12 @@ export const styles = StyleSheet.create({
 		color: "gray",
 		fontSize: 15,
 	},
+
+	defButton: {
+		marginHorizontal: 20,
+	},
+
+	buttonTxt: {
+		fontSize: 18,
+	}
 });

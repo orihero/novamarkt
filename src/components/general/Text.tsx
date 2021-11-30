@@ -1,3 +1,4 @@
+import { COLORS } from "@novomarkt/constants/colors";
 import React from "react";
 import {
 	StyleProp,
@@ -21,9 +22,13 @@ export default function Text({ children, style }: TextProps): JSX.Element {
 		default:
 			break;
 	}
-	let styl: StyleProp<TextStyle> = StyleSheet.compose(style, {
-		fontFamily,
-	});
+	let styl: StyleProp<TextStyle> = StyleSheet.compose(
+		{
+			fontFamily,
+			color: COLORS.gray,
+		},
+		style
+	);
 
 	return <RNText style={styl}>{children}</RNText>;
 }
