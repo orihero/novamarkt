@@ -20,7 +20,7 @@ export let catalogDetailsData: CatalogDetailsProps[] = [
 	},
 	{
 		name: "Кепки",
-		image: "https://5.imimg.com/data5/QR/ID/MY-19889014/men-cap-0-500x500.jpg"
+		image: "https://5.imimg.com/data5/QR/ID/MY-19889014/men-cap-0-500x500.jpg",
 	},
 	{
 		name: "Обувь",
@@ -30,11 +30,15 @@ export let catalogDetailsData: CatalogDetailsProps[] = [
 		name: "Костюмы",
 		image: "https://assets.ajio.com/medias/sys_master/root/20200912/GowL/5f5ccabf7cdb8c766299e9b0/-1117Wx1400H-460257617-lightgrey-MODEL.jpg",
 	},
+	{
+		name: "Обувь",
+		image: "https://i31.takemore.net/images/watermarked/60/12/95/adidas-fw2888-bravada-1.jpg",
+	},
 ];
 
 const CatalogDetailsView = () => {
 	return (
-		<ScrollView>
+		<ScrollView style={styles.container}>
 			<BackHeader name={"Женщинам"} style={styles.header} />
 			<Image source={{ uri: BannerURL }} style={styles.banner} />
 			<FlatList

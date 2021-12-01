@@ -14,8 +14,19 @@ export const COLORS = {
 	red: "rgba(255, 27, 27, 1)",
 	whiteGray: "#B4B4B4",
 	chatColor: "#F8F8FA",
+	menuBackground: "#e6eeff",
+	// cart colors //
+	cartColor1: "#BED9FF",
+	cartColor2: "#729EDB",
+	cartColor3: "#274784" ,
 
 };
+
+export const CART_COLORS = [
+	COLORS.cartColor1,
+	COLORS.cartColor2,
+	COLORS.cartColor3
+];
 
 export const GRADIENT_COLORS = [
 	COLORS.darkBlue2,

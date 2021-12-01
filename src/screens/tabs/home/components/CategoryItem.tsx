@@ -35,8 +35,10 @@ export default CategoryItem;
 
 const styles = StyleSheet.create({
 	text: {
-		fontSize: 10,
+		fontSize: 14,
 		color: COLORS.gray,
+		letterSpacing: 1,
+		fontWeight: "700",
 	},
 	nameContainer: {
 		flex: 1,

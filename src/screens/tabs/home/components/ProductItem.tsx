@@ -74,7 +74,7 @@ const ProductItem = ({
 								{STRINGS.addToCart}
 							</Text>
 							<BasketIcon
-								fill={secondary ? COLORS.blue : COLORS.white}
+								fill={secondary ? COLORS.cartColor3 : COLORS.white}
 							/>
 						</View>
 					</DefaultButton>
@@ -104,10 +104,12 @@ const styles = StyleSheet.create({
 	cartText: {
 		color: COLORS.white,
 		marginRight: 4,
+		fontWeight: "700",
 	},
 	inactiveCartText: {
-		color: COLORS.blue,
-		marginRight: 4,
+		color: COLORS.cartColor3,
+		marginRight: 8,
+		fontFamily: "Montserrat-Medium",
 	},
 	button: {
 		marginHorizontal: 0,
@@ -116,13 +118,16 @@ const styles = StyleSheet.create({
 		color: COLORS.blue,
 		fontSize: 15,
 		marginVertical: 10,
+		fontWeight: "700",
+		letterSpacing: 0.5,
 	},
 	name: {
 		color: COLORS.defaultBlack,
 		fontSize: 13,
+		fontWeight: "700",
+		letterSpacing: 0.5,
 	},
 	brand: {
-		fontWeight: "400",
 		color: COLORS.gray,
 		fontSize: 11,
 	},
@@ -131,7 +136,7 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 	},
 	image: {
-		width: 180,
+		width: 186,
 		height: 180,
 		borderTopLeftRadius: 8,
 		borderTopRightRadius: 8,
@@ -140,8 +145,8 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.white,
 		borderRadius: 8,
 		elevation: 2,
-		width: 180,
-		margin: 4,
+		width: 186,
+		margin: 5,
 	},
 	details: {
 		paddingHorizontal: 8,

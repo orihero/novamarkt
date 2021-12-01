@@ -20,6 +20,8 @@ export const styles = StyleSheet.create({
 
 	headerText: {
 		fontSize: 15,
+		fontWeight: "700",
+		letterSpacing: 0.5,
 		color: COLORS.blue,
 	},
 
@@ -35,8 +37,9 @@ export const styles = StyleSheet.create({
 	buttonCon: {
 		paddingHorizontal: 10,
 		paddingVertical: 0,
+		marginHorizontal: 0,
 		marginTop: 0,
-		marginRight: 0,
+		borderRadius: 14,
 	},
 
 	carousel: {
@@ -47,6 +50,8 @@ export const styles = StyleSheet.create({
 		color: COLORS.defaultBlack,
 		marginHorizontal: 25,
 		fontSize: 17,
+		fontWeight: "700",
+		letterSpacing: 0.5,
 	},
 
 	credit: {
@@ -70,6 +75,7 @@ export const styles = StyleSheet.create({
 	creditPriceText: {
 		color: COLORS.defaultBlack,
 		fontSize: 15,
+		fontWeight: "700",
 	},
 
 	map: {
@@ -101,6 +107,8 @@ export const styles = StyleSheet.create({
 	composition: {
 		color: COLORS.defaultBlack,
 		fontSize: 15,
+		fontWeight: "700",
+		letterSpacing: 0.5
 	},
 
 	buttonTxt: {
@@ -150,6 +158,7 @@ export const styles = StyleSheet.create({
 	flexEnd: {
 		color: COLORS.blue,
 		marginHorizontal: 20,
+		marginTop: 10,
 		alignSelf: "flex-end",
 		textDecorationLine: "underline",
 		textDecorationColor: COLORS.blue,
@@ -164,7 +173,7 @@ export const styles = StyleSheet.create({
 
 	containerFlat: {
 		marginBottom: 20,
-		alignSelf: 'center',
+		alignSelf: "center",
 	},
 
 	title: {
@@ -172,9 +181,15 @@ export const styles = StyleSheet.create({
 		fontSize: 20,
 		marginHorizontal: 20,
 		marginVertical: 20,
+		fontWeight: "700",
+		letterSpacing: 0.5
 	},
 
 	marginBottom: {
-		marginBottom: 20,
-	}
+		marginBottom: 40,
+	},
+
+	marginBottomEnd: {
+		marginBottom: 80,
+	},
 });

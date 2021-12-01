@@ -45,122 +45,125 @@ const ProductDetailsView = () => {
 	const [activeSlide, setActiveSlide] = useState(0);
 	const [shouldShow, setShouldShow] = useState(true);
 	return (
-		<ScrollView
-			style={styles.container}
-			showsVerticalScrollIndicator={false}
-		>
+		<View style={styles.container}>
 			<BackHeaderDefault />
-			<View style={styles.header}>
-				<Text style={styles.headerText}>1400 ₽</Text>
-				<DefaultButton containerStyle={styles.buttonCon}>
-					<View style={styles.button}>
-						<Text style={styles.buttonText}>
-							{STRINGS.addToCart}
-						</Text>
-						<BasketIcon fill={COLORS.white} />
-					</View>
-				</DefaultButton>
-			</View>
-			<View style={styles.carousel}>
-				<Carousel
-					onSnapToItem={(index) => setActiveSlide(index)}
-					itemWidth={WINDOW_WIDTH}
-					windowSize={WINDOW_WIDTH}
-					sliderWidth={WINDOW_WIDTH}
-					itemHeight={200}
-					sliderHeight={200}
-					data={customCarouselData}
-					renderItem={CustomCarouselItem}
-					pagingEnabled
-				/>
-				<Pagination
-					activeDotIndex={activeSlide}
-					dotsLength={customCarouselData.length}
-					// dotElement={<DotElement />}
-					// inactiveDotElement={<DotElement inactive={true} />}
-				/>
-				<Text style={styles.itemName}>{item.name}</Text>
-			</View>
-			<View style={styles.credit}>
-				<View>
-					<CheckedItem />
-				</View>
-				<View style={styles.creditPrice}>
-					<Text style={styles.creditName}>{STRINGS.credit}</Text>
-					<Text style={styles.creditPriceText}>
-						444 ₽ {STRINGS.creditPrice}
-					</Text>
-				</View>
-			</View>
-			<View>
-				<View style={styles.compos}>
-					<Text style={styles.composition}>
-						{STRINGS.composition}
-					</Text>
-					<RightArrow fill={COLORS.blue} />
-				</View>
-				{item.options?.map((e) => {
-					return (
-						<View style={styles.map}>
-							<Text style={styles.key}>{e.key}</Text>
-							<Text>{e.value}</Text>
+			<ScrollView showsVerticalScrollIndicator={false}>
+				<View style={styles.header}>
+					<Text style={styles.headerText}>1400 ₽</Text>
+					<DefaultButton containerStyle={styles.buttonCon}>
+						<View style={styles.button}>
+							<Text style={styles.buttonText}>
+								{STRINGS.addToCart}
+							</Text>
+							<BasketIcon fill={COLORS.white} />
 						</View>
-					);
-				})}
-			</View>
-			<DefaultButton>
-				<Text style={styles.buttonTxt}>{STRINGS.allDetails}</Text>
-			</DefaultButton>
-			<TouchableOpacity
-				onPress={() => {
-					LayoutAnimation.configureNext(
-						LayoutAnimation.Presets.easeInEaseOut
-					);
-					setShouldShow(!shouldShow);
-				}}
-			>
-				<View style={styles.composTwo}>
-					<Text style={styles.composition}>
-						{STRINGS.reviews} 105
-					</Text>
-					<RightArrow fill={COLORS.blue} />
+					</DefaultButton>
 				</View>
-			</TouchableOpacity>
-			<ReviewBox />
-			{!shouldShow ? (
-				<View>
-					<View style={styles.rowHeader}>
-						<Text style={styles.txt}>Сортировать по:</Text>
-						<Text style={styles.blueText}>Дате</Text>
-						<ArrowBottomMarked
-							fill={COLORS.blue}
-							style={styles.arrow}
-						/>
-						<Text style={styles.blueText2}>Оценке</Text>
-					</View>
-					<FlatList
-						data={productsData}
-						renderItem={CommentItem}
-						showsVerticalScrollIndicator={false}
+				<View style={styles.carousel}>
+					<Carousel
+						onSnapToItem={(index) => setActiveSlide(index)}
+						itemWidth={WINDOW_WIDTH}
+						windowSize={WINDOW_WIDTH}
+						sliderWidth={WINDOW_WIDTH}
+						itemHeight={200}
+						sliderHeight={200}
+						data={customCarouselData}
+						renderItem={CustomCarouselItem}
+						pagingEnabled
 					/>
+					<Pagination
+						activeDotIndex={activeSlide}
+						dotsLength={customCarouselData.length}
+						// dotElement={<DotElement />}
+						// inactiveDotElement={<DotElement inactive={true} />}
+					/>
+					<Text style={styles.itemName}>{item.name}</Text>
 				</View>
-			) : null}
-			<Text style={styles.flexEnd}>{STRINGS.comments}</Text>
-			<DefaultButton containerStyle={styles.marginBottom}>
-				<Text style={styles.buttonReview}>{STRINGS.sendReview}</Text>
-			</DefaultButton>
-			<Text style={styles.title}>{STRINGS.advertBlock}</Text>
-			<FlatList
-				numColumns={2}
-				data={productsData}
-				renderItem={ProductItem}
-				style={styles.containerFlat}
-				contentContainerStyle={styles.contentContainerStyle}
-			/>
-			<DefaultButton containerStyle={styles.marginBottom}>
-				<Text style={styles.buttonReview}>{STRINGS.sendCustomer}</Text>
-			</DefaultButton>
-		</ScrollView>
+				<View style={styles.credit}>
+					<View>
+						<CheckedItem />
+					</View>
+					<View style={styles.creditPrice}>
+						<Text style={styles.creditName}>{STRINGS.credit}</Text>
+						<Text style={styles.creditPriceText}>
+							444 ₽ {STRINGS.creditPrice}
+						</Text>
+					</View>
+				</View>
+				<View>
+					<View style={styles.compos}>
+						<Text style={styles.composition}>
+							{STRINGS.composition}
+						</Text>
+						<RightArrow fill={COLORS.blue} />
+					</View>
+					{item.options?.map((e) => {
+						return (
+							<View style={styles.map}>
+								<Text style={styles.key}>{e.key}</Text>
+								<Text>{e.value}</Text>
+							</View>
+						);
+					})}
+				</View>
+				<DefaultButton>
+					<Text style={styles.buttonTxt}>{STRINGS.allDetails}</Text>
+				</DefaultButton>
+				<TouchableOpacity
+					onPress={() => {
+						LayoutAnimation.configureNext(
+							LayoutAnimation.Presets.easeInEaseOut
+						);
+						setShouldShow(!shouldShow);
+					}}
+				>
+					<View style={styles.composTwo}>
+						<Text style={styles.composition}>
+							{STRINGS.reviews} 105
+						</Text>
+						<RightArrow fill={COLORS.blue} />
+					</View>
+				</TouchableOpacity>
+				<ReviewBox />
+				{!shouldShow ? (
+					<View>
+						<View style={styles.rowHeader}>
+							<Text style={styles.txt}>Сортировать по:</Text>
+							<Text style={styles.blueText}>Дате</Text>
+							<ArrowBottomMarked
+								fill={COLORS.blue}
+								style={styles.arrow}
+							/>
+							<Text style={styles.blueText2}>Оценке</Text>
+						</View>
+						<FlatList
+							data={productsData}
+							renderItem={CommentItem}
+							showsVerticalScrollIndicator={false}
+						/>
+					</View>
+				) : null}
+				<Text style={styles.flexEnd}>{STRINGS.comments}</Text>
+				<DefaultButton containerStyle={styles.marginBottom}>
+					<Text style={styles.buttonReview}>
+						{STRINGS.sendReview}
+					</Text>
+				</DefaultButton>
+				<Text style={styles.title}>{STRINGS.advertBlock}</Text>
+				<FlatList
+					numColumns={2}
+					data={productsData}
+					renderItem={ProductItem}
+					style={styles.containerFlat}
+					contentContainerStyle={styles.contentContainerStyle}
+				/>
+				<DefaultButton containerStyle={styles.marginBottomEnd}>
+					<Text style={styles.buttonReview}>
+						{STRINGS.sendCustomer}
+					</Text>
+				</DefaultButton>
+			</ScrollView>
+		</View>
 	);
 };
 

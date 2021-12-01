@@ -19,7 +19,11 @@ export default function Text({ children, style }: TextProps): JSX.Element {
 		case "400":
 			fontFamily = "Montserrat-Thin";
 			break;
+		case "700":
+			fontFamily = "Montserrat-SemiBold";
+			break;
 		default:
+			fontFamily = "Montserrat-Regular";
 			break;
 	}
 	let styl: StyleProp<TextStyle> = StyleSheet.compose(

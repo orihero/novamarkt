@@ -3,7 +3,7 @@ import { COLORS } from "@novomarkt/constants/colors";
 import { REGULAR_FONT_FAMILY } from "@novomarkt/constants/fonts";
 import { STRINGS } from "@novomarkt/locales/strings";
 import React from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 
 const SearchHeader = () => {
 	return (
@@ -12,11 +12,11 @@ const SearchHeader = () => {
 				<TextInput
 					style={styles.input}
 					placeholder={STRINGS.searching}
-					placeholderTextColor={COLORS.gray}
+					placeholderTextColor={COLORS.whiteGray}
 				/>
-				<SearchIcon fill={COLORS.gray} />
+				<SearchIcon fill={COLORS.whiteGray} />
 			</View>
-			<DeliveryIcon fill={COLORS.gray} />
+			<DeliveryIcon fill={COLORS.whiteGray} />
 		</View>
 	);
 };
@@ -30,17 +30,16 @@ const styles = StyleSheet.create({
 		paddingRight: 16,
 	},
 	inputContainer: {
-		flexDirection: "row",
-		backgroundColor: COLORS.lightGray,
-		borderRadius: 8,
-		paddingVertical: 4,
-		paddingHorizontal: 10,
-		marginHorizontal: 16,
-		marginVertical: 12,
-		fontSize: 16,
-		alignItems: "center",
 		flex: 1,
+		borderRadius: 8,
+		marginVertical: 10,
+		marginLeft: 16,
+		marginRight: 10,
+		paddingHorizontal: 10,
+		flexDirection: "row",
+		alignItems: "center",
 		justifyContent: "space-between",
+		backgroundColor: COLORS.lightGray,
 	},
 	input: {
 		fontFamily: REGULAR_FONT_FAMILY,

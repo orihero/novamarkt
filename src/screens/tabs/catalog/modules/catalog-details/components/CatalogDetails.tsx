@@ -37,10 +37,10 @@ export default CatalogDetails;
 
 const styles = StyleSheet.create({
 	container: {
-		padding: 15,
+		padding: 10,
 		backgroundColor: COLORS.white,
 		elevation: 5,
-		margin: 4,
+		margin: 8,
 		borderRadius: 10,
 		alignItems: "center",
 	},

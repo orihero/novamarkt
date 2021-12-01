@@ -10,8 +10,8 @@ let BannerURL =
 
 export let categoriesData: CategoryItemProps[] = [
 	{
-		name: "Женщинам",
-		image: "https://lh3.googleusercontent.com/proxy/LJy7o2ngC66hOJArEx7xr_89ilgqbYqqtZHyBqeKJ9cvrD4X6r8uys4tRTZHyOa9jVo9rfoq2ZDeOHvmPjjdGFeYSGWL1KAf2ji8v1lhc9SWuGaQW3YJ0lJZaCMxY7Uwo-g7hw-PzrY",
+		name: "Мужчинам",
+		image: "https://www.josephinesilkcouture.com/files/categories/369_custom-made-suit-with-two-buttons.jpg",
 	},
 	{
 		name: "Мужчинам",
@@ -24,6 +24,14 @@ export let categoriesData: CategoryItemProps[] = [
 	{
 		name: "Обувь",
 		image: "https://i31.takemore.net/images/watermarked/60/12/95/adidas-fw2888-bravada-1.jpg",
+	},
+	{
+		name: "Мужчинам",
+		image: "https://www.josephinesilkcouture.com/files/categories/369_custom-made-suit-with-two-buttons.jpg",
+	},
+	{
+		name: "Мужчинам",
+		image: "https://www.josephinesilkcouture.com/files/categories/369_custom-made-suit-with-two-buttons.jpg",
 	},
 ];
 

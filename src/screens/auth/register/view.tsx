@@ -26,6 +26,8 @@ const RegisterView = () => {
 					inputStyle={styles.inputStyle}
 					title={STRINGS.password}
 					placeholder={STRINGS.yourPassword}
+					textContentType={"password"}
+					secureText={true}
 				/>
 				<DefaultButton
 					textStyle={styles.buttonTxt}

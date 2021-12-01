@@ -23,7 +23,7 @@ export let carouselData: CarouselItemProp[] = [
 const HomeView = () => {
 	const [activeSlide, setActiveSlide] = useState(0);
 	return (
-		<ScrollView style={styles.scroll}>
+		<ScrollView style={styles.scroll} showsVerticalScrollIndicator={false} >
 			<SearchHeader />
 			<View style={styles.container}>
 				<Carousel

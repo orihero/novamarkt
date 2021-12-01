@@ -11,10 +11,13 @@ export const styles = StyleSheet.create({
 		marginHorizontal: 20,
 		fontSize: 20,
 		color: COLORS.defaultBlack,
+		fontWeight: "700",
+		letterSpacing: 0.5
 	},
 
 	content: {
 		alignSelf: "center",
+		// marginHorizontal: 20,
 	},
 
 	view: {

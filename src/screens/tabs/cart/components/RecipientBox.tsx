@@ -89,6 +89,8 @@ const styles = StyleSheet.create({
 	headerTxt: {
 		fontSize: 19,
 		color: COLORS.defaultBlack,
+		fontWeight: "700",
+		letterSpacing: 0.5
 	},
 
 	box: {

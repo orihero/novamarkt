@@ -188,6 +188,8 @@ const styles = StyleSheet.create({
 		fontSize: 19,
 		marginLeft: 16,
 		marginBottom: 20,
+		fontWeight: "700",
+		letterSpacing: 0.5,
 	},
 	container: { marginBottom: 20 },
 	contentContainerStyle: { paddingHorizontal: 12 },

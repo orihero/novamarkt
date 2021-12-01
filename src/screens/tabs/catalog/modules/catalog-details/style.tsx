@@ -1,7 +1,13 @@
+import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: COLORS.white
+	},
+
 	header: {
 		marginHorizontal: 20,
 		marginVertical: 20,

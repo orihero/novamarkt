@@ -2,6 +2,9 @@ import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import React from "react";
 import {
+	KeyboardType,
+	KeyboardTypeOptions,
+	RegisteredStyle,
 	StyleProp,
 	StyleSheet,
 	TextInput,
@@ -17,6 +20,37 @@ export interface DefaultInputProps {
 	titleStyle?: StyleProp<TextStyle>;
 	containerStyle?: ViewStyle;
 	inputStyle?: TextStyle;
+	textContentType?:
+		| "none"
+		| "URL"
+		| "addressCity"
+		| "addressCityAndState"
+		| "addressState"
+		| "countryName"
+		| "creditCardNumber"
+		| "emailAddress"
+		| "familyName"
+		| "fullStreetAddress"
+		| "givenName"
+		| "jobTitle"
+		| "location"
+		| "middleName"
+		| "name"
+		| "namePrefix"
+		| "nameSuffix"
+		| "nickname"
+		| "organizationName"
+		| "postalCode"
+		| "streetAddressLine1"
+		| "streetAddressLine2"
+		| "sublocality"
+		| "telephoneNumber"
+		| "username"
+		| "password"
+		| "newPassword"
+		| "oneTimeCode"
+		| undefined;
+	secureText?: boolean | undefined;
 }
 
 const DefaultInput = ({
@@ -25,11 +59,15 @@ const DefaultInput = ({
 	titleStyle,
 	containerStyle,
 	inputStyle,
+	textContentType,
+	secureText,
 }: DefaultInputProps) => {
 	return (
 		<View style={[styles.container, containerStyle]}>
 			<Text style={[styles.title, titleStyle]}>{title}</Text>
 			<TextInput
+				textContentType={textContentType}
+				secureTextEntry={secureText}
 				style={[styles.input, inputStyle]}
 				placeholder={placeholder}
 				placeholderTextColor={COLORS.gray}

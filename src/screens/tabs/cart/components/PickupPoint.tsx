@@ -56,11 +56,13 @@ const styles = StyleSheet.create({
 	headerTxt: {
 		color: COLORS.defaultBlack,
 		fontSize: 19,
+		fontWeight: "700",
+		letterSpacing: 0.5
 	},
 
 	button: {
 		marginVertical: 10,
-		backgroundColor: "rgba(0, 82, 255, 0.1)",
+		backgroundColor: COLORS.menuBackground,
 		paddingVertical: 10,
 		justifyContent: "center",
 		alignItems: "center",

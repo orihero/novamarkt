@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 		fontSize: 40,
 		color: "#0057FF",
 		fontFamily: "Montserrat-Bold",
-		marginBottom: 20,
+		marginBottom: 40,
 	},
 
 	inputBox: {

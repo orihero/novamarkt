@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
 
 	headerTxt: {
 		fontSize: 19,
+		fontFamily: "Montserrat",
 		color: COLORS.defaultBlack,
 	},
 
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
 	price: {
 		fontSize: 14,
 		color: COLORS.defaultBlack,
+		fontWeight: "700"
 	},
 
 	image: {
@@ -85,6 +87,8 @@ const styles = StyleSheet.create({
 
 	footerTxt: {
 		fontSize: 16,
+		fontWeight: "700",
+		letterSpacing: 0.5,
 		color: COLORS.defaultBlack,
 	},
 
@@ -96,6 +100,8 @@ const styles = StyleSheet.create({
 
 	total: {
 		fontSize: 16,
+		fontWeight: "700",
+		letterSpacing: 0.5,
 		color: COLORS.blue,
 	},
 });

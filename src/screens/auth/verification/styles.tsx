@@ -51,6 +51,7 @@ export const styles = StyleSheet.create({
 		// fontFamily: "Montserrat-Bold",
 		fontWeight: "bold",
 		marginVertical: 20,
+		marginBottom: 50,
 	},
 
 	inputBox: {

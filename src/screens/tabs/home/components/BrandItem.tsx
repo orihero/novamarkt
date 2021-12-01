@@ -24,8 +24,8 @@ export default BrandItem;
 
 const styles = StyleSheet.create({
 	container: {
-		width: 80,
-		height: 50,
+		width: 85,
+		height: 55,
 		elevation: 2,
 		marginHorizontal: 6,
 		backgroundColor: COLORS.white,

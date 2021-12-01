@@ -70,8 +70,8 @@ const styles = StyleSheet.create({
 	activeBorder: {
 		paddingVertical: 6,
 		paddingHorizontal: 20,
-		elevation: 4,
-		backgroundColor: COLORS.darkBlue,
+		elevation: 5,
+		backgroundColor: COLORS.menuBackground,
 		borderRadius: 15,
 		marginHorizontal: 10,
 	},

@@ -52,8 +52,10 @@ const styles = StyleSheet.create({
 
 	text: {
 		marginLeft: 10,
-		fontSize: 18,
+		fontSize: 20,
 		color: COLORS.defaultBlack,
+		fontFamily: "Montserrat",
+		fontWeight: "600"
 	},
 
 	row: {
