@@ -41,7 +41,7 @@ export default function Products() {
 							<Text style={[styles.inactiveCartText]}>
 								{STRINGS.addToCart}
 							</Text>
-							<BasketIcon fill={COLORS.blue} />
+							<BasketIcon fill={COLORS.cartColor3} />
 						</View>
 					</DefaultButton>
 				</View>
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 	},
 	inactiveCartText: {
-		color: COLORS.blue,
+		color: COLORS.cartColor3,
 		marginRight: 4,
 	},
 	image: {
@@ -76,10 +76,13 @@ const styles = StyleSheet.create({
 	text: {
 		color: COLORS.defaultBlack,
 		fontSize: 13,
-		width: "80%",
+		// width: "80%",
+		fontWeight: "700",
+		letterSpacing: 0.5
 	},
 	textBox: {
 		paddingHorizontal: 15,
+		marginRight: 120,
 		// justifyContent: "space-between",
 	},
 
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		justifyContent: "space-between",
 		paddingRight: 50,
-		flex: 1,
+		// flex: 1,
 		alignItems: "flex-end",
 		marginBottom: 5,
 	},
@@ -99,7 +102,8 @@ const styles = StyleSheet.create({
 
 	button: {
 		backgroundColor: COLORS.white,
-		flex: 1,
+		// flex: 1,
+		// marginLeft: 10,
 	},
 
 	buttonText: {

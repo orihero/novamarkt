@@ -43,8 +43,8 @@ export default function ChooseItemNum() {
 				<View style={styles.counter}>
 					<TouchableOpacity>
 						<LinearGradient
-							start={{ x: 1, y: 0 }}
-							end={{ x: 0, y: 1 }}
+							start={{ x: 0, y: 0 }}
+							end={{ x: 3, y: 0 }}
 							colors={GRADIENT_COLORS}
 							style={styles.minus}
 						>
@@ -56,8 +56,8 @@ export default function ChooseItemNum() {
 					</View>
 					<TouchableOpacity>
 						<LinearGradient
-							start={{ x: 1, y: 0 }}
-							end={{ x: 0, y: 1 }}
+							start={{ x: 0, y: 0 }}
+							end={{ x: 3, y: 0 }}
 							colors={GRADIENT_COLORS}
 							style={styles.plus}
 						>
@@ -96,7 +96,9 @@ const styles = StyleSheet.create({
 	},
 
 	headerTxt: {
-		fontSize: 13,
+		fontSize: 14,
+		letterSpacing: 0.5,
+		fontWeight: "700",
 		color: COLORS.defaultBlack,
 	},
 
@@ -113,6 +115,7 @@ const styles = StyleSheet.create({
 
 	blueTxt: {
 		fontSize: 15,
+		fontWeight: "700",
 		color: COLORS.blue,
 	},
 

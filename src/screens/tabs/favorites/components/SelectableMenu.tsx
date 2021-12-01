@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 6,
 		paddingHorizontal: 20,
 		elevation: 4,
-		backgroundColor: COLORS.darkBlue,
+		backgroundColor: COLORS.menuBackground,
 		borderRadius: 15,
 		marginHorizontal: 10,
 		marginVertical: 5,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FlatList, Image, View } from "react-native";
+import { FlatList, Image, ScrollView, View } from "react-native";
 import Text from "@novomarkt/components/general/Text";
 import BackHeader from "@novomarkt/components/navigation/BackHeader";
 import { styles } from "./style";
@@ -19,16 +19,18 @@ const CatalogProductsView = () => {
 				style={styles.header}
 				name={"Костюмы"}
 			/>
-			<Image source={{ uri: BannerURL }} style={styles.banner} />
-			<ScrollableMenu />
-			<SelectableFlter />
-			<FlatList
-				showsVerticalScrollIndicator={false}
-				style={styles.columns}
-				data={productsData}
-				numColumns={2}
-				renderItem={ProductItem}
-			/>
+			<ScrollView>
+				<Image source={{ uri: BannerURL }} style={styles.banner} />
+				<ScrollableMenu />
+				<SelectableFlter />
+				<FlatList
+					showsVerticalScrollIndicator={false}
+					style={styles.columns}
+					data={productsData}
+					numColumns={2}
+					renderItem={ProductItem}
+				/>
+			</ScrollView>
 		</View>
 	);
 };

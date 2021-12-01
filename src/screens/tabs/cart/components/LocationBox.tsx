@@ -26,7 +26,7 @@ export default LocationBox;
 
 const styles = StyleSheet.create({
 	container: {
-		paddingHorizontal: 6,
+		paddingHorizontal: 10,
 		paddingVertical: 12,
 		borderRadius: 8,
 		borderWidth: 1,

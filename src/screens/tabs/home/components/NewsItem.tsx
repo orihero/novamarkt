@@ -38,15 +38,18 @@ export default NewsItem;
 const styles = StyleSheet.create({
 	text: {
 		fontSize: 12,
+		color: COLORS.defaultBlack
 	},
 	dateStyle: { color: COLORS.gray },
 	buttonContainer: {
+		marginTop: 0,
 		marginHorizontal: 0,
 	},
 	buttonText: {
 		fontSize: 12,
 	},
 	row: {
+		marginVertical: 10,
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",
@@ -55,8 +58,9 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.white,
 		borderRadius: 8,
 		elevation: 2,
-		width: 180,
+		width: 185,
 		margin: 4,
+		marginRight: 8,
 	},
 	image: {
 		width: 180,

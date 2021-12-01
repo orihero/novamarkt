@@ -33,7 +33,7 @@ const DefaultButton = ({
 		<TouchableWithoutFeedback onPress={onPress}>
 			<LinearGradient
 				start={{ x: 0, y: 0 }}
-				end={{ x: 1.2, y: 1 }}
+				end={{ x: 3, y: 0 }}
 				colors={GRADIENT_COLORS}
 				style={[styles.container, containerStyle]}
 			>

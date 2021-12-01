@@ -30,7 +30,7 @@ const QuestionBox = ({ title, button }: QuestionBoxProps) => {
 					placeholder={"Ваш отзыв"}
 					placeholderTextColor={COLORS.gray}
 				/>
-				<DefaultButton containerStyle={styles.button} text={button} />
+				<DefaultButton textStyle={styles.text} containerStyle={styles.button} text={button} />
 			</View>
 		</View>
 	);
@@ -71,8 +71,15 @@ const styles = StyleSheet.create({
 	},
 
 	button: {
+		padding: 0,
 		marginTop: 20,
 		marginBottom: 10,
-		marginHorizontal: 20,
+		marginHorizontal: 0,
+		paddingHorizontal: 20,
+		alignSelf: "flex-start"
 	},
+
+	text: {
+		fontSize: 15
+	}
 });

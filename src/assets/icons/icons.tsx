@@ -674,8 +674,8 @@ export function CrashIcon(props: SvgProps) {
 export function DeliveryIcon(props: SvgProps) {
 	return (
 		<Svg
-			width={32}
-			height={32}
+			width={30}
+			height={30}
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 			{...props}
@@ -973,8 +973,8 @@ export function RightArrow(props: SvgProps) {
 export function SearchIcon(props: SvgProps) {
 	return (
 		<Svg
-			width={21}
-			height={21}
+			width={18}
+			height={18}
 			viewBox="0 0 21 21"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"

@@ -37,6 +37,8 @@ const styles = StyleSheet.create({
 		color: COLORS.defaultBlack,
 		fontSize: 19,
 		marginLeft: 16,
+		fontWeight: "700",
+		letterSpacing: 0.5
 	},
 	container: { marginBottom: 20 },
 	contentContainerStyle: {
