@@ -21,6 +21,7 @@ export const ROUTES = {
 	CATALOG: "catalog",
 	CATALOG_PRODUCTS: "catalog-products",
 	CHECKOUT: "checkout",
-	CHECKOUT_POINT: "сheckout-point"
+	CHECKOUT_POINT: "сheckout-point",
+	FILTER: "filter"
 	
 };
