@@ -81,5 +81,13 @@ export const STRINGS = new LocalizedStrings({
 		recipient: "Получатель",
 		itsNotMe: "Получать буду не я",
 		addOrder: "Оформить заказ",
+		filtres: "Фильтры",
+		clear: "Очистить",
+		price: "Цена, рубль",
+		from: "от",
+		till: "до",
+		getToday: "Получить сегодня",
+		moreCashback: "Повышенный cashback",
+		all: "Все"
 	},
 });

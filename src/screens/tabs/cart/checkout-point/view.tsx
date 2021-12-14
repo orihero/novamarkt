@@ -9,6 +9,8 @@ import MapView, { Region } from "react-native-maps";
 import { styles } from "./style";
 import Geolocation from "@react-native-community/geolocation";
 import LinearGradient from "react-native-linear-gradient";
+import { useNavigation } from "@react-navigation/core";
+import { ROUTES } from "@novomarkt/constants/routes";
 
 const CheckoutPoint = () => {
 	const mapRef = useRef<MapView>(null);
@@ -28,6 +30,8 @@ const CheckoutPoint = () => {
 		});
 	};
 
+	let navigation = useNavigation();
+
 	return (
 		<View style={styles.container}>
 			<BackHeader name={STRINGS.pickUpPoints} style={styles.header} />
@@ -37,7 +41,10 @@ const CheckoutPoint = () => {
 				showsUserLocation
 				showsMyLocationButton={false}
 			></MapView>
-			<TouchableOpacity style={styles.filter}>
+			<TouchableOpacity
+				style={styles.filter}
+				onPress={() => navigation.navigate(ROUTES.FILTER)}
+			>
 				<LinearGradient
 					start={{ x: 0, y: 0 }}
 					end={{ x: 1.2, y: 1 }}
