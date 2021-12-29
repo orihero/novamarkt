@@ -5,6 +5,7 @@ import { STRINGS } from "@novomarkt/locales/strings";
 import React, { useState } from "react";
 import {
 	LayoutAnimation,
+	Platform,
 	StyleSheet,
 	Switch,
 	TextInput,
@@ -90,13 +91,19 @@ const styles = StyleSheet.create({
 		fontSize: 19,
 		color: COLORS.defaultBlack,
 		fontWeight: "700",
-		letterSpacing: 0.5
+		letterSpacing: 0.5,
 	},
 
 	box: {
 		padding: 15,
 		borderRadius: 8,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		marginVertical: 20,
 		backgroundColor: COLORS.white,
 	},
@@ -116,6 +123,7 @@ const styles = StyleSheet.create({
 		borderRadius: 8,
 		marginVertical: 10,
 		paddingHorizontal: 10,
+		paddingVertical: Platform.OS == "android" ? 10 : 15,
 		backgroundColor: COLORS.lightGray,
 		borderColor: COLORS.whiteGray,
 	},

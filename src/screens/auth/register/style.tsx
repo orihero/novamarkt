@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
 	container: {
@@ -22,6 +22,12 @@ export const styles = StyleSheet.create({
 		marginVertical: 40,
 		backgroundColor: "#fff",
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 	},
 
 	rowText: {
@@ -39,6 +45,7 @@ export const styles = StyleSheet.create({
 	},
 
 	inputStyle: {
+		paddingVertical: Platform.OS == "android" ? 10 : 15,
 		paddingHorizontal: 10,
 	},
 

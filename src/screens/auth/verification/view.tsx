@@ -25,6 +25,7 @@ const VerificationView = () => {
 				</View>
 				<DefaultInput
 					containerStyle={styles.input}
+					inputStyle={styles.inputStyle}
 					title={STRINGS.code}
 					placeholder={STRINGS.yourCode}
 					titleStyle={styles.title}

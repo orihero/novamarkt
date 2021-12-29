@@ -1,6 +1,6 @@
 import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_HEIGHT, WINDOW_WIDTH } from "@novomarkt/constants/sizes";
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
 	container: {
@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
 	input: {
 		width: "100%",
 		paddingHorizontal: 20,
+		paddingVertical: Platform.OS == "android" ? 10 : 15,
 	},
 
 	button: {

@@ -61,6 +61,12 @@ const styles = StyleSheet.create({
 	box: {
 		padding: 10,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		borderRadius: 8,
 		marginVertical: 10,
 		backgroundColor: COLORS.white,
@@ -75,7 +81,7 @@ const styles = StyleSheet.create({
 	price: {
 		fontSize: 14,
 		color: COLORS.defaultBlack,
-		fontWeight: "700"
+		fontWeight: "700",
 	},
 
 	image: {

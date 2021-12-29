@@ -73,6 +73,7 @@ const SettingsView = ({}) => {
 					icon={() => <MessageIcon stroke={COLORS.defaultBlack} />}
 				/>
 				<SettingsItem
+					onPress={() => navigation.navigate(ROUTES.REGISTER)}
 					text={"Выйти"}
 					icon={() => <ExitIcon stroke={COLORS.defaultBlack} />}
 				/>

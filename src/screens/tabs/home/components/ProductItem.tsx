@@ -3,10 +3,12 @@ import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
+import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { useNavigation } from "@react-navigation/core";
 import React, { ReactElement } from "react";
 import {
+	Dimensions,
 	Image,
 	ListRenderItemInfo,
 	StyleSheet,
@@ -74,7 +76,9 @@ const ProductItem = ({
 								{STRINGS.addToCart}
 							</Text>
 							<BasketIcon
-								fill={secondary ? COLORS.cartColor3 : COLORS.white}
+								fill={
+									secondary ? COLORS.cartColor3 : COLORS.white
+								}
 							/>
 						</View>
 					</DefaultButton>
@@ -136,7 +140,7 @@ const styles = StyleSheet.create({
 		justifyContent: "space-between",
 	},
 	image: {
-		width: 186,
+		width: WINDOW_WIDTH / 2 - 20,
 		height: 180,
 		borderTopLeftRadius: 8,
 		borderTopRightRadius: 8,
@@ -145,8 +149,15 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.white,
 		borderRadius: 8,
 		elevation: 2,
-		width: 186,
-		margin: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
+		width: WINDOW_WIDTH / 2 - 20,
+		marginVertical: 15,
+		marginHorizontal: 5,
 	},
 	details: {
 		paddingHorizontal: 8,

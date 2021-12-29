@@ -27,6 +27,12 @@ const styles = StyleSheet.create({
 		width: 85,
 		height: 55,
 		elevation: 2,
+		shadowOpacity: 0.3,
+		shadowRadius: 3,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		marginHorizontal: 6,
 		backgroundColor: COLORS.white,
 		justifyContent: "center",

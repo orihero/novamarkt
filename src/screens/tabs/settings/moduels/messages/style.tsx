@@ -23,6 +23,12 @@ export const styles = StyleSheet.create({
 	box: {
 		backgroundColor: COLORS.chatColor,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		marginHorizontal: 20,
 		marginVertical: 20,
 		borderTopLeftRadius: 8,

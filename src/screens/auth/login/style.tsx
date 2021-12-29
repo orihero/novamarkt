@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
 	container: {
@@ -54,6 +54,7 @@ export const styles = StyleSheet.create({
 	},
 
 	inputStyle: {
+		paddingVertical: Platform.OS == "android" ? 10 : 15,
 		paddingHorizontal: 10,
 	},
 

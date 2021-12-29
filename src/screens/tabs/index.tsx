@@ -10,8 +10,9 @@ import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useCallback } from "react";
-import { StyleSheet } from "react-native";
-import { SvgProps } from "react-native-svg";
+import { StyleSheet, View } from "react-native";
+import { inlineStyles, SvgProps } from "react-native-svg";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 import CartStack from "./cart";
 import CatalogStack from "./catalog";
 import { FavoriteScreen } from "./favorites";
@@ -83,7 +84,13 @@ const TabNavigation = () => {
 export default TabNavigation;
 
 const styles = StyleSheet.create({
-	cont: {
-		// paddingVertical: 10,
+	bar: {
+		backgroundColor: COLORS.white,
+		height: 70,
+		overflow: "visible",
+	},
+	container: {
+		flex: 1,
+		backgroundColor: COLORS.white,
 	},
 });

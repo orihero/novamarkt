@@ -2,6 +2,7 @@ import { BasketIcon, HeartIcon } from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
+import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import React, { ReactElement } from "react";
 import { Image, ListRenderItemInfo, StyleSheet, View } from "react-native";
@@ -38,7 +39,7 @@ export default NewsItem;
 const styles = StyleSheet.create({
 	text: {
 		fontSize: 12,
-		color: COLORS.defaultBlack
+		color: COLORS.defaultBlack,
 	},
 	dateStyle: { color: COLORS.gray },
 	buttonContainer: {
@@ -58,12 +59,18 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.white,
 		borderRadius: 8,
 		elevation: 2,
-		width: 185,
+		shadowOpacity: 0.3,
+		shadowRadius: 3,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
+		width: WINDOW_WIDTH / 2 - 20,
 		margin: 4,
 		marginRight: 8,
 	},
 	image: {
-		width: 180,
+		width: WINDOW_WIDTH / 2 - 20,
 		height: 120,
 		borderRadius: 8,
 	},

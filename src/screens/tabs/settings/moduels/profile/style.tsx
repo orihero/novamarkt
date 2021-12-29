@@ -20,6 +20,12 @@ export const styles = StyleSheet.create({
 		marginVertical: 10,
 		borderRadius: 8,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		backgroundColor: COLORS.white,
 		marginHorizontal: 20,
 	},
@@ -50,7 +56,7 @@ export const styles = StyleSheet.create({
 		height: 17,
 		borderRadius: 10,
 		borderWidth: 2,
-		borderColor: COLORS.purple,
+		borderColor: COLORS.gray,
 		backgroundColor: COLORS.white,
 		alignItems: "center",
 		justifyContent: "center",
@@ -60,7 +66,7 @@ export const styles = StyleSheet.create({
 		width: 9,
 		height: 9,
 		borderRadius: 6,
-		backgroundColor: COLORS.purple,
+		backgroundColor: COLORS.gray,
 	},
 	dotGray: {
 		width: 17,
@@ -77,7 +83,7 @@ export const styles = StyleSheet.create({
 		width: 9,
 		height: 9,
 		borderRadius: 6,
-		backgroundColor: COLORS.gray,
+		backgroundColor: COLORS.white,
 	},
 
 	black: {
@@ -97,6 +103,12 @@ export const styles = StyleSheet.create({
 		marginVertical: 10,
 		borderRadius: 8,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		backgroundColor: COLORS.white,
 		marginHorizontal: 20,
 		paddingRight: 50,
@@ -138,6 +150,12 @@ export const styles = StyleSheet.create({
 		marginVertical: 10,
 		borderRadius: 8,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		backgroundColor: COLORS.white,
 		marginHorizontal: 20,
 	},
@@ -157,6 +175,12 @@ export const styles = StyleSheet.create({
 		marginVertical: 10,
 		borderRadius: 8,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		backgroundColor: COLORS.white,
 		marginHorizontal: 20,
 	},
@@ -166,12 +190,18 @@ export const styles = StyleSheet.create({
 		marginVertical: 10,
 		borderRadius: 8,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		backgroundColor: COLORS.white,
 		marginHorizontal: 20,
 		marginBottom: 60,
 	},
 
-	left:{
+	left: {
 		marginHorizontal: 20,
-	}
+	},
 });
