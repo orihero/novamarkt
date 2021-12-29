@@ -3,7 +3,7 @@ import {
 	CatalogIcon,
 	HeartIcon,
 	HomeIcon,
-	PersonIcon,
+	PersonIcon
 } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
@@ -14,7 +14,7 @@ import { StyleSheet, View } from "react-native";
 import { inlineStyles, SvgProps } from "react-native-svg";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 import CartStack from "./cart";
-import CatalogStack, { CatalogScreen } from "./catalog";
+import CatalogStack from "./catalog";
 import { FavoriteScreen } from "./favorites";
 import { HomeStack } from "./home";
 import { SettingsStack } from "./settings";
