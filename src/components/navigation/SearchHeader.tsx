@@ -3,7 +3,7 @@ import { COLORS } from "@novomarkt/constants/colors";
 import { REGULAR_FONT_FAMILY } from "@novomarkt/constants/fonts";
 import { STRINGS } from "@novomarkt/locales/strings";
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { Platform, StyleSheet, TextInput, View } from "react-native";
 
 const SearchHeader = () => {
 	return (
@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.lightGray,
 	},
 	input: {
+		paddingVertical: Platform.OS == "android" ? 10 : 12,
 		fontFamily: REGULAR_FONT_FAMILY,
 	},
 });

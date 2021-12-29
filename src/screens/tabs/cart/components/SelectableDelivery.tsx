@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
 		fontSize: 19,
 		color: COLORS.defaultBlack,
 		fontWeight: "700",
-		letterSpacing: 0.5
+		letterSpacing: 0.5,
 	},
 
 	activeBox: {
@@ -77,6 +77,12 @@ const styles = StyleSheet.create({
 		padding: 10,
 		backgroundColor: COLORS.white,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 	},
 
 	box: {
@@ -88,6 +94,12 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		backgroundColor: COLORS.white,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 		padding: 10,
 	},
 

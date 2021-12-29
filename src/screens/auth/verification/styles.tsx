@@ -1,8 +1,13 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
 	txt: {
 		fontWeight: "bold",
+	},
+
+	inputStyle: {
+		paddingVertical: Platform.OS == "android" ? 10 : 15,
+		paddingHorizontal: 5,
 	},
 
 	btn: {
@@ -29,7 +34,7 @@ export const styles = StyleSheet.create({
 	},
 
 	endText: {
-		alignSelf: "flex-end",
+		// alignSelf: "flex-end",
 	},
 
 	blueEnd: {
@@ -62,6 +67,12 @@ export const styles = StyleSheet.create({
 		marginVertical: 20,
 		backgroundColor: "#fff",
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 	},
 
 	input: {
@@ -99,5 +110,5 @@ export const styles = StyleSheet.create({
 
 	buttonTxt: {
 		fontSize: 18,
-	}
+	},
 });

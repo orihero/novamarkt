@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
 		color: COLORS.defaultBlack,
 		fontSize: 19,
 		fontWeight: "700",
-		letterSpacing: 0.5
+		letterSpacing: 0.5,
 	},
 
 	button: {
@@ -80,6 +80,12 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.white,
 		borderRadius: 8,
 		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
 	},
 
 	boxTxt: {

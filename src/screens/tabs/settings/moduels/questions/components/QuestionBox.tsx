@@ -2,7 +2,7 @@ import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
+import { Platform, StyleSheet, TextInput, View } from "react-native";
 
 export interface QuestionBoxProps {
 	title?: string;
@@ -30,7 +30,11 @@ const QuestionBox = ({ title, button }: QuestionBoxProps) => {
 					placeholder={"Ваш отзыв"}
 					placeholderTextColor={COLORS.gray}
 				/>
-				<DefaultButton textStyle={styles.text} containerStyle={styles.button} text={button} />
+				<DefaultButton
+					textStyle={styles.text}
+					containerStyle={styles.button}
+					text={button}
+				/>
 			</View>
 		</View>
 	);
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.white,
 		borderRadius: 8,
 		paddingHorizontal: 15,
+		paddingVertical: Platform.OS == "android" ? 10 : 15,
 		fontStyle: "italic",
 	},
 
@@ -66,6 +71,7 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.white,
 		borderRadius: 8,
 		paddingHorizontal: 15,
+		paddingVertical: Platform.OS == "android" ? 10 : 15,
 		paddingBottom: 60,
 		fontStyle: "italic",
 	},
@@ -76,10 +82,10 @@ const styles = StyleSheet.create({
 		marginBottom: 10,
 		marginHorizontal: 0,
 		paddingHorizontal: 20,
-		alignSelf: "flex-start"
+		alignSelf: "flex-start",
 	},
 
 	text: {
-		fontSize: 15
-	}
+		fontSize: 15,
+	},
 });
