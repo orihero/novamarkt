@@ -36,13 +36,14 @@ export const STRINGS = new LocalizedStrings({
 		recentlyWatched: "Вы недавно смотрели",
 		news: "Новости",
 		detailed: "Подробно",
-		backHeaderName: "Мои данные" ,
+		backHeaderName: "Мои данные",
 		myOrders: "Мои заказы",
 		seller: "Продавец:",
 		quantity: "Количество:",
 		delivery: "Доставка:",
 		comments: "Посмотреть все отзывы",
-		comment: "Качество ткани хорошее, но если вы предпочитаете оверсайз, выбирайте размер меньше вашего, например, слишком свободные рукава.",
+		comment:
+			"Качество ткани хорошее, но если вы предпочитаете оверсайз, выбирайте размер меньше вашего, например, слишком свободные рукава.",
 		date: "30.04.2021",
 		myMessages: "Мои сообщения",
 		yourMessage: "Ваше сообщение",
@@ -88,6 +89,10 @@ export const STRINGS = new LocalizedStrings({
 		till: "до",
 		getToday: "Получить сегодня",
 		moreCashback: "Повышенный cashback",
-		all: "Все"
+		all: "Все",
+		chats: "Чаты",
+		problemActivation: "Проблема авторизации?",
+		forgotPassword:
+			"Введите свой номер телефона, и мы вышлем вам код для входа в вашу учетную запись.",
 	},
 });

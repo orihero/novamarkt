@@ -29,7 +29,7 @@ import { useRoute } from "@react-navigation/core";
 import ProductItem, { ProductItemProps } from "../../components/ProductItem";
 import ProductsList, { productsData } from "../../components/ProductsList";
 import ReviewBox from "./components/ReviewBox";
-import CommentItem from "@novomarkt/screens/tabs/settings/moduels/comments/components/CommentItem";
+import CommentItem from "@novomarkt/screens/tabs/settings/modules/comments/components/CommentItem";
 import ShopsList from "../../components/ShopsList";
 import BrandsList from "../../components/BrandsList";
 

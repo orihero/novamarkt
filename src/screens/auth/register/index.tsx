@@ -1,1 +1,1 @@
-export {default as RegisterScreen} from './controller'
+export { default as RegisterScreen } from "./controller";

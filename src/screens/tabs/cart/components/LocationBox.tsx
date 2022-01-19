@@ -5,12 +5,15 @@ import {
 } from "@novomarkt/assets/icons/icons";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
+import { ROUTES } from "@novomarkt/constants/routes";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 const LocationBox = () => {
+	let navigation = useNavigation();
 	return (
-		<TouchableOpacity style={styles.container}>
+		<TouchableOpacity style={styles.container} onPress={() => navigation.navigate(ROUTES.LOCATION)} >
 			<View style={styles.row}>
 				<GeoIcon fill={COLORS.blue} />
 				<Text style={styles.text}>Москва и московская област</Text>

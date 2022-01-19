@@ -1,3 +1,4 @@
+import { COLORS } from "@novomarkt/constants/colors";
 import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -9,39 +10,48 @@ export const styles = StyleSheet.create({
 
 	logoText: {
 		alignSelf: "center",
-		fontSize: 45,
+		fontSize: 40,
 		color: "#0057FF",
-		fontWeight: "bold",
-		marginVertical: 30,
+		fontFamily: "Montserrat-Bold",
+		marginBottom: 40,
 	},
 
 	inputBox: {
 		borderRadius: 10,
-		paddingVertical: 30,
+		paddingVertical: 20,
 		marginHorizontal: 20,
-		marginVertical: 40,
+		marginVertical: 20,
 		backgroundColor: "#fff",
-		elevation: 5,
-		shadowOpacity: 0.3,
-		shadowRadius: 5,
+	},
+
+	elevation: {
+		shadowColor: "#000",
 		shadowOffset: {
 			width: 0,
-			height: 0,
+			height: 2,
 		},
+		shadowOpacity: 0.25,
+		shadowRadius: 4.84,
+
+		elevation: 15,
 	},
 
-	rowText: {
-		marginVertical: 15,
+	rowLogos: {
 		marginHorizontal: 20,
 		flexDirection: "row",
-		justifyContent: "space-between",
+		justifyContent: "space-around",
+		marginVertical: 20,
+	},
+	logo: {
+		width: 50,
+		height: 40,
+		alignItems: "center",
+		justifyContent: "center",
+		borderRadius: 8,
 	},
 
-	blueText: {
-		fontSize: 14,
-		color: "#0052FF",
-		textDecorationLine: "underline",
-		textDecorationStyle: "solid",
+	input: {
+		marginHorizontal: 20,
 	},
 
 	inputStyle: {
@@ -49,20 +59,19 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 10,
 	},
 
-	askText: {
-		color: "#023047",
-		fontSize: 14,
-	},
-
 	button: {
+		marginVertical: 10,
 		marginHorizontal: 20,
 	},
 
-	input: {
-		marginHorizontal: 20,
-	},
-
-	buttonTxt: {
+	text: {
+		padding: 0,
 		fontSize: 18,
+	},
+
+	errText: {
+		color: COLORS.red,
+		alignSelf: "center",
+		marginVertical: 4,
 	},
 });

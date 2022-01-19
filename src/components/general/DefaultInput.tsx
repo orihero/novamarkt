@@ -51,6 +51,8 @@ export interface DefaultInputProps {
 		| "oneTimeCode"
 		| undefined;
 	secureText?: boolean | undefined;
+	onChange?: (val: string) => void;
+	value?: string;
 }
 
 const DefaultInput = ({
@@ -61,6 +63,8 @@ const DefaultInput = ({
 	inputStyle,
 	textContentType,
 	secureText,
+	onChange,
+	value,
 }: DefaultInputProps) => {
 	return (
 		<View style={[styles.container, containerStyle]}>
@@ -71,6 +75,8 @@ const DefaultInput = ({
 				style={[styles.input, inputStyle]}
 				placeholder={placeholder}
 				placeholderTextColor={COLORS.gray}
+				onChangeText={onChange}
+				value={value}
 			/>
 		</View>
 	);

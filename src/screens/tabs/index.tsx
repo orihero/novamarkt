@@ -3,16 +3,15 @@ import {
 	CatalogIcon,
 	HeartIcon,
 	HomeIcon,
-	PersonIcon
+	PersonIcon,
 } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useCallback } from "react";
-import { StyleSheet, View } from "react-native";
-import { inlineStyles, SvgProps } from "react-native-svg";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { StyleSheet } from "react-native";
+import { SvgProps } from "react-native-svg";
 import CartStack from "./cart";
 import CatalogStack from "./catalog";
 import { FavoriteScreen } from "./favorites";
@@ -58,6 +57,7 @@ const TabNavigation = () => {
 				component={CartStack}
 				options={{
 					tabBarIcon: renderTabIcon(BasketIcon),
+					tabBarBadge: 2,
 					tabBarLabel: STRINGS.cart,
 				}}
 			/>

@@ -1,6 +1,7 @@
 export const ROUTES = {
 	LOGIN: "login",
 	REGISTER: "register",
+	FORGOTPASSWORD: "forgotpass",
 	HOME: "home",
 	CATEGORIES: "categories",
 	CART: "cart",
@@ -22,6 +23,8 @@ export const ROUTES = {
 	CATALOG_PRODUCTS: "catalog-products",
 	CHECKOUT: "checkout",
 	CHECKOUT_POINT: "сheckout-point",
-	FILTER: "filter"
+	FILTER: "filter",
+	CHATS: "chats",
+	LOCATION: "location"
 	
 };

@@ -1,6 +1,7 @@
 import { COLORS, GRADIENT_COLORS } from "@novomarkt/constants/colors";
 import React, { ReactElement } from "react";
 import {
+	ActivityIndicator,
 	GestureResponderEvent,
 	StyleProp,
 	StyleSheet,
@@ -19,6 +20,8 @@ export interface DefaultButtonProps {
 	textStyle?: StyleProp<TextStyle>;
 	secondary?: boolean;
 	children?: ReactElement | null;
+	loading?: boolean;
+	active?: boolean;
 }
 
 const DefaultButton = ({
@@ -28,6 +31,7 @@ const DefaultButton = ({
 	secondary,
 	containerStyle = {},
 	textStyle,
+	loading,
 }: DefaultButtonProps) => {
 	return (
 		<TouchableWithoutFeedback onPress={onPress}>
@@ -43,8 +47,24 @@ const DefaultButton = ({
 						secondary && styles.inactiveContainer,
 					]}
 				>
-					{children || (
-						<Text style={[styles.text, textStyle]}>{text}</Text>
+					{loading ? (
+						//TODO Check color
+						<ActivityIndicator
+							color={secondary ? COLORS.blue : COLORS.white}
+							size={"small"}
+						/>
+					) : (
+						children || (
+							<Text
+								style={[
+									styles.text,
+									textStyle,
+									secondary && styles.secondaryText,
+								]}
+							>
+								{text}
+							</Text>
+						)
 					)}
 				</View>
 			</LinearGradient>
@@ -87,5 +107,9 @@ const styles = StyleSheet.create({
 	text: {
 		color: COLORS.white,
 		fontSize: 20,
+	},
+
+	secondaryText: {
+		color: COLORS.defaultBlack,
 	},
 });

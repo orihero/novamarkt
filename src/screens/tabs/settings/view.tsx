@@ -1,6 +1,7 @@
 import {
 	BorderedLikeIcon,
 	BorderedStarIcon,
+	ChatIcon,
 	CommentIcon,
 	ContactIcon,
 	ExitIcon,
@@ -65,6 +66,11 @@ const SettingsView = ({}) => {
 					icon={() => <ContactIcon stroke={COLORS.defaultBlack} />}
 				/>
 				<SettingsItem
+					text={"Чаты"}
+					onPress={() => navigation.navigate(ROUTES.CHATS)}
+					icon={() => <ChatIcon fill={COLORS.defaultBlack} />}
+				/>
+				<SettingsItem
 					text={"Позвонить"}
 					icon={() => <PhoneIcon stroke={COLORS.defaultBlack} />}
 				/>
@@ -73,7 +79,7 @@ const SettingsView = ({}) => {
 					icon={() => <MessageIcon stroke={COLORS.defaultBlack} />}
 				/>
 				<SettingsItem
-					onPress={() => navigation.navigate(ROUTES.REGISTER)}
+					onPress={() => navigation.navigate(ROUTES.LOGIN)}
 					text={"Выйти"}
 					icon={() => <ExitIcon stroke={COLORS.defaultBlack} />}
 				/>

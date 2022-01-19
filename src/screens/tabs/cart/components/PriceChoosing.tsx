@@ -2,7 +2,7 @@ import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
 import React from "react";
-import { StyleSheet, TextInput, TextInputBase, View } from "react-native";
+import { Platform, StyleSheet, TextInput, View } from "react-native";
 
 const PriceChoosing = () => {
 	return (
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
 	},
 
 	input: {
-		paddingHorizontal: 20,
-		paddingRight: 75,
+		width: "35%",
+		paddingVertical: Platform.OS === "android" ? 0 : 10,
 	},
 });

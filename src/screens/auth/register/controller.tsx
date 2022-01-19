@@ -1,8 +1,8 @@
 import React from "react";
 import RegisterView from "./view";
 
-const AskController = () => {
-	return <RegisterView/>;
+const RegisterController = () => {
+	return <RegisterView />;
 };
 
-export default AskController;
+export default RegisterController;

@@ -1,1 +1,1 @@
-export { default as LoginScreen } from "./controller";
+export {default as LoginScreen} from './controller'

@@ -11,6 +11,7 @@ export const COLORS = {
 	blue: "#0052FF",
 	lightGray: "#f3f3f3",
 	purple: "#C211A7",
+	lightPurple: "#FFBBBB",
 	red: "rgba(255, 27, 27, 1)",
 	whiteGray: "#B4B4B4",
 	chatColor: "#F8F8FA",
@@ -18,14 +19,13 @@ export const COLORS = {
 	// cart colors //
 	cartColor1: "#BED9FF",
 	cartColor2: "#729EDB",
-	cartColor3: "#274784" ,
-
+	cartColor3: "#274784",
 };
 
 export const CART_COLORS = [
 	COLORS.cartColor1,
 	COLORS.cartColor2,
-	COLORS.cartColor3
+	COLORS.cartColor3,
 ];
 
 export const GRADIENT_COLORS = [

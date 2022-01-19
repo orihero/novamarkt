@@ -9,48 +9,39 @@ export const styles = StyleSheet.create({
 
 	logoText: {
 		alignSelf: "center",
-		fontSize: 40,
+		fontSize: 45,
 		color: "#0057FF",
-		fontFamily: "Montserrat-Bold",
-		marginBottom: 40,
+		fontWeight: "bold",
+		marginVertical: 30,
 	},
 
 	inputBox: {
 		borderRadius: 10,
-		paddingVertical: 20,
+		paddingVertical: 30,
 		marginHorizontal: 20,
-		marginVertical: 20,
+		marginVertical: 40,
 		backgroundColor: "#fff",
-	},
-
-	elevation: {
-		shadowColor: "#000",
+		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
 		shadowOffset: {
 			width: 0,
-			height: 2,
+			height: 0,
 		},
-		shadowOpacity: 0.25,
-		shadowRadius: 4.84,
-
-		elevation: 15,
 	},
 
-	rowLogos: {
+	rowText: {
+		marginVertical: 15,
 		marginHorizontal: 20,
 		flexDirection: "row",
-		justifyContent: "space-around",
-		marginVertical: 20,
-	},
-	logo: {
-		width: 50,
-		height: 40,
-		alignItems: "center",
-		justifyContent: "center",
-		borderRadius: 8,
+		justifyContent: "space-between",
 	},
 
-	input: {
-		marginHorizontal: 20,
+	blueText: {
+		fontSize: 14,
+		color: "#0052FF",
+		textDecorationLine: "underline",
+		textDecorationStyle: "solid",
 	},
 
 	inputStyle: {
@@ -58,13 +49,20 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 10,
 	},
 
+	askText: {
+		color: "#023047",
+		fontSize: 14,
+	},
+	
+	input: {
+		marginHorizontal: 20,
+	},
 	button: {
-		marginVertical: 10,
 		marginHorizontal: 20,
 	},
 
-	text: {
-		padding: 0,
+
+	buttonTxt: {
 		fontSize: 18,
 	},
 });

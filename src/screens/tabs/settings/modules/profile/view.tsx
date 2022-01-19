@@ -94,7 +94,7 @@ const ProfileView = () => {
 												? styles.background
 												: styles.backgroundGray
 										}
-									></View>
+									/>
 								</View>
 								<Text style={styles.black}>Муж.</Text>
 							</View>
@@ -117,7 +117,7 @@ const ProfileView = () => {
 												? styles.backgroundGray
 												: styles.background
 										}
-									></View>
+									/>
 								</View>
 								<Text style={styles.black}>Жен.</Text>
 							</View>

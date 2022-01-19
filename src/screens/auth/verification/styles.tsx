@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
 	},
 
 	blueEnd: {
-		alignSelf: "flex-end",
+		// alignSelf: "flex-end",
 		marginVertical: 10,
 		color: "#0057FF",
 	},

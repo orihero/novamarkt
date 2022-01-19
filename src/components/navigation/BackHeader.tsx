@@ -28,7 +28,7 @@ const BackHeader = ({
 		<View style={[styles.container, style]}>
 			<View style={styles.row}>
 				<TouchableWithoutFeedback
-					hitSlop={{ bottom: 10, top: 10, left: 10, right: 10 }}
+					hitSlop={{ bottom: 20, top: 20, left: 20, right: 20 }}
 					onPress={navigation.goBack}
 				>
 					<LeftArrow />
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 		fontSize: 20,
 		color: COLORS.defaultBlack,
 		fontFamily: "Montserrat",
-		fontWeight: "600"
+		fontWeight: "600",
 	},
 
 	row: {

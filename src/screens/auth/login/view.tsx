@@ -1,80 +1,65 @@
-import { FbIcon, GmailIcon, OkIcon } from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import DefaultInput from "@novomarkt/components/general/DefaultInput";
-import { GRADIENT_COLORS } from "@novomarkt/constants/colors";
+import Text from "@novomarkt/components/general/Text";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
-import { useNavigation } from "@react-navigation/core";
-import React, { useState } from "react";
-import { View } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
-import Text from "../../../components/general/Text";
+import { useNavigation } from "@react-navigation/native";
+import React, { useEffect } from "react";
+import { TouchableOpacity, View } from "react-native";
+import useLoginHook from "./hooks";
 import { styles } from "./style";
 
 const LoginView = () => {
-	let navigation = useNavigation();
+	let {
+		loading,
+		onStateChange,
+		onLogin,
+		state,
+		onLoginNavigation,
+		onForgotPassNavigation,
+	} = useLoginHook();
+
 	return (
 		<View style={styles.container}>
 			<Text style={styles.logoText}>Novamarkt</Text>
-			<View style={[styles.inputBox, styles.elevation]}>
-				<DefaultInput
-					containerStyle={styles.input}
-					inputStyle={styles.inputStyle}
-					title={STRINGS.name}
-					placeholder={STRINGS.yourName}
-				/>
+			<View style={styles.inputBox}>
 				<DefaultInput
 					containerStyle={styles.input}
 					inputStyle={styles.inputStyle}
 					title={STRINGS.number}
 					placeholder={STRINGS.yourNumber}
+					onChange={onStateChange("phone")}
+					value={state.phone}
 				/>
 				<DefaultInput
 					containerStyle={styles.input}
 					inputStyle={styles.inputStyle}
 					title={STRINGS.password}
 					placeholder={STRINGS.yourPassword}
+					textContentType={"password"}
+					secureText={true}
+					onChange={onStateChange("password")}
+					value={state.password}
 				/>
 				<DefaultButton
-					text={STRINGS.continue}
-					textStyle={styles.text}
+					textStyle={styles.buttonTxt}
+					text={STRINGS.auth}
+					onPress={onLogin}
 					containerStyle={styles.button}
-					onPress={() => navigation.navigate(ROUTES.TABS)}
+					loading={loading}
 				/>
-				<View style={styles.rowLogos}>
-					<LinearGradient
-						start={{ x: 0, y: 0 }}
-						end={{ x: 1.2, y: 1 }}
-						colors={GRADIENT_COLORS}
-						style={styles.logo}
-					>
-						<FbIcon />
-					</LinearGradient>
-					<LinearGradient
-						start={{ x: 0, y: 0 }}
-						end={{ x: 1.2, y: 1 }}
-						colors={GRADIENT_COLORS}
-						style={styles.logo}
-					>
-						<GmailIcon />
-					</LinearGradient>
-					<LinearGradient
-						start={{ x: 0, y: 0 }}
-						end={{ x: 1.2, y: 1 }}
-						colors={GRADIENT_COLORS}
-						style={styles.logo}
-					>
-						<GmailIcon />
-					</LinearGradient>
-					<LinearGradient
-						start={{ x: 0, y: 0 }}
-						end={{ x: 1.2, y: 1 }}
-						colors={GRADIENT_COLORS}
-						style={styles.logo}
-					>
-						<GmailIcon />
-					</LinearGradient>
+				<View style={styles.rowText}>
+					<TouchableOpacity onPress={onForgotPassNavigation}>
+						<Text style={styles.blueText}>Забыли пароль?</Text>
+					</TouchableOpacity>
+					<Text style={styles.askText}>Нет учетной записи?</Text>
 				</View>
+				<DefaultButton
+					textStyle={styles.buttonTxt}
+					text={STRINGS.registration}
+					onPress={onLoginNavigation}
+					containerStyle={styles.button}
+				/>
 			</View>
 		</View>
 	);
