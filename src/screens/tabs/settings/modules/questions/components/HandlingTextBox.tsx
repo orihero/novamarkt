@@ -1,25 +1,28 @@
+import requests from "@novomarkt/api/requests";
 import { PlayIcon } from "@novomarkt/assets/icons/icons";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	LayoutAnimation,
-	Platform,
 	StyleSheet,
 	TouchableOpacity,
-	UIManager,
 	View,
 } from "react-native";
 
-// if (Platform.OS === "android") {
-// 	if (UIManager.setLayoutAnimationEnabledExperimental) {
-// 		UIManager.setLayoutAnimationEnabledExperimental(true);
-// 	}
-// }
-
 const HandlingTextBox = () => {
 	const [shouldShow, setShouldShow] = useState(true);
+	// const [questions, setQuestions] = useState([]);
+	// let effect = async () => {
+	// 	try {
+	// 		let res = await requests.frequentQuestions.questions();
+	// 		setQuestions(res.data.data);
+	// 	} catch (error) {}
+	// };
+	// useEffect(() => {
+	// 	effect();
+	// }, []);
 	return (
 		<View style={styles.container}>
 			<View>
@@ -33,9 +36,7 @@ const HandlingTextBox = () => {
 					}}
 				>
 					<PlayIcon fill={COLORS.white} />
-					<Text style={styles.text}>
-						Название любого вопроса из этой сферы деятельности?
-					</Text>
+					<Text style={styles.text}>{STRINGS.faq}</Text>
 				</TouchableOpacity>
 				{!shouldShow ? (
 					<Text style={styles.textBox}>{STRINGS.answer}</Text>

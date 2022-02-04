@@ -1,3 +1,4 @@
+import { COLORS } from "@novomarkt/constants/colors";
 import { Platform, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -19,7 +20,6 @@ export const styles = StyleSheet.create({
 		borderRadius: 10,
 		paddingVertical: 30,
 		marginHorizontal: 20,
-		marginVertical: 40,
 		backgroundColor: "#fff",
 		elevation: 5,
 		shadowOpacity: 0.3,
@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
 		color: "#023047",
 		fontSize: 14,
 	},
-	
+
 	input: {
 		marginHorizontal: 20,
 	},
@@ -61,8 +61,12 @@ export const styles = StyleSheet.create({
 		marginHorizontal: 20,
 	},
 
-
 	buttonTxt: {
 		fontSize: 18,
+	},
+
+	error: {
+		color: COLORS.red,
+		alignSelf: "center",
 	},
 });

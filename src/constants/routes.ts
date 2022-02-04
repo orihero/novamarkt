@@ -25,6 +25,6 @@ export const ROUTES = {
 	CHECKOUT_POINT: "сheckout-point",
 	FILTER: "filter",
 	CHATS: "chats",
-	LOCATION: "location"
-	
+	LOCATION: "location",
+	SEARCH:"search"
 };

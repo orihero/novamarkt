@@ -1,162 +1,11 @@
+import requests from "@novomarkt/api/requests";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import ProductItem, { ProductItemProps } from "./ProductItem";
-
-export let productsData: ProductItemProps[] = [
-	{
-		category: "Костюми",
-		image: "https://static.theblacktux.com/products/suits/black-suit/2_161129_TBT_Ecom_Black_Suit_1_1664_w1_1812x1875.jpg",
-		price: "1400  ₽",
-		shopName: "ZARA",
-		name: "Элегантный Костюм с брюками ZARA стиль",
-		discount: -21,
-		options: [
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-		],
-	},
-	{
-		category: "Костюми",
-		image: "https://ydbrand.imgix.net/YD/Products/19ASUX04_BLK_1.png",
-		price: "1400  ₽",
-		shopName: "ZARA",
-		name: "Элегантный Костюм с брюками ZARA стиль",
-		discount: -50,
-		options: [
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-		],
-	},
-	{
-		category: "Костюми",
-		image: "https://ydbrand.imgix.net/YD/Products/19ASUX04_BLK_1.png",
-		price: "1400  ₽",
-		shopName: "ZARA",
-		discount: -46,
-		name: "Элегантный Костюм с брюками ZARA стиль",
-		options: [
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-		],
-	},
-	{
-		category: "Костюми",
-		image: "https://ydbrand.imgix.net/YD/Products/19ASUX04_BLK_1.png",
-		price: "1400  ₽",
-		shopName: "ZARA",
-		name: "Элегантный Костюм с брюками ZARA стиль",
-		options: [
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-		],
-	},
-	{
-		category: "Костюми",
-		image: "https://ydbrand.imgix.net/YD/Products/19ASUX04_BLK_1.png",
-		price: "1400  ₽",
-		shopName: "ZARA",
-		name: "Элегантный Костюм с брюками ZARA стиль",
-		options: [
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-		],
-	},
-	{
-		category: "Костюми",
-		image: "https://ydbrand.imgix.net/YD/Products/19ASUX04_BLK_1.png",
-		price: "1400  ₽",
-		shopName: "ZARA",
-		name: "Элегантный Костюм с брюками ZARA стиль",
-		options: [
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-		],
-	},
-	{
-		category: "Костюми",
-		image: "https://ydbrand.imgix.net/YD/Products/19ASUX04_BLK_1.png",
-		price: "1400  ₽",
-		shopName: "ZARA",
-		name: "Элегантный Костюм с брюками ZARA стиль",
-		options: [
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-			{
-				key: "эластан",
-				value: " 5%",
-			},
-			{ key: "Комплектация", value: "рубашка" },
-			{ key: "Крой", value: "средняя посадка" },
-		],
-	},
-];
+import { ProductItemResponse } from "@novomarkt/api/types";
+import ProductItem from "./ProductItem";
 
 export interface PropularProductsProps {
 	title?: string;
@@ -165,14 +14,24 @@ export interface PropularProductsProps {
 const ProductsList = ({
 	title = STRINGS.popularProducts,
 }: PropularProductsProps) => {
+	const [products, setProducts] = useState<ProductItemResponse[]>([]);
+	let effect = async () => {
+		try {
+			let res = await requests.products.getProducts();
+			setProducts(res.data.data);
+		} catch (error) {}
+	};
+	useEffect(() => {
+		effect();
+	}, []);
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>{title}</Text>
 			<FlatList
 				horizontal
 				showsHorizontalScrollIndicator={false}
-				data={productsData}
-				renderItem={ProductItem}
+				data={products}
+				renderItem={(props) => <ProductItem {...props} />}
 				style={styles.container}
 				contentContainerStyle={styles.contentContainerStyle}
 			/>

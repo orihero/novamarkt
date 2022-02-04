@@ -3,20 +3,20 @@ import { ROUTES } from "@novomarkt/constants/routes";
 import { useAppDispatch } from "@novomarkt/store/hooks";
 import { userLoggedIn } from "@novomarkt/store/slices/userSlice";
 import { validatePhoneNumber } from "@novomarkt/utils/validation";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { LoginState } from "../login/hooks";
 
-let timer = () => {};
+let timer = -1;
 
 const useVerificationHook = () => {
-	const [timeLeft, setTimeLeft] = useState(10);
-	let navigation = useNavigation();
-	let [loading, setLoading] = useState<boolean>(false);
+	const route = useRoute();
 	let dispatch = useAppDispatch();
-	const [state, setState] = useState<LoginState>({
-		code: "111111",
-		phone: "+998932300500",
+	let navigation = useNavigation();
+	const [timeLeft, setTimeLeft] = useState(10);
+	const [loading, setLoading] = useState<boolean>(false);
+	const [state, setState] = useState<{ code: string; phone: string }>({
+		code: "",
+		phone: route.params?.phone ? route.params?.phone : "",
 	});
 
 	const startTimer = () => {
@@ -27,6 +27,7 @@ const useVerificationHook = () => {
 			}
 			setTimeLeft(timeLeft - 1);
 		}, 1000);
+		return timer;
 	};
 
 	useEffect(() => {
@@ -40,30 +41,29 @@ const useVerificationHook = () => {
 
 	let onVerificate = async () => {
 		//validate phone matches +998 ** *** ** **
-		if (validatePhoneNumber(state.phone)) {
+		if (validatePhoneNumber(state.phone as string)) {
 			//send data to remote
 			try {
 				setLoading(true);
-				let res = await requests.auth.login(state);
-				// let res = await axios.get("http://qwerty.uz");
-				//write these data to redux and AsyncStorage
-				dispatch(userLoggedIn(res.data));
-				//@ts-ignore
+				let res = await requests.auth.verify(
+					state,
+					route.params?.token
+				);
+				dispatch(userLoggedIn(res.data.data));
 			} catch (error) {
-				console.warn(error.toJSON());
-				console.warn(Object.keys(error));
+				// console.warn(error.toJSON());
+				// console.warn(error.response.data);
 			} finally {
 				setLoading(false);
 				navigation.navigate(ROUTES.TABS);
 			}
 		}
 	};
+	let onChangePhoneNumber = () => navigation.goBack();
 
 	let onStateChange = (key: string) => (value: string) => {
 		setState({ ...state, [key]: value });
 	};
-
-	let onChangePhoneNumber = () => navigation.goBack();
 
 	return {
 		timeLeft,

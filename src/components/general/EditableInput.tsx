@@ -20,8 +20,10 @@ export interface EditableInputProps {
 	titleStyle?: StyleProp<TextStyle>;
 	value?: string;
 	bigger?: boolean;
-	onChange?: (t: string) => void;
+	onChange?: (t: string) => (v: string) => void;
 	keyboardType?: KeyboardType;
+	onSubmit?: (val: string, key: string) => Promise<void>;
+	name: string;
 }
 
 const EditableInput = ({
@@ -30,14 +32,19 @@ const EditableInput = ({
 	titleStyle,
 	value,
 	bigger,
-	onChange,
+	onChange = (e) => (t) => {},
 	keyboardType,
+	onSubmit,
+	name,
 }: EditableInputProps) => {
 	const [isEditing, setIsEditing] = useState(false);
 	let onEditPress = () => {
 		setIsEditing((e) => !e);
+		if (isEditing && onSubmit) {
+			onSubmit(value as string, name);
+		}
 	};
-	const ref = useRef(null);
+	const ref = useRef<TextInput>(null);
 	useEffect(() => {
 		if (ref.current && isEditing) ref.current.focus();
 	}, [isEditing]);
@@ -54,7 +61,7 @@ const EditableInput = ({
 						]}
 						ref={ref}
 						value={value}
-						onChangeText={onChange}
+						onChangeText={onChange(name)}
 						placeholder={placeholder}
 						onBlur={onEditPress}
 						keyboardType={keyboardType}

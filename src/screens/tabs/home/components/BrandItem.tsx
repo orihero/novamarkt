@@ -1,21 +1,18 @@
+import { appendUrl } from "@novomarkt/api/requests";
 import { COLORS } from "@novomarkt/constants/colors";
 import React, { ReactElement } from "react";
-import {
-	Image,
-	ListRenderItem,
-	ListRenderItemInfo,
-	StyleSheet,
-	View,
-} from "react-native";
+import { Image, ListRenderItemInfo, StyleSheet, View } from "react-native";
 
-export type BrandItemProps = string;
+export type BrandItemProps = {
+	photo: string;
+};
 
 const BrandItem = ({
-	item,
+	item: { photo },
 }: ListRenderItemInfo<BrandItemProps>): ReactElement => {
 	return (
 		<View style={styles.container}>
-			<Image source={{ uri: item }} style={styles.image} />
+			<Image source={{ uri: appendUrl(photo) }} style={styles.image} />
 		</View>
 	);
 };

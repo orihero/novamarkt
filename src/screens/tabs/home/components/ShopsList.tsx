@@ -1,27 +1,29 @@
+import requests from "@novomarkt/api/requests";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
-import BrandItem, { BrandItemProps } from "./BrandItem";
-
-let shopsData: BrandItemProps[] = [
-	"https://www.ankamall.com.tr/fileadmin/user_upload/GLOBAL/brand_stores/logos/lcwaikiki.jpg",
-	"https://grandpharm.uz/uploads/2019/09/samo.png",
-	"https://logobank.uz:8005/media/logos_png/TERRA_PRO-01.png",
-	"https://www.ankamall.com.tr/fileadmin/user_upload/GLOBAL/brand_stores/logos/lcwaikiki.jpg",
-	"https://grandpharm.uz/uploads/2019/09/samo.png",
-	"https://logobank.uz:8005/media/logos_png/TERRA_PRO-01.png",
-];
+import BrandItem from "./BrandItem";
 
 const ShopsList = () => {
+	const [categories, setCategories] = useState([]);
+	let effect = async () => {
+		try {
+			let res = await requests.brands.getBrands();
+			setCategories(res.data.data);
+		} catch (error) {}
+	};
+	useEffect(() => {
+		effect();
+	}, []);
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>{STRINGS.yourShops}</Text>
 			<FlatList
 				horizontal
 				showsHorizontalScrollIndicator={false}
-				data={shopsData}
+				data={categories}
 				renderItem={BrandItem}
 				style={styles.container}
 				contentContainerStyle={styles.contentContainerStyle}

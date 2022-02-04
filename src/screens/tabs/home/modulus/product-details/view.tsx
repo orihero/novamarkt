@@ -1,3 +1,5 @@
+import { appendUrl } from "@novomarkt/api/requests";
+import { ProductItemResponse } from "@novomarkt/api/types";
 import {
 	ArrowBottomMarked,
 	BasketIcon,
@@ -9,29 +11,25 @@ import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
-import BackHeaderDefault from "./components/BackHeaderDefault";
-import Carousel, { Pagination } from "react-native-snap-carousel";
-import React, { useState } from "react";
-import { styles } from "./style";
+import CommentItem from "@novomarkt/screens/tabs/settings/modules/comments/components/CommentItem";
+import { useRoute } from "@react-navigation/core";
+import React, { ReactElement, useState } from "react";
 import {
 	FlatList,
+	Image,
 	LayoutAnimation,
+	ListRenderItemInfo,
 	ScrollView,
-	TextInput,
 	TouchableOpacity,
 	View,
 } from "react-native";
-import CustomCarouselItem, {
-	CustomCarouselItemProps,
-} from "./components/CustomCarouselItem";
-import DotElement from "./components/DotElement";
-import { useRoute } from "@react-navigation/core";
-import ProductItem, { ProductItemProps } from "../../components/ProductItem";
+import Carousel, { Pagination } from "react-native-snap-carousel";
+import ProductItem from "../../components/ProductItem";
 import ProductsList, { productsData } from "../../components/ProductsList";
+import BackHeaderDefault from "./components/BackHeaderDefault";
+import CustomCarouselItem from "./components/CustomCarouselItem";
 import ReviewBox from "./components/ReviewBox";
-import CommentItem from "@novomarkt/screens/tabs/settings/modules/comments/components/CommentItem";
-import ShopsList from "../../components/ShopsList";
-import BrandsList from "../../components/BrandsList";
+import { styles } from "./style";
 
 export let customCarouselData: string[] = [
 	"https://jooinn.com/images/model-girl-1.jpg",
@@ -39,17 +37,21 @@ export let customCarouselData: string[] = [
 	"https://c4.wallpaperflare.com/wallpaper/403/913/79/girl-girl-beautiful-beautiful-wallpaper-preview.jpg",
 ];
 
-const ProductDetailsView = () => {
-	let { params } = useRoute();
-	let item: ProductItemProps = params.item;
+const ProductDetailsView = ({}): ReactElement => {
+	let {
+		params: { item },
+	} = useRoute();
 	const [activeSlide, setActiveSlide] = useState(0);
 	const [shouldShow, setShouldShow] = useState(true);
+	let carouselPhoto = () => {
+		item`${appendUrl}`.photo;
+	};
 	return (
 		<View style={styles.container}>
 			<BackHeaderDefault />
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<View style={styles.header}>
-					<Text style={styles.headerText}>1400 ₽</Text>
+					<Text style={styles.headerText}>{item.price}</Text>
 					<DefaultButton containerStyle={styles.buttonCon}>
 						<View style={styles.button}>
 							<Text style={styles.buttonText}>
@@ -59,15 +61,18 @@ const ProductDetailsView = () => {
 						</View>
 					</DefaultButton>
 				</View>
-				<View style={styles.carousel}>
-					<Carousel
+				<Image
+					source={{ uri: appendUrl(item.photo) }}
+					style={styles.productImage}
+				/>
+				{/* <Carousel
 						onSnapToItem={(index) => setActiveSlide(index)}
 						itemWidth={WINDOW_WIDTH}
 						windowSize={WINDOW_WIDTH}
 						sliderWidth={WINDOW_WIDTH}
 						itemHeight={200}
 						sliderHeight={200}
-						data={customCarouselData}
+						data={carouselPhoto}
 						renderItem={CustomCarouselItem}
 						pagingEnabled
 					/>
@@ -76,9 +81,8 @@ const ProductDetailsView = () => {
 						dotsLength={customCarouselData.length}
 						// dotElement={<DotElement />}
 						// inactiveDotElement={<DotElement inactive={true} />}
-					/>
-					<Text style={styles.itemName}>{item.name}</Text>
-				</View>
+					/> */}
+				<Text style={styles.itemName}>{item.name}</Text>
 				<View style={styles.credit}>
 					<View>
 						<CheckedItem />
@@ -86,7 +90,7 @@ const ProductDetailsView = () => {
 					<View style={styles.creditPrice}>
 						<Text style={styles.creditName}>{STRINGS.credit}</Text>
 						<Text style={styles.creditPriceText}>
-							444 ₽ {STRINGS.creditPrice}
+							{item.price_old} {STRINGS.creditPrice}
 						</Text>
 					</View>
 				</View>
@@ -119,7 +123,7 @@ const ProductDetailsView = () => {
 				>
 					<View style={styles.composTwo}>
 						<Text style={styles.composition}>
-							{STRINGS.reviews} 105
+							{STRINGS.reviews} {item.rating}
 						</Text>
 						<RightArrow fill={COLORS.blue} />
 					</View>
@@ -137,7 +141,7 @@ const ProductDetailsView = () => {
 							<Text style={styles.blueText2}>Оценке</Text>
 						</View>
 						<FlatList
-							data={productsData}
+							data={customCarouselData}
 							renderItem={CommentItem}
 							showsVerticalScrollIndicator={false}
 						/>
@@ -149,14 +153,9 @@ const ProductDetailsView = () => {
 						{STRINGS.sendReview}
 					</Text>
 				</DefaultButton>
-				<Text style={styles.title}>{STRINGS.advertBlock}</Text>
-				<FlatList
-					numColumns={2}
-					data={productsData}
-					renderItem={ProductItem}
-					style={styles.containerFlat}
-					contentContainerStyle={styles.contentContainerStyle}
-				/>
+				<View style={{ marginHorizontal: 10 }}>
+					<ProductsList title={STRINGS.advertBlock} />
+				</View>
 				<DefaultButton containerStyle={styles.marginBottomEnd}>
 					<Text style={styles.buttonReview}>
 						{STRINGS.sendCustomer}

@@ -1,10 +1,9 @@
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import DefaultInput from "@novomarkt/components/general/DefaultInput";
+import DefaultInputEye from "@novomarkt/components/general/DefaultInputEye";
 import Text from "@novomarkt/components/general/Text";
-import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
-import { useNavigation } from "@react-navigation/native";
-import React, { useEffect } from "react";
+import React from "react";
 import { TouchableOpacity, View } from "react-native";
 import useLoginHook from "./hooks";
 import { styles } from "./style";
@@ -17,6 +16,7 @@ const LoginView = () => {
 		state,
 		onLoginNavigation,
 		onForgotPassNavigation,
+		error,
 	} = useLoginHook();
 
 	return (
@@ -30,8 +30,9 @@ const LoginView = () => {
 					placeholder={STRINGS.yourNumber}
 					onChange={onStateChange("phone")}
 					value={state.phone}
+					keyboardType="phone-pad"
 				/>
-				<DefaultInput
+				<DefaultInputEye
 					containerStyle={styles.input}
 					inputStyle={styles.inputStyle}
 					title={STRINGS.password}
@@ -41,6 +42,11 @@ const LoginView = () => {
 					onChange={onStateChange("password")}
 					value={state.password}
 				/>
+				{error ? (
+					<Text style={styles.error}>{error}</Text>
+				) : (
+					<Text style={styles.error}></Text>
+				)}
 				<DefaultButton
 					textStyle={styles.buttonTxt}
 					text={STRINGS.auth}
@@ -49,10 +55,18 @@ const LoginView = () => {
 					loading={loading}
 				/>
 				<View style={styles.rowText}>
-					<TouchableOpacity onPress={onForgotPassNavigation}>
+					<TouchableOpacity
+						onPress={onForgotPassNavigation}
+						hitSlop={{ left: 20, right: 20, bottom: 20, top: 20 }}
+					>
 						<Text style={styles.blueText}>Забыли пароль?</Text>
 					</TouchableOpacity>
-					<Text style={styles.askText}>Нет учетной записи?</Text>
+					<TouchableOpacity
+						onPress={onLoginNavigation}
+						hitSlop={{ left: 20, right: 20, bottom: 20, top: 20 }}
+					>
+						<Text style={styles.askText}>Нет учетной записи?</Text>
+					</TouchableOpacity>
 				</View>
 				<DefaultButton
 					textStyle={styles.buttonTxt}

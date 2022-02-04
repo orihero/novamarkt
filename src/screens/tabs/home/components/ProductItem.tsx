@@ -1,3 +1,5 @@
+import { appendUrl } from "@novomarkt/api/requests";
+import { ProductItemResponse } from "@novomarkt/api/types";
 import { BasketIcon, HeartIcon } from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
@@ -8,44 +10,31 @@ import { STRINGS } from "@novomarkt/locales/strings";
 import { useNavigation } from "@react-navigation/core";
 import React, { ReactElement } from "react";
 import {
-	Dimensions,
 	Image,
 	ListRenderItemInfo,
 	StyleSheet,
-	TouchableNativeFeedback,
-	TouchableOpacity,
 	TouchableWithoutFeedback,
 	View,
 } from "react-native";
 
-let navigation = useNavigation();
-export interface ProductItemProps {
-	id?: number;
-	image: string;
-	price: string;
-	shopName: string;
-	category: string;
-	name: string;
-	discount?: number;
-	options?: {
-		key?: string;
-		value?: string;
-	}[];
-}
-
 const ProductItem = ({
 	item,
-}: ListRenderItemInfo<ProductItemProps>): ReactElement => {
+}: ListRenderItemInfo<ProductItemResponse>): ReactElement => {
 	let secondary = true;
-	let { image, category, price, shopName, name, discount } = item;
+	let navigation = useNavigation();
+	let { photo, brand, category, name, price, discount, price_old } = item;
 	return (
 		<TouchableWithoutFeedback
 			onPress={() =>
+				//@ts-ignore
 				navigation.navigate(ROUTES.PRODUCT_DETAILS, { item })
 			}
 		>
 			<View style={styles.container}>
-				<Image source={{ uri: image }} style={styles.image} />
+				<Image
+					source={{ uri: appendUrl(photo) }}
+					style={styles.image}
+				/>
 				<View style={styles.absolute}>
 					<HeartIcon fill={COLORS.red} />
 					{discount && (
@@ -56,11 +45,20 @@ const ProductItem = ({
 				</View>
 				<View style={styles.details}>
 					<View style={styles.row}>
-						<Text style={styles.brand}>{category}</Text>
-						<Text style={styles.brand}>{shopName}</Text>
+						<Text style={styles.brand}>{category?.name}</Text>
+						<Text style={styles.brand}>{brand?.name}</Text>
 					</View>
 					<Text style={styles.name}>{name}</Text>
-					<Text style={styles.price}>{price}</Text>
+					<View
+						style={{
+							flexDirection: "row",
+							alignItems: "center",
+							justifyContent: "space-between",
+						}}
+					>
+						<Text style={styles.price}>{price} ₽</Text>
+						<Text style={styles.oldPrice}>{price_old} ₽</Text>
+					</View>
 					<DefaultButton
 						containerStyle={styles.button}
 						secondary={secondary}
@@ -166,5 +164,10 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: {
 		flexDirection: "row",
+	},
+
+	oldPrice: {
+		color: COLORS.gray,
+		textDecorationLine: "line-through",
 	},
 });

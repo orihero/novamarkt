@@ -4,6 +4,7 @@ import { STRINGS } from "@novomarkt/locales/strings";
 import React, { useState } from "react";
 import { ScrollView, View } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
+//@ts-ignore
 import { CarouselItemProp } from ".";
 import BrandsList from "./components/BrandsList";
 import CarouselItem from "./components/CarouselItem";
@@ -23,7 +24,7 @@ export let carouselData: CarouselItemProp[] = [
 const HomeView = () => {
 	const [activeSlide, setActiveSlide] = useState(0);
 	return (
-		<ScrollView style={styles.scroll} showsVerticalScrollIndicator={false} >
+		<ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
 			<SearchHeader />
 			<View style={styles.container}>
 				<Carousel

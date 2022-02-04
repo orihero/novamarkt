@@ -1,5 +1,6 @@
 import { LoginResponse, RegisterResponse } from "@novomarkt/api/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../configureStore";
 
 export type InitialState = LoginResponse;
 
@@ -15,7 +16,7 @@ let initialState: InitialState = {
 	email: "",
 };
 
-const cartSlice = createSlice({
+const userSlice = createSlice({
 	name: "user",
 	initialState,
 	reducers: {
@@ -25,7 +26,6 @@ const cartSlice = createSlice({
 		userLoggedOut: () => {
 			return initialState;
 		},
-
 		userRegistered: (state, acion: PayloadAction<RegisterResponse>) => {
 			return acion.payload;
 		},
@@ -33,6 +33,8 @@ const cartSlice = createSlice({
 });
 
 export const { userLoggedIn, userLoggedOut, userRegistered } =
-	cartSlice.actions;
+	userSlice.actions;
 
-export default cartSlice.reducer;
+export const selectUser = (state: RootState) => state.user;
+
+export default userSlice.reducer;

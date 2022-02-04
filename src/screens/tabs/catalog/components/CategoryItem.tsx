@@ -1,3 +1,5 @@
+import { appendUrl } from "@novomarkt/api/requests";
+import { Category } from "@novomarkt/api/types";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
@@ -14,21 +16,26 @@ import {
 	View,
 } from "react-native";
 
-export interface CategoryItemProps {
-	image?: string;
-	name?: string;
-}
+// export interface CategoryItemProps {
+// 	image?: string;
+// 	name?: string;
+// }
 
 const CategoryItem = ({
-	item: { image, name },
-}: ListRenderItemInfo<CategoryItemProps>) => {
-	let navigation = useNavigation();
+	item: { photo, name, id },
+}: ListRenderItemInfo<Category>) => {
+	let navigation: any = useNavigation();
 	return (
 		<TouchableWithoutFeedback
-			onPress={() => navigation.navigate(ROUTES.CATALOG_DETAILS)}
+			onPress={() =>
+				navigation.navigate(ROUTES.CATALOG_DETAILS, { id, name })
+			}
 		>
 			<View style={styles.container}>
-				<Image style={styles.image} source={{ uri: image }} />
+				<Image
+					style={styles.image}
+					source={{ uri: appendUrl(photo as any) }}
+				/>
 				<Text style={styles.text}>{name}</Text>
 			</View>
 		</TouchableWithoutFeedback>
@@ -51,6 +58,7 @@ const styles = StyleSheet.create({
 		margin: 8,
 		borderRadius: 10,
 		alignItems: "center",
+		textAlign: "center",
 	},
 
 	image: {
@@ -61,5 +69,7 @@ const styles = StyleSheet.create({
 	text: {
 		fontSize: 14,
 		color: COLORS.defaultBlack,
+		maxWidth: 110,
+		textAlign: "center",
 	},
 });

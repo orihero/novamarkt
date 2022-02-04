@@ -1,11 +1,13 @@
+import { EyeIcon, OpenedEyeIcon } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
-import React from "react";
+import React, { useState } from "react";
 import {
 	StyleProp,
 	StyleSheet,
 	TextInput,
 	TextStyle,
+	TouchableOpacity,
 	View,
 	ViewStyle,
 } from "react-native";
@@ -59,7 +61,7 @@ export interface DefaultInputProps {
 		| "phone-pad";
 }
 
-const DefaultInput = ({
+const DefaultInputEye = ({
 	placeholder,
 	title,
 	titleStyle,
@@ -71,24 +73,37 @@ const DefaultInput = ({
 	value,
 	keyboardType,
 }: DefaultInputProps) => {
+	const [isOpen, setIsOpen] = useState(true);
 	return (
 		<View style={[styles.container, containerStyle]}>
 			<Text style={[styles.title, titleStyle]}>{title}</Text>
-			<TextInput
-				textContentType={textContentType}
-				secureTextEntry={secureText}
-				style={[styles.input, inputStyle]}
-				placeholder={placeholder}
-				placeholderTextColor={COLORS.gray}
-				onChangeText={onChange}
-				value={value}
-				keyboardType={keyboardType}
-			/>
+			<View style={styles.eyeBox}>
+				<TextInput
+					textContentType={textContentType}
+					secureTextEntry={isOpen == true ? secureText : !secureText}
+					style={[styles.input, inputStyle]}
+					placeholder={placeholder}
+					placeholderTextColor={COLORS.gray}
+					onChangeText={onChange}
+					value={value}
+					keyboardType={keyboardType}
+				/>
+				<TouchableOpacity
+					onPress={() => setIsOpen(!isOpen)}
+					hitSlop={{ left: 20, right: 20, bottom: 20, top: 20 }}
+				>
+					{isOpen == true ? (
+						<EyeIcon fill={COLORS.gray} />
+					) : (
+						<OpenedEyeIcon fill={COLORS.gray} />
+					)}
+				</TouchableOpacity>
+			</View>
 		</View>
 	);
 };
 
-export default DefaultInput;
+export default DefaultInputEye;
 
 const styles = StyleSheet.create({
 	title: {
@@ -97,14 +112,21 @@ const styles = StyleSheet.create({
 		lineHeight: 27,
 	},
 	input: {
-		borderColor: COLORS.darkBorder,
-		borderWidth: 1,
-		borderRadius: 8,
-		width: WINDOW_WIDTH - 80,
+		// borderWidth: 1,
+		width: "90%",
 		fontFamily: "Montserrat-Medium",
 	},
 	container: {
 		alignSelf: "center",
 		marginBottom: 20,
+	},
+
+	eyeBox: {
+		flexDirection: "row",
+		alignItems: "center",
+		borderColor: COLORS.darkBorder,
+		borderWidth: 1,
+		borderRadius: 8,
+		width: WINDOW_WIDTH - 80,
 	},
 });

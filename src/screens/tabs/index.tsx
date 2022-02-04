@@ -34,6 +34,7 @@ const TabNavigation = () => {
 				headerShown: false,
 				tabBarActiveTintColor: COLORS.blue,
 				tabBarInactiveTintColor: COLORS.gray,
+				tabBarHideOnKeyboard: true,
 			}}
 		>
 			<Tab.Screen

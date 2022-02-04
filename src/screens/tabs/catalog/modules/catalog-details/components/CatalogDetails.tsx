@@ -1,8 +1,9 @@
+import requests, { appendUrl } from "@novomarkt/api/requests";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
-import { useNavigation } from "@react-navigation/core";
-import React from "react";
+import { useNavigation, useRoute } from "@react-navigation/core";
+import React, { useEffect, useState } from "react";
 import {
 	Dimensions,
 	Image,
@@ -11,22 +12,40 @@ import {
 	TouchableWithoutFeedback,
 	View,
 } from "react-native";
+import useCatalogDetailsHook from "../hooks";
 
 export interface CatalogDetailsProps {
 	image?: string;
 	name?: string;
+	photo?: string;
 }
 
 const CatalogDetails = ({
-	item: { image, name },
+	item: { image, name, photo },
 }: ListRenderItemInfo<CatalogDetailsProps>) => {
 	let navigation = useNavigation();
+	let routes = useRoute();
+	const [categories, setCategories] = useState([]);
+	let effect = async () => {
+		try {
+			let res = await requests.categories.getSubCategories(
+				routes.params?.id as unknown as number
+			);
+			setCategories(res.data.data);
+		} catch (error) {}
+	};
+	useEffect(() => {
+		effect();
+	}, []);
 	return (
 		<TouchableWithoutFeedback
 			onPress={() => navigation.navigate(ROUTES.CATALOG_PRODUCTS)}
 		>
 			<View style={styles.container}>
-				<Image style={styles.image} source={{ uri: image }} />
+				<Image
+					style={styles.image}
+					source={{ uri: appendUrl(photo as any) }}
+				/>
 				<Text style={styles.text}>{name}</Text>
 			</View>
 		</TouchableWithoutFeedback>

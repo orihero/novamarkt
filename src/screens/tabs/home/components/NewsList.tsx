@@ -1,12 +1,13 @@
+import requests from "@novomarkt/api/requests";
+import { NewsItemResponse } from "@novomarkt/api/types";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import NewsItem, { NewsItemProps } from "./NewsItem";
-import ProductItem, { ProductItemProps } from "./ProductItem";
 
-let newsData: NewsItemProps[] = [
+export let newsData: NewsItemProps[] = [
 	{
 		image: "https://ydbrand.imgix.net/YD/Products/19ASUX04_BLK_1.png",
 		content:
@@ -38,13 +39,23 @@ export interface NewsData {
 }
 
 const NewsList = ({ title = STRINGS.news }: NewsData) => {
+	const [news, setNews] = useState<NewsItemResponse[]>([]);
+	let effect = async () => {
+		try {
+			let res = await requests.news.getNews();
+			setNews(res.data.data);
+		} catch (error) {}
+	};
+	useEffect(() => {
+		effect();
+	}, []);
 	return (
 		<View style={styles.container}>
 			<Text style={styles.title}>{title}</Text>
 			<FlatList
 				horizontal
 				showsHorizontalScrollIndicator={false}
-				data={newsData}
+				data={news}
 				renderItem={NewsItem}
 				style={styles.container}
 				contentContainerStyle={styles.contentContainerStyle}

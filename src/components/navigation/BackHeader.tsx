@@ -5,6 +5,7 @@ import React from "react";
 import {
 	StyleProp,
 	StyleSheet,
+	TouchableOpacity,
 	TouchableWithoutFeedback,
 	View,
 	ViewStyle,
@@ -27,12 +28,12 @@ const BackHeader = ({
 	return (
 		<View style={[styles.container, style]}>
 			<View style={styles.row}>
-				<TouchableWithoutFeedback
+				<TouchableOpacity
 					hitSlop={{ bottom: 20, top: 20, left: 20, right: 20 }}
-					onPress={navigation.goBack}
+					onPress={() => navigation.goBack()}
 				>
 					<LeftArrow />
-				</TouchableWithoutFeedback>
+				</TouchableOpacity>
 				<Text style={styles.text}>{name}</Text>
 			</View>
 			{hasSearch && <SearchIcon fill={COLORS.blue} />}

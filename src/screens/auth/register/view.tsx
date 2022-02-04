@@ -1,6 +1,7 @@
 import { FbIcon, GmailIcon, OkIcon } from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import DefaultInput from "@novomarkt/components/general/DefaultInput";
+import DefaultInputEye from "@novomarkt/components/general/DefaultInputEye";
 import { COLORS, GRADIENT_COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
@@ -42,7 +43,7 @@ const RegisterView = () => {
 					onChange={onStateChange("phone")}
 					value={state.phone}
 				/>
-				<DefaultInput
+				<DefaultInputEye
 					containerStyle={styles.input}
 					inputStyle={styles.inputStyle}
 					title={STRINGS.password}

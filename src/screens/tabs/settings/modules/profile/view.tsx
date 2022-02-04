@@ -1,16 +1,13 @@
-import {
-	EditIcon,
-	LocationIcon,
-	PlusIcon,
-} from "@novomarkt/assets/icons/icons";
+import { LocationIcon, PlusIcon } from "@novomarkt/assets/icons/icons";
 import EditableInput from "@novomarkt/components/general/EditableInput";
 import Text from "@novomarkt/components/general/Text";
 import BackHeader from "@novomarkt/components/navigation/BackHeader";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React, { useCallback, useState } from "react";
-import { Image, ScrollView, TouchableOpacity, View } from "react-native";
+import React from "react";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import Avatar from "../../components/Avatar";
+import useProfileHook from "./hooks";
 import { styles } from "./style";
 
 export interface UserData {
@@ -19,23 +16,12 @@ export interface UserData {
 	phone: string;
 	dateOfBirth: string;
 	isMale: boolean;
+	gender: boolean;
 }
 
 const ProfileView = () => {
-	const [data, setData] = useState<UserData>({
-		email: "",
-		phone: "",
-		dateOfBirth: "",
-		isMale: true,
-		name: "",
-	});
-	let onTextChange = useCallback((key: keyof UserData) => {
-		return (value: string) => {
-			//TODO check
-			// @ts-ignore
-			setData({ ...data, [key]: value });
-		};
-	}, []);
+	let { onTextChange, profileData, setProfileData, onFieldSubmit } =
+		useProfileHook();
 	return (
 		<ScrollView style={styles.container}>
 			<BackHeader style={styles.left} />
@@ -45,52 +31,59 @@ const ProfileView = () => {
 					<Avatar />
 					<EditableInput
 						titleStyle={styles.head}
-						value={data?.name}
+						value={profileData?.name}
 						bigger
-						onChange={onTextChange("name")}
+						onChange={onTextChange}
 						placeholder="Имя"
+						onSubmit={onFieldSubmit}
+						name="name"
 					/>
 				</View>
 				<View style={styles.inputBox}>
 					<EditableInput
 						title={STRINGS.email}
-						value={data?.email}
-						onChange={onTextChange("email")}
-						placeholder="mironshohnasimov@gmail.com"
+						value={profileData?.email}
+						onChange={onTextChange}
 						keyboardType="email-address"
+						placeholder=""
+						name="email"
 					/>
 					<EditableInput
 						title={STRINGS.phone}
-						value={data?.phone}
-						onChange={onTextChange("phone")}
+						value={profileData?.phone}
+						onChange={onTextChange}
 						placeholder="+998 99 989 2923"
 						keyboardType="phone-pad"
+						name="phone"
 					/>
 					<EditableInput
 						title={STRINGS.dateOfBirth}
-						value={data?.dateOfBirth}
-						onChange={onTextChange("dateOfBirth")}
-						placeholder="01.01.2000"
+						value={profileData?.date}
+						onChange={onTextChange}
+						placeholder=""
 						keyboardType="numeric"
+						name="date"
 					/>
 				</View>
 				<View>
 					<Text>{STRINGS.sex}</Text>
 					<View style={styles.row}>
 						<TouchableOpacity
-							onPress={() => setData({ ...data, isMale: true })}
+							onPress={() =>
+								setProfileData({ ...profileData, gender: true })
+							}
 						>
 							<View style={styles.rowButtons}>
 								<View
 									style={
-										data?.isMale
+										profileData?.gender
 											? styles.dot
 											: styles.dotGray
 									}
 								>
 									<View
 										style={
-											data?.isMale
+											profileData?.gender
 												? styles.background
 												: styles.backgroundGray
 										}
@@ -101,19 +94,24 @@ const ProfileView = () => {
 						</TouchableOpacity>
 
 						<TouchableOpacity
-							onPress={() => setData({ ...data, isMale: false })}
+							onPress={() =>
+								setProfileData({
+									...profileData,
+									gender: false,
+								})
+							}
 						>
 							<View style={styles.rowButtons}>
 								<View
 									style={
-										data?.isMale
+										profileData?.gender
 											? styles.dotGray
 											: styles.dot
 									}
 								>
 									<View
 										style={
-											data?.isMale
+											profileData?.gender
 												? styles.backgroundGray
 												: styles.background
 										}

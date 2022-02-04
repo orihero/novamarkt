@@ -1,9 +1,12 @@
+import { Category } from "@novomarkt/api/types";
 import BackHeader from "@novomarkt/components/navigation/BackHeader";
+import { useRoute } from "@react-navigation/native";
 import React from "react";
 import { FlatList, Image, ScrollView, View } from "react-native";
 import CatalogDetails, {
 	CatalogDetailsProps,
 } from "./components/CatalogDetails";
+import useCatalogDetailsHook from "./hooks";
 import { styles } from "./style";
 
 let BannerURL =
@@ -37,13 +40,14 @@ export let catalogDetailsData: CatalogDetailsProps[] = [
 ];
 
 const CatalogDetailsView = () => {
+	let { details, title } = useCatalogDetailsHook();
 	return (
 		<ScrollView style={styles.container}>
-			<BackHeader name={"Женщинам"} style={styles.header} />
+			<BackHeader name={title} style={styles.header} />
 			<Image source={{ uri: BannerURL }} style={styles.banner} />
 			<FlatList
 				renderItem={(props) => <CatalogDetails {...props} />}
-				data={catalogDetailsData}
+				data={details}
 				numColumns={2}
 				style={styles.box}
 				contentContainerStyle={{

@@ -19,9 +19,11 @@ import { useNavigation } from "@react-navigation/core";
 import React from "react";
 import { ScrollView, View } from "react-native";
 import SettingsItem from "./components/SettingsItem";
+import useSettingsHook from "./hooks";
 import { styles } from "./style";
 
 const SettingsView = ({}) => {
+	let { onLogOut } = useSettingsHook();
 	let navigation = useNavigation();
 	return (
 		<ScrollView style={styles.container}>
@@ -79,7 +81,7 @@ const SettingsView = ({}) => {
 					icon={() => <MessageIcon stroke={COLORS.defaultBlack} />}
 				/>
 				<SettingsItem
-					onPress={() => navigation.navigate(ROUTES.LOGIN)}
+					onPress={onLogOut}
 					text={"Выйти"}
 					icon={() => <ExitIcon stroke={COLORS.defaultBlack} />}
 				/>

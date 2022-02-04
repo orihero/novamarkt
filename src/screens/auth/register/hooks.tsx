@@ -18,14 +18,13 @@ const useRegisterHook = () => {
 	let navigation = useNavigation();
 	//TODO remove initial value
 	const [state, setState] = useState<RegisterState>({
-		name: "Azim",
-		password: "12345678",
-		phone: "+998932300500",
+		name: "",
+		password: "",
+		phone: "",
 	});
 
-    
 	const [loading, setLoading] = useState<boolean>(false);
-    
+
 	const [errTxt, setErrTxt] = useState("");
 
 	let dispatch = useAppDispatch();
@@ -39,17 +38,19 @@ const useRegisterHook = () => {
 				let res = await requests.auth.register(state);
 				// let res = await axios.get("http://qwerty.uz");
 				//write these data to redux and AsyncStorage
-				dispatch(userLoggedIn(res?.data));
 				//@ts-ignore
-				navigation.navigate(ROUTES.VERIFICATION);
+				navigation.navigate(ROUTES.VERIFICATION, {
+					phone: state.phone,
+					token: res.data.data.token,
+				});
 			} catch (error) {
 				let err = error as AxiosError<RegisterResponseErrors>;
 				if (axios.isAxiosError(err)) {
 					// Access to config, request, and response
 					// err.response?.data.errors[0].phone;
 					let errText = err.response?.data.errors.phone.join(", ");
-					console.log(errText);
-                    setErrTxt(errText || '')
+					// console.log(errText);
+					setErrTxt(errText || "");
 				} else {
 					// Just a stock error
 				}
@@ -58,7 +59,7 @@ const useRegisterHook = () => {
 			}
 		} else {
 			//TODO warn that data is incorrect
-			console.log("INCORRECT PHONE NUMBER");
+			// console.log("INCORRECT PHONE NUMBER");
 		}
 	};
 
@@ -74,7 +75,7 @@ const useRegisterHook = () => {
 		state,
 		loading,
 		onRegisterNavigation,
-		errTxt
+		errTxt,
 	};
 };
 

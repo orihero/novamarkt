@@ -1,21 +1,37 @@
-import { DeliveryIcon, SearchIcon } from "@novomarkt/assets/icons/icons";
+import {
+	DeliveryIcon,
+	LeftArrow,
+	SearchIcon,
+} from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import { REGULAR_FONT_FAMILY } from "@novomarkt/constants/fonts";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Platform, StyleSheet, TextInput, View } from "react-native";
+import {
+	Platform,
+	StyleSheet,
+	TextInput,
+	TouchableOpacity,
+	View,
+} from "react-native";
 
 interface SearchProps {
 	autoFocus?: boolean;
 	onChange?: () => void;
 }
 
-const SearchHeader = ({ autoFocus, onChange }: SearchProps) => {
+const SearchBackHeader = ({ autoFocus, onChange }: SearchProps) => {
 	const navigation = useNavigation();
 	return (
 		<View style={styles.container}>
+			<TouchableOpacity
+				onPress={() => navigation.goBack()}
+				hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
+			>
+				<LeftArrow />
+			</TouchableOpacity>
 			<View style={styles.inputContainer}>
 				<TextInput
 					style={styles.input}
@@ -35,13 +51,13 @@ const SearchHeader = ({ autoFocus, onChange }: SearchProps) => {
 	);
 };
 
-export default SearchHeader;
+export default SearchBackHeader;
 
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: "row",
 		alignItems: "center",
-		paddingRight: 16,
+		paddingHorizontal: 15,
 	},
 	inputContainer: {
 		flex: 1,

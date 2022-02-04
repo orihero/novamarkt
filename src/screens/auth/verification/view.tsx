@@ -57,7 +57,9 @@ const VerificationView = () => {
 					loading={loading}
 					onPress={onVerificate}
 				/>
-				<Text style={styles.end}>Уже зарегистрирован?</Text>
+				<TouchableOpacity onPress={onChangePhoneNumber}>
+					<Text style={styles.end}>Уже зарегистрирован?</Text>
+				</TouchableOpacity>
 			</View>
 		</View>
 	);

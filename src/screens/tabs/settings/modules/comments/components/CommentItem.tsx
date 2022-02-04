@@ -1,15 +1,14 @@
-import React from "react";
-import { ListRenderItemInfo, StyleSheet, View } from "react-native";
-import { ProductItemProps } from "@novomarkt/screens/tabs/home/components/ProductItem";
-import Text from "@novomarkt/components/general/Text";
-import { COLORS } from "@novomarkt/constants/colors";
 import {
-	ArrowBottomMarked,
 	Checked,
 	MarkedStar,
 	NotMarkedStar,
 } from "@novomarkt/assets/icons/icons";
+import Text from "@novomarkt/components/general/Text";
+import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
+import { ProductItemProps } from "@novomarkt/screens/tabs/home/components/ProductItem";
+import React from "react";
+import { ListRenderItemInfo, StyleSheet, View } from "react-native";
 
 const CommentItem = ({
 	item: { name, image, shopName, price },

@@ -16,7 +16,7 @@ const BackHeaderDefault = () => {
 		<View style={styles.row}>
 			<LeftArrow
 				onPress={() => navigation.goBack()}
-				hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}
+				hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
 			/>
 			<View style={styles.upload}>
 				<HeartIcon style={styles.heart} fill={COLORS.blue} />

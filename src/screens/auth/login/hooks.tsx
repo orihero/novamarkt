@@ -4,7 +4,7 @@ import { useAppDispatch } from "@novomarkt/store/hooks";
 import { userLoggedIn } from "@novomarkt/store/slices/userSlice";
 import { validatePhoneNumber } from "@novomarkt/utils/validation";
 import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useState } from "react";
 
 export interface LoginState {
@@ -17,9 +17,10 @@ const useLoginHook = () => {
 	let navigation = useNavigation();
 	//TODO remove initial value
 	const [state, setState] = useState<LoginState>({
-		password: "206190",
-		phone: "+998932300500",
+		password: "",
+		phone: "",
 	});
+	const [error, setError] = useState("");
 	let [loading, setLoading] = useState<boolean>(false);
 	let dispatch = useAppDispatch();
 	let onLogin = async () => {
@@ -32,17 +33,31 @@ const useLoginHook = () => {
 				// let res = await axios.get("http://qwerty.uz");
 				//write these data to redux and AsyncStorage
 				dispatch(userLoggedIn(res.data));
-				//@ts-ignore
-				navigation.navigate(ROUTES.VERIFICATION);
 			} catch (error) {
-				console.warn(error.toJSON());
-				console.warn(Object.keys(error));
+				//Check if server error
+				const err = error as AxiosError<{
+					errors: Record<keyof LoginState, string>;
+				}>;
+				if (err.response) {
+					let vals = Object.values(err.response.data.errors).join(
+						","
+					);
+					setError(vals);
+				} else {
+					setError("Something went wrong");
+					setTimeout(() => {
+						setError("");
+					}, 3000);
+				}
 			} finally {
 				setLoading(false);
 			}
 		} else {
 			//TODO warn that data is incorrect
-			console.log("INCORRECT PHONE NUMBER");
+			setError("Заполните поля");
+			setTimeout(() => {
+				setError("");
+			}, 3000);
 		}
 	};
 
@@ -62,6 +77,7 @@ const useLoginHook = () => {
 		loading,
 		onLoginNavigation,
 		onForgotPassNavigation,
+		error,
 	};
 };
 

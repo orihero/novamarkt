@@ -29,7 +29,7 @@ const FavoriteView = () => {
 			<Text style={styles.text}>{STRINGS.advertBlock}</Text>
 			<FlatList
 				data={productsData}
-				renderItem={ProductItem}
+				renderItem={(props) => <ProductItem {...props} />}
 				numColumns={2}
 				style={styles.content}
 			/>

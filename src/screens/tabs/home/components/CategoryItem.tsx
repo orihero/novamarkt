@@ -1,19 +1,17 @@
-import { BasketIcon } from "@novomarkt/assets/icons/icons";
-import DefaultButton from "@novomarkt/components/general/DefaultButton";
+import { appendUrl } from "@novomarkt/api/requests";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
-import { STRINGS } from "@novomarkt/locales/strings";
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement } from "react";
 import { Image, ListRenderItemInfo, StyleSheet, View } from "react-native";
 
 export interface CategoryItemProps {
 	name: string;
-	image: string;
+	photo: string;
 }
 
 const CategoryItem = ({
-	item: { image, name },
+	item: { photo, name },
 }: ListRenderItemInfo<CategoryItemProps>): ReactElement => {
 	return (
 		<View style={styles.container}>
@@ -26,7 +24,7 @@ const CategoryItem = ({
 					{name}
 				</Text>
 			</View>
-			<Image style={styles.image} source={{ uri: image }} />
+			<Image style={styles.image} source={{ uri: appendUrl(photo) }} />
 		</View>
 	);
 };

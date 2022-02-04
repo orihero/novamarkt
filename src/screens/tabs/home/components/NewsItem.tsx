@@ -1,4 +1,5 @@
-import { BasketIcon, HeartIcon } from "@novomarkt/assets/icons/icons";
+import { appendUrl } from "@novomarkt/api/requests";
+import { NewsItemResponse } from "@novomarkt/api/types";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
@@ -14,20 +15,24 @@ export interface NewsItemProps {
 }
 
 const NewsItem = ({
-	item: { content, date, image },
-}: ListRenderItemInfo<NewsItemProps>): ReactElement => {
+	item: { date, photo, description_mini },
+}: ListRenderItemInfo<NewsItemResponse>): ReactElement => {
+	let [day, time] = date.split(" ");
 	return (
 		<View style={styles.container}>
-			<Image source={{ uri: image }} style={styles.image} />
+			<Image source={{ uri: appendUrl(photo) }} style={styles.image} />
 			<View style={styles.content}>
-				<Text style={styles.text}>{content}</Text>
+				<Text style={styles.text}>{description_mini}</Text>
 				<View style={styles.row}>
 					<DefaultButton
 						textStyle={styles.buttonText}
 						containerStyle={styles.buttonContainer}
 						text={STRINGS.detailed}
 					/>
-					<Text style={styles.dateStyle}>{date}</Text>
+					<View style={{ alignItems: "flex-end" }}>
+						<Text style={styles.dateStyle}>{day}</Text>
+						<Text style={styles.dateStyle}>{time}</Text>
+					</View>
 				</View>
 			</View>
 		</View>
@@ -65,13 +70,13 @@ const styles = StyleSheet.create({
 			width: 0,
 			height: 0,
 		},
-		width: WINDOW_WIDTH / 2 - 20,
+		width: WINDOW_WIDTH / 2 - 5,
 		margin: 4,
 		marginRight: 8,
 	},
 	image: {
-		width: WINDOW_WIDTH / 2 - 20,
-		height: 120,
+		width: WINDOW_WIDTH / 2 - 5,
+		height: 100,
 		borderRadius: 8,
 	},
 	content: {

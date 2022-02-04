@@ -1,16 +1,11 @@
-import React from "react";
-import {
-	RecyclerViewBackedScrollView,
-	ScrollView,
-	ScrollViewBase,
-	View,
-} from "react-native";
 import Text from "@novomarkt/components/general/Text";
 import BackHeader from "@novomarkt/components/navigation/BackHeader";
 import { STRINGS } from "@novomarkt/locales/strings";
-import { styles } from "./style";
+import React from "react";
+import { ScrollView } from "react-native";
 import HandlingTextBox from "./components/HandlingTextBox";
 import QuestionBox from "./components/QuestionBox";
+import { styles } from "./style";
 
 const QuestionsView = () => {
 	return (
@@ -20,7 +15,10 @@ const QuestionsView = () => {
 			<HandlingTextBox />
 			<HandlingTextBox />
 			<HandlingTextBox />
-			<QuestionBox  title={"У вас есть вопросы"} button={"Отправить отзыв"} />
+			<QuestionBox
+				title={"У вас есть вопросы"}
+				button={"Отправить отзыв"}
+			/>
 		</ScrollView>
 	);
 };

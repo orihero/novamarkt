@@ -1,4 +1,5 @@
 import { COLORS } from "@novomarkt/constants/colors";
+import { WINDOW_HEIGHT, WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -42,16 +43,13 @@ export const styles = StyleSheet.create({
 		borderRadius: 14,
 	},
 
-	carousel: {
-		paddingVertical: 20,
-	},
-
 	itemName: {
 		color: COLORS.defaultBlack,
 		marginHorizontal: 25,
 		fontSize: 17,
 		fontWeight: "700",
 		letterSpacing: 0.5,
+		marginVertical: 10,
 	},
 
 	credit: {
@@ -108,7 +106,7 @@ export const styles = StyleSheet.create({
 		color: COLORS.defaultBlack,
 		fontSize: 15,
 		fontWeight: "700",
-		letterSpacing: 0.5
+		letterSpacing: 0.5,
 	},
 
 	buttonTxt: {
@@ -182,7 +180,7 @@ export const styles = StyleSheet.create({
 		marginHorizontal: 20,
 		marginVertical: 20,
 		fontWeight: "700",
-		letterSpacing: 0.5
+		letterSpacing: 0.5,
 	},
 
 	marginBottom: {
@@ -191,5 +189,11 @@ export const styles = StyleSheet.create({
 
 	marginBottomEnd: {
 		marginBottom: 80,
+	},
+
+	productImage: {
+		width: WINDOW_WIDTH - 20,
+		height: 400,
+		alignSelf: "center",
 	},
 });

@@ -1,3 +1,4 @@
+import { LoginResponse } from "@novomarkt/api/types";
 import { PlusIcon } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import React, { useState } from "react";
@@ -9,7 +10,10 @@ import {
 } from "react-native";
 import { launchImageLibrary } from "react-native-image-picker";
 
+type ProfileData = Partial<LoginResponse>;
+
 const Avatar = () => {
+	let [profileData, setProfileData] = useState<ProfileData>();
 	const [image, setImage] = useState<string | undefined>("");
 	let onPhotoUpload = () => {
 		launchImageLibrary({ mediaType: "photo" }, ({ assets }) => {
@@ -25,7 +29,7 @@ const Avatar = () => {
 					style={styles.avatar}
 					source={{
 						uri: image
-							? image
+							? profileData?.photo
 							: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyz-77X11MoGE22xVjjPhbpW6lPj6I0SkcTQ&usqp=CAU",
 					}}
 				/>
