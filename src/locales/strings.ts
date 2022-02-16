@@ -2,6 +2,7 @@ import LocalizedStrings from "react-native-localization";
 
 export const STRINGS = new LocalizedStrings({
 	ru: {
+		save: "Сохранить",
 		continue: "Продолжить",
 		name: "Имя",
 		inputName: "Имя*",
@@ -94,5 +95,7 @@ export const STRINGS = new LocalizedStrings({
 		problemActivation: "Проблема авторизации?",
 		forgotPassword:
 			"Введите свой номер телефона, и мы вышлем вам код для входа в вашу учетную запись.",
+		selectCard: "Выберите карту",
+		cardNumber: "Номер карты",
 	},
 });

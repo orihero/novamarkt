@@ -9,6 +9,8 @@ import { ScrollView, TouchableOpacity, View } from "react-native";
 import Avatar from "../../components/Avatar";
 import useProfileHook from "./hooks";
 import { styles } from "./style";
+import Modal from "react-native-modal";
+import CartSelectItem from "./components/cartItem/view";
 
 export interface UserData {
 	name: string;
@@ -23,134 +25,136 @@ const ProfileView = () => {
 	let { onTextChange, profileData, setProfileData, onFieldSubmit } =
 		useProfileHook();
 	return (
-		<ScrollView style={styles.container}>
+		<>
 			<BackHeader style={styles.left} />
-			<Text style={styles.header}>Мои данные</Text>
-			<View style={styles.shadowBox}>
-				<View style={styles.row}>
-					<Avatar />
-					<EditableInput
-						titleStyle={styles.head}
-						value={profileData?.name}
-						bigger
-						onChange={onTextChange}
-						placeholder="Имя"
-						onSubmit={onFieldSubmit}
-						name="name"
-					/>
-				</View>
-				<View style={styles.inputBox}>
-					<EditableInput
-						title={STRINGS.email}
-						value={profileData?.email}
-						onChange={onTextChange}
-						keyboardType="email-address"
-						placeholder=""
-						name="email"
-					/>
-					<EditableInput
-						title={STRINGS.phone}
-						value={profileData?.phone}
-						onChange={onTextChange}
-						placeholder="+998 99 989 2923"
-						keyboardType="phone-pad"
-						name="phone"
-					/>
-					<EditableInput
-						title={STRINGS.dateOfBirth}
-						value={profileData?.date}
-						onChange={onTextChange}
-						placeholder=""
-						keyboardType="numeric"
-						name="date"
-					/>
-				</View>
-				<View>
-					<Text>{STRINGS.sex}</Text>
+			<ScrollView style={styles.container}>
+				<Text style={styles.header}>Мои данные</Text>
+				<View style={styles.shadowBox}>
 					<View style={styles.row}>
-						<TouchableOpacity
-							onPress={() =>
-								setProfileData({ ...profileData, gender: true })
-							}
-						>
-							<View style={styles.rowButtons}>
-								<View
-									style={
-										profileData?.gender
-											? styles.dot
-											: styles.dotGray
-									}
-								>
+						<Avatar />
+						<EditableInput
+							titleStyle={styles.head}
+							value={profileData?.name}
+							bigger
+							onChange={onTextChange}
+							placeholder="Имя"
+							onSubmit={onFieldSubmit}
+							name="name"
+						/>
+					</View>
+					<View style={styles.inputBox}>
+						<EditableInput
+							title={STRINGS.email}
+							value={profileData?.email}
+							onChange={onTextChange}
+							keyboardType="email-address"
+							placeholder=""
+							name="email"
+						/>
+						<EditableInput
+							title={STRINGS.phone}
+							value={profileData?.phone}
+							onChange={onTextChange}
+							placeholder="+998 99 989 2923"
+							keyboardType="phone-pad"
+							name="phone"
+						/>
+						<EditableInput
+							title={STRINGS.dateOfBirth}
+							value={profileData?.date}
+							onChange={onTextChange}
+							placeholder=""
+							keyboardType="numeric"
+							name="date"
+						/>
+					</View>
+					<View>
+						<Text>{STRINGS.sex}</Text>
+						<View style={styles.row}>
+							<TouchableOpacity
+								onPress={() =>
+									setProfileData({
+										...profileData,
+										gender: true,
+									})
+								}
+							>
+								<View style={styles.rowButtons}>
 									<View
 										style={
 											profileData?.gender
-												? styles.background
-												: styles.backgroundGray
+												? styles.dot
+												: styles.dotGray
 										}
-									/>
+									>
+										<View
+											style={
+												profileData?.gender
+													? styles.background
+													: styles.backgroundGray
+											}
+										/>
+									</View>
+									<Text style={styles.black}>Муж.</Text>
 								</View>
-								<Text style={styles.black}>Муж.</Text>
-							</View>
-						</TouchableOpacity>
+							</TouchableOpacity>
 
-						<TouchableOpacity
-							onPress={() =>
-								setProfileData({
-									...profileData,
-									gender: false,
-								})
-							}
-						>
-							<View style={styles.rowButtons}>
-								<View
-									style={
-										profileData?.gender
-											? styles.dotGray
-											: styles.dot
-									}
-								>
+							<TouchableOpacity
+								onPress={() =>
+									setProfileData({
+										...profileData,
+										gender: false,
+									})
+								}
+							>
+								<View style={styles.rowButtons}>
 									<View
 										style={
 											profileData?.gender
-												? styles.backgroundGray
-												: styles.background
+												? styles.dotGray
+												: styles.dot
 										}
-									/>
+									>
+										<View
+											style={
+												profileData?.gender
+													? styles.backgroundGray
+													: styles.background
+											}
+										/>
+									</View>
+									<Text style={styles.black}>Жен.</Text>
 								</View>
-								<Text style={styles.black}>Жен.</Text>
-							</View>
-						</TouchableOpacity>
+							</TouchableOpacity>
+						</View>
 					</View>
 				</View>
-			</View>
-			<View style={styles.shadowBoxTwo}>
-				<Text style={styles.bank}> Банковские карты </Text>
-				<View style={styles.border}>
-					<View style={styles.round}>
-						<PlusIcon stroke={COLORS.blue} fill={COLORS.blue} />
+				<View style={styles.shadowBoxTwo}>
+					<Text style={styles.bank}> Банковские карты </Text>
+					<CartSelectItem />
+				</View>
+				<View style={styles.locate}>
+					<Text style={styles.txt}>Адресa клиента</Text>
+					<View style={styles.row}>
+						<LocationIcon fill={COLORS.gray} />
+						<Text style={styles.moscow}>Москва</Text>
 					</View>
-					<Text style={styles.blueText}>Добавить карту</Text>
 				</View>
-			</View>
-			<View style={styles.locate}>
-				<Text style={styles.txt}>Адресa клиента</Text>
-				<View style={styles.row}>
-					<LocationIcon fill={COLORS.gray} />
-					<Text style={styles.moscow}>Москва</Text>
+				<View style={styles.delete}>
+					<Text style={styles.txt}>Удаление личного кабинета</Text>
+					<Text>Как только Ваш личный кабинет будет удален</Text>
+					<Text style={styles.blueText}>
+						Удаление личново кабинета
+					</Text>
 				</View>
-			</View>
-			<View style={styles.delete}>
-				<Text style={styles.txt}>Удаление личного кабинета</Text>
-				<Text>Как только Ваш личный кабинет будет удален</Text>
-				<Text style={styles.blueText}>Удаление личново кабинета</Text>
-			</View>
-			<View style={styles.recover}>
-				<Text style={styles.txt}>Восстановления пароля</Text>
-				<Text style={styles.blueText}>
-					Данные для восстановления пароля и sms
-				</Text>
-			</View>
-		</ScrollView>
+				<View style={styles.recover}>
+					<Text style={styles.txt}>Восстановления пароля</Text>
+					<Text style={styles.blueText}>
+						Данные для восстановления пароля и sms
+					</Text>
+				</View>
+			</ScrollView>
+		</>
 	);
 };
 

@@ -12,7 +12,6 @@ import {
 	TouchableWithoutFeedback,
 	View,
 } from "react-native";
-import useCatalogDetailsHook from "../hooks";
 
 export interface CatalogDetailsProps {
 	image?: string;
@@ -29,7 +28,8 @@ const CatalogDetails = ({
 	let effect = async () => {
 		try {
 			let res = await requests.categories.getSubCategories(
-				routes.params?.id as unknown as number
+				//@ts-ignore
+				routes.params?.id
 			);
 			setCategories(res.data.data);
 		} catch (error) {}
@@ -39,7 +39,7 @@ const CatalogDetails = ({
 	}, []);
 	return (
 		<TouchableWithoutFeedback
-			onPress={() => navigation.navigate(ROUTES.CATALOG_PRODUCTS)}
+			onPress={() => navigation.navigate(ROUTES.CATALOG_PRODUCTS as any)}
 		>
 			<View style={styles.container}>
 				<Image

@@ -7,10 +7,12 @@ export interface QueryProps {
 
 interface InitialState {
 	query: string;
+	loading: boolean;
 }
 
 let initialState: InitialState = {
-	query: "Рубашка",
+	query: "",
+	loading: false,
 };
 //  PayloadAction<QueryProps>
 const appSettingsSlice = createSlice({
@@ -23,11 +25,17 @@ const appSettingsSlice = createSlice({
 		},
 
 		clearQuery: () => initialState,
+
+		toggleLoading: (state) => {
+			return { ...state, loading: !state.loading };
+		},
 	},
 });
 
-export const { setQuery, clearQuery } = appSettingsSlice.actions;
+export const { setQuery, clearQuery, toggleLoading } = appSettingsSlice.actions;
 
 export const selectQuery = (state: RootState) => state.appSettings.query;
+
+export const selectAppSettings = (state: RootState) => state.appSettings;
 
 export default appSettingsSlice.reducer;

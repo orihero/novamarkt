@@ -12,6 +12,7 @@ import CategoriesList from "./components/CategoriesList";
 import NewsList from "./components/NewsList";
 import ProductsList from "./components/ProductsList";
 import ShopsList from "./components/ShopsList";
+import { useHomeScreenHooks } from "./hooks";
 import { styles } from "./style";
 
 export let carouselData: CarouselItemProp[] = [
@@ -22,35 +23,40 @@ export let carouselData: CarouselItemProp[] = [
 ];
 
 const HomeView = () => {
-	const [activeSlide, setActiveSlide] = useState(0);
+	let { setActiveSlide, activeSlide } = useHomeScreenHooks();
 	return (
-		<ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+		<>
 			<SearchHeader />
-			<View style={styles.container}>
-				<Carousel
-					onSnapToItem={(index) => setActiveSlide(index)}
-					itemWidth={WINDOW_WIDTH}
-					windowSize={WINDOW_WIDTH}
-					sliderWidth={WINDOW_WIDTH}
-					itemHeight={200}
-					sliderHeight={200}
-					data={carouselData}
-					renderItem={CarouselItem}
-					pagingEnabled
-				/>
-				<Pagination
-					activeDotIndex={activeSlide}
-					dotsLength={carouselData.length}
-				/>
-			</View>
-			<BrandsList />
-			<ShopsList />
-			<ProductsList />
-			<CategoriesList />
-			<ProductsList title={STRINGS.productsOnSale} />
-			<NewsList />
-			<ProductsList title={STRINGS.recentlyWatched} />
-		</ScrollView>
+			<ScrollView
+				style={styles.scroll}
+				showsVerticalScrollIndicator={false}
+			>
+				<View style={styles.container}>
+					<Carousel
+						onSnapToItem={(index) => setActiveSlide(index)}
+						itemWidth={WINDOW_WIDTH}
+						windowSize={WINDOW_WIDTH}
+						sliderWidth={WINDOW_WIDTH}
+						itemHeight={200}
+						sliderHeight={200}
+						data={carouselData}
+						renderItem={CarouselItem}
+						pagingEnabled
+					/>
+					<Pagination
+						activeDotIndex={activeSlide}
+						dotsLength={carouselData.length}
+					/>
+				</View>
+				<BrandsList />
+				<ShopsList />
+				<ProductsList />
+				<CategoriesList />
+				<ProductsList title={STRINGS.productsOnSale} />
+				<NewsList />
+				<ProductsList title={STRINGS.recentlyWatched} />
+			</ScrollView>
+		</>
 	);
 };
 

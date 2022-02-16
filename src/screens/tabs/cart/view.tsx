@@ -22,7 +22,7 @@ const CartView = () => {
 			<ChooseItemNum />
 			<ChooseItemNum />
 			<DefaultButton
-				onPress={() => navigation.navigate(ROUTES.CHECKOUT)}
+				onPress={() => navigation.navigate(ROUTES.CHECKOUT as any)}
 				text={STRINGS.continueOrdering}
 				containerStyle={styles.button}
 				textStyle={styles.buttonTxt}

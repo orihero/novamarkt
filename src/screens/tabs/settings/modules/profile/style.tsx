@@ -1,4 +1,5 @@
 import { COLORS } from "@novomarkt/constants/colors";
+import { WINDOW_HEIGHT } from "@novomarkt/constants/sizes";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -49,6 +50,12 @@ export const styles = StyleSheet.create({
 		marginTop: 5,
 		marginRight: 10,
 		flexDirection: "row",
+	},
+
+	blueText: {
+		color: COLORS.blue,
+		fontSize: 14,
+		marginTop: 10,
 	},
 
 	dot: {
@@ -120,31 +127,6 @@ export const styles = StyleSheet.create({
 		marginBottom: 10,
 	},
 
-	border: {
-		borderRadius: 8,
-		borderWidth: 2,
-		borderColor: COLORS.blue,
-		alignItems: "center",
-		justifyContent: "center",
-		padding: 35,
-	},
-
-	blueText: {
-		color: COLORS.blue,
-		fontSize: 14,
-		marginTop: 10,
-	},
-
-	round: {
-		width: 50,
-		height: 50,
-		alignItems: "center",
-		justifyContent: "center",
-		borderWidth: 2,
-		borderRadius: 30,
-		borderColor: COLORS.blue,
-	},
-
 	locate: {
 		padding: 15,
 		marginVertical: 10,
@@ -202,6 +184,8 @@ export const styles = StyleSheet.create({
 	},
 
 	left: {
-		marginHorizontal: 20,
+		paddingHorizontal: 20,
+		paddingBottom: 10,
+		backgroundColor: COLORS.white,
 	},
 });

@@ -1,5 +1,6 @@
 import { COLORS } from "@novomarkt/constants/colors";
 import { StyleSheet } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export const styles = StyleSheet.create({
 	container: {
@@ -11,7 +12,8 @@ export const styles = StyleSheet.create({
 	},
 
 	header: {
-		marginHorizontal: 20,
+		paddingHorizontal: 20,
+		backgroundColor: COLORS.white,
 	},
 
 	headerTxt: {
@@ -20,6 +22,4 @@ export const styles = StyleSheet.create({
 		color: COLORS.defaultBlack,
 		fontSize: 20,
 	},
-
-	
 });

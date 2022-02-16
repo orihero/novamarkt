@@ -1,4 +1,4 @@
-import { appendUrl } from "@novomarkt/api/requests";
+import requests, { appendUrl } from "@novomarkt/api/requests";
 import { ProductItemResponse } from "@novomarkt/api/types";
 import { BasketIcon, HeartIcon } from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
@@ -7,6 +7,8 @@ import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
+import { useAppSelector } from "@novomarkt/store/hooks";
+import { cartSelector } from "@novomarkt/store/slices/cartSlice";
 import { useNavigation } from "@react-navigation/core";
 import React, { ReactElement } from "react";
 import {
@@ -16,13 +18,28 @@ import {
 	TouchableWithoutFeedback,
 	View,
 } from "react-native";
+import { useDispatch } from "react-redux";
 
 const ProductItem = ({
 	item,
 }: ListRenderItemInfo<ProductItemResponse>): ReactElement => {
 	let secondary = true;
+	const dispatch = useDispatch();
 	let navigation = useNavigation();
+	const cart = useAppSelector(cartSelector);
+	console.log(cart);
+
 	let { photo, brand, category, name, price, discount, price_old } = item;
+
+	// const onCartPress = async () => {
+	// 	try {
+	// 		let res = await requests.products.addToCart({
+	// 			amount,
+	// 			product_id,
+	// 		});
+	// 	} catch (error) {}
+	// };
+
 	return (
 		<TouchableWithoutFeedback
 			onPress={() =>

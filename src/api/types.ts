@@ -55,6 +55,10 @@ export interface ProductItemResponse {
 	photo: string;
 }
 
+export interface CartItemResponse extends ProductItemResponse {
+	amount: number;
+}
+
 export interface Self {
 	href: string;
 }
@@ -93,4 +97,49 @@ export interface NewsItemResponse {
 	views: number;
 	photo: string;
 	date: string;
+}
+
+export interface AddCardRequest {
+	card_type_id: number;
+	card_number: string;
+	card_expire: string;
+	card_phone_number: string;
+}
+
+export interface CardTypeItem {
+	id: number;
+	name: string;
+	description: string;
+	photo: string;
+}
+
+export interface CardType {
+	id: number;
+	name: string;
+	description: string;
+	photo: string;
+	childs: any[];
+}
+
+export interface CardItem {
+	id: number;
+	cardType: CardType;
+	card_number: string;
+	card_expire: string;
+	card_phone_number: string;
+	status: number;
+	date: string;
+}
+
+export interface QuestionsResponse {
+	id: number;
+	question: string;
+	answer: string;
+	date: string;
+}
+
+export interface SendQuestionValue {
+	name?: string;
+	email?: string;
+	message?: string;
 }

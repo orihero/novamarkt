@@ -1,7 +1,9 @@
+import requests from "@novomarkt/api/requests";
+import { SendQuestionValue } from "@novomarkt/api/types";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
-import React from "react";
+import React, { useState } from "react";
 import { Platform, StyleSheet, TextInput, View } from "react-native";
 
 export interface QuestionBoxProps {
@@ -10,6 +12,21 @@ export interface QuestionBoxProps {
 }
 
 const QuestionBox = ({ title, button }: QuestionBoxProps) => {
+	const [question, setQuestion] = useState<SendQuestionValue>();
+	const onSubmit = async () => {
+		try {
+			let res = await requests.frequentQuestions.sendQuestion({
+				name: question?.name as string,
+				email: question?.email as string,
+				message: question?.message as string,
+			});
+			console.log("success");
+			setQuestion({});
+		} catch (error) {
+			alert("errroooor");
+			console.log(error);
+		}
+	};
 	return (
 		<View style={{ backgroundColor: COLORS.white }}>
 			<View style={styles.footer}>
@@ -18,22 +35,35 @@ const QuestionBox = ({ title, button }: QuestionBoxProps) => {
 					style={styles.input}
 					placeholder={"Ваше имя"}
 					placeholderTextColor={COLORS.gray}
+					value={question?.name}
+					onChangeText={(e) => {
+						setQuestion({ ...question, name: e });
+					}}
 				/>
 				<TextInput
 					placeholderTextColor={COLORS.gray}
 					style={styles.input}
 					keyboardType="email-address"
 					placeholder={"Ваш  e-mail"}
+					value={question?.email}
+					onChangeText={(e) => {
+						setQuestion({ ...question, email: e });
+					}}
 				/>
 				<TextInput
 					style={styles.bigger}
 					placeholder={"Ваш отзыв"}
 					placeholderTextColor={COLORS.gray}
+					value={question?.message}
+					onChangeText={(e) => {
+						setQuestion({ ...question, message: e });
+					}}
 				/>
 				<DefaultButton
 					textStyle={styles.text}
 					containerStyle={styles.button}
 					text={button}
+					onPress={onSubmit}
 				/>
 			</View>
 		</View>

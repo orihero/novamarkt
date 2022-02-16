@@ -1,11 +1,12 @@
+import { COLORS } from "@novomarkt/constants/colors";
 import AppRouter from "@novomarkt/routes/AppRouter";
 import { persistor, store } from "@novomarkt/store/configureStore";
+import AnimatedLottieView from "lottie-react-native";
 import React from "react";
 import { Platform, StyleSheet, UIManager, View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-import Geolocation from "@react-native-community/geolocation";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 if (Platform.OS === "android") {
 	if (UIManager.setLayoutAnimationEnabledExperimental) {
@@ -27,4 +28,15 @@ const App = () => {
 
 export default App;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	animation: {
+		position: "absolute",
+		justifyContent: "center",
+		alignItems: "center",
+		top: 0,
+		bottom: 0,
+		right: 0,
+		left: 0,
+		backgroundColor: COLORS.white,
+	},
+});

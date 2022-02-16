@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { FlatList, ScrollView, TouchableOpacity, View } from "react-native";
 import Modal from "react-native-modal";
 import ProductItem from "../home/components/ProductItem";
-import { productsData } from "../home/components/ProductsList";
 import DefaultHeader from "./components/DefaultHeader";
 import Products from "./components/Products";
 import SelectableItems from "./components/SelectableItems";
@@ -27,12 +26,12 @@ const FavoriteView = () => {
 			<Products />
 			<Products />
 			<Text style={styles.text}>{STRINGS.advertBlock}</Text>
-			<FlatList
+			{/* <FlatList
 				data={productsData}
 				renderItem={(props) => <ProductItem {...props} />}
 				numColumns={2}
 				style={styles.content}
-			/>
+			/> */}
 			<Modal
 				style={styles.view}
 				isVisible={isModalVisible}

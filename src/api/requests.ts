@@ -3,10 +3,16 @@ import { RegisterState } from "@novomarkt/screens/auth/register/hooks";
 import { store } from "@novomarkt/store/configureStore";
 import axios, { AxiosResponse } from "axios";
 import {
+	AddCardRequest,
 	BaseResponse,
+	CardItem,
+	CardTypeItem,
+	CartItemResponse,
 	LoginResponse,
 	NewsItemResponse,
 	ProductItemResponse,
+	QuestionsResponse,
+	SendQuestionValue,
 } from "./types";
 
 export let url = "https://novamarket.qwertyuz.ru/api";
@@ -61,6 +67,13 @@ let requests = {
 				`${url}/user/update`,
 				formData(data)
 			),
+		addCard: (creds: AddCardRequest) =>
+			axios.post(`${url}/user/card-add`, creds),
+		getCardTypes: () =>
+			axios.get<{ data: CardTypeItem[] }>(`${url}/category?type=card`),
+		getCards: () => axios.get<{ data: CardItem[] }>(`${url}/user/cards`),
+		removeCard: (data: { card_id: number }) =>
+			axios.post<{ data: CardItem[] }>(`${url}/user/card-remove`, data),
 	},
 
 	categories: {
@@ -74,7 +87,10 @@ let requests = {
 	},
 
 	frequentQuestions: {
-		getQuestions: () => axios.get(`${url}/question`),
+		getQuestions: () =>
+			axios.get<{ data: QuestionsResponse[] }>(`${url}/question`),
+		sendQuestion: (creds: SendQuestionValue) =>
+			axios.post(`${url}/feedback/send`, creds),
 	},
 
 	products: {
@@ -84,6 +100,10 @@ let requests = {
 			axios.get<BaseResponse<ProductItemResponse>>(
 				`${url}/product/search?query=${query}`
 			),
+		getCarts: () => axios.get<{ data: CartItemResponse[] }>(`${url}/cart`),
+
+		addToCart: (creds: { product_id: number; amount: number }) =>
+			axios.post(`${url}/cart/add`, creds),
 	},
 
 	news: {

@@ -6,22 +6,18 @@ type ProfileData = Partial<LoginResponse>;
 
 const useProfileHook = () => {
 	let [profileData, setProfileData] = useState<ProfileData>();
+
 	let onTextChange = useCallback((key: string) => {
 		return (value: string) => {
 			//TODO check
-			// @ts-ignore
 			setProfileData({ ...profileData, [key]: value });
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 	let fetchData = async () => {
 		try {
 			let res = await requests.profile.getProfile();
 			setProfileData(res.data.data);
-			// console.log(res.data.data, "DASDASDAS");
-		} catch (error) {
-			// console.error(error);
-		}
+		} catch (error) {}
 	};
 	useEffect(() => {
 		fetchData();
@@ -33,13 +29,15 @@ const useProfileHook = () => {
 				...profileData,
 				[key]: val,
 			});
-			// console.log(res.data, "UPDATED");
-		} catch (error) {
-			// console.error(error.response);
-		}
+		} catch (error) {}
 	};
 
-	return { profileData, onTextChange, setProfileData, onFieldSubmit };
+	return {
+		profileData,
+		onTextChange,
+		setProfileData,
+		onFieldSubmit,
+	};
 };
 
 export default useProfileHook;

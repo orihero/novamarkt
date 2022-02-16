@@ -1,3 +1,4 @@
+import React from "react";
 import { ROUTES } from "@novomarkt/constants/routes";
 import AuthStack from "@novomarkt/screens/auth";
 import Search from "@novomarkt/components/search";
@@ -7,16 +8,18 @@ import { useAppSelector } from "@novomarkt/store/hooks";
 import { selectUser } from "@novomarkt/store/slices/userSlice";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import React from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { selectAppSettings } from "@novomarkt/store/slices/appSettings";
+import AnimatedLottieView from "lottie-react-native";
+import { COLORS } from "@novomarkt/constants/colors";
 
 let Stack = createNativeStackNavigator();
 
 const AppRouter = () => {
 	const insets = useSafeAreaInsets();
 	const user = useAppSelector(selectUser);
-	// console.log(!user.token);
+	const appSettings = useAppSelector(selectAppSettings);
 
 	return (
 		<View style={{ flex: 1, marginTop: insets.top }}>
@@ -53,8 +56,30 @@ const AppRouter = () => {
 					)}
 				</Stack.Navigator>
 			</NavigationContainer>
+			{appSettings.loading && (
+				<View style={styles.animation}>
+					<AnimatedLottieView
+						source={require("@novomarkt/assets/animations/loading-animation")}
+						autoPlay
+						loop
+					/>
+				</View>
+			)}
 		</View>
 	);
 };
 
 export default AppRouter;
+
+const styles = StyleSheet.create({
+	animation: {
+		position: "absolute",
+		justifyContent: "center",
+		alignItems: "center",
+		top: 0,
+		bottom: 0,
+		right: 0,
+		left: 0,
+		backgroundColor: COLORS.white,
+	},
+});

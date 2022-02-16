@@ -1,5 +1,7 @@
+import { CartItemResponse } from "@novomarkt/api/types";
 import { ProductItemProps } from "@novomarkt/screens/tabs/home/components/ProductItem";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { RootState } from "../configureStore";
 
 export interface CartItemProps {
 	data: ProductItemProps;
@@ -11,7 +13,8 @@ export interface CartItemProps {
 }
 
 interface InitialState {
-	[key: string]: CartItemProps;
+	[key: string]: CartItemResponse;
+	// items: [];
 }
 
 let initialState: InitialState = {};
@@ -20,8 +23,8 @@ const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		addToCart: (state, { payload }: PayloadAction<CartItemProps>) => {
-			state[payload.data.id?.toString() || ""] = payload;
+		addToCart: (state, { payload }: PayloadAction<CartItemResponse>) => {
+			state[payload.id?.toString() || ""] = payload;
 			return state;
 		},
 		removeFromCart: (state, action: PayloadAction<string>) => {
@@ -32,9 +35,20 @@ const cartSlice = createSlice({
 			return st;
 		},
 		clearCart: () => initialState,
+
+		loadCart: (state, action: PayloadAction<CartItemResponse[]>) => {
+			let obj = action.payload.reduce((previous, current) => {
+				if (!previous) {
+					return { [current.id]: current };
+				}
+				return { ...previous, [current.id]: current };
+			});
+		},
 	},
 });
 
-export const {} = cartSlice.actions;
+export const cartSelector = (state: RootState) => state.cart;
+
+export const { loadCart, addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

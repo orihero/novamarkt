@@ -1,8 +1,8 @@
 import requests from "@novomarkt/api/requests";
+import { QuestionsResponse } from "@novomarkt/api/types";
 import { PlayIcon } from "@novomarkt/assets/icons/icons";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
-import { STRINGS } from "@novomarkt/locales/strings";
 import React, { useEffect, useState } from "react";
 import {
 	LayoutAnimation,
@@ -13,35 +13,41 @@ import {
 
 const HandlingTextBox = () => {
 	const [shouldShow, setShouldShow] = useState(true);
-	// const [questions, setQuestions] = useState([]);
-	// let effect = async () => {
-	// 	try {
-	// 		let res = await requests.frequentQuestions.questions();
-	// 		setQuestions(res.data.data);
-	// 	} catch (error) {}
-	// };
-	// useEffect(() => {
-	// 	effect();
-	// }, []);
+	const [questions, setQuestions] = useState<QuestionsResponse[]>();
+	let effect = async () => {
+		try {
+			let res = await requests.frequentQuestions.getQuestions();
+			setQuestions(res.data.data);
+		} catch (error) {}
+	};
+	useEffect(() => {
+		effect();
+	}, []);
 	return (
 		<View style={styles.container}>
-			<View>
-				<TouchableOpacity
-					style={styles.row}
-					onPress={() => {
-						LayoutAnimation.configureNext(
-							LayoutAnimation.Presets.easeInEaseOut
-						);
-						setShouldShow(!shouldShow);
-					}}
-				>
-					<PlayIcon fill={COLORS.white} />
-					<Text style={styles.text}>{STRINGS.faq}</Text>
-				</TouchableOpacity>
-				{!shouldShow ? (
-					<Text style={styles.textBox}>{STRINGS.answer}</Text>
-				) : null}
-			</View>
+			{questions?.map((e) => {
+				return (
+					<View>
+						<TouchableOpacity
+							style={styles.row}
+							onPress={() => {
+								LayoutAnimation.configureNext(
+									LayoutAnimation.Presets.easeInEaseOut
+								);
+								setShouldShow(!shouldShow);
+							}}
+						>
+							<PlayIcon fill={COLORS.white} />
+							<Text style={styles.text}>{e.question}</Text>
+						</TouchableOpacity>
+						<View>
+							{!shouldShow ? (
+								<Text style={styles.textBox}>{e.answer}</Text>
+							) : null}
+						</View>
+					</View>
+				);
+			})}
 		</View>
 	);
 };
