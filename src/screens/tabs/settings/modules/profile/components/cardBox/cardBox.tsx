@@ -26,8 +26,6 @@ export const CardBox = () => {
 	const effect = async () => {
 		try {
 			const res = await requests.profile.getCards();
-			console.log(res);
-
 			setCard(res.data.data);
 		} catch (error) {}
 	};
@@ -39,7 +37,6 @@ export const CardBox = () => {
 		Alert.alert("Вы действительно хотите удалить карту?", "", [
 			{
 				text: "Нет",
-				// onPress: () => console.log("Cancel Pressed"),
 				style: "cancel",
 			},
 			{

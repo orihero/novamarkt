@@ -1,19 +1,25 @@
-import { BasketIcon, CrashIcon } from "@novomarkt/assets/icons/icons";
+import requests, { appendUrl } from "@novomarkt/api/requests";
+import { ProductItemResponse } from "@novomarkt/api/types";
+import {
+	BasketIcon,
+	HeartIconBorder,
+	HeartIconRed,
+} from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
-import SecondaryButton from "@novomarkt/components/general/SecondaryButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React from "react";
+import { useAppSelector } from "@novomarkt/store/hooks";
+import { toggleLoading } from "@novomarkt/store/slices/appSettings";
+import { cartSelector, loadCart } from "@novomarkt/store/slices/cartSlice";
 import {
-	Image,
-	StyleSheet,
-	TextInput,
-	TouchableOpacity,
-	View,
-} from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import { productsData } from "../../home/components/ProductsList";
+	favoriteSelector,
+	loadFavorite,
+} from "@novomarkt/store/slices/favoriteSlice";
+import React from "react";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import { useDispatch } from "react-redux";
+import FavoritesButton from "./FavoritesButton";
 
 export let imageURL =
 	"https://static.theblacktux.com/products/suits/gray-suit/1_2018_0326_TBT_Spring-Ecomm_Shot03_-31_w1_1812x1875.jpg?width=1024";
@@ -23,90 +29,201 @@ export let ProductsData = {
 	price: "1400  ₽",
 };
 
-export default function Products() {
+export default function Products({
+	name,
+	photo,
+	price,
+	id,
+	discount,
+	price_old,
+}: ProductItemResponse) {
+	const dispatch = useDispatch();
+	const cart = useAppSelector(cartSelector);
+	const favorite = useAppSelector(favoriteSelector);
+	let isInCart = !!cart[id];
+	let isInFavorite = !!favorite[id];
+
+	const onCartPress = async () => {
+		try {
+			if (isInCart) {
+				//TODO remove from cart
+				try {
+					let res = await requests.products.removeItem({
+						product_id: id,
+					});
+					let cartRes = await requests.products.getCarts();
+					dispatch(loadCart(cartRes.data.data));
+				} catch (error) {
+					console.log(error);
+				} finally {
+				}
+			} else {
+				let res = await requests.products.addToCart({
+					amount: 1,
+					product_id: id,
+				});
+				let cartRes = await requests.products.getCarts();
+				dispatch(loadCart(cartRes.data.data));
+			}
+		} catch (error) {
+			console.log(error);
+		} finally {
+		}
+	};
+
+	const onAddFavorite = async () => {
+		try {
+			let res = await requests.favorites.addFavorite({
+				product_id: id,
+			});
+			dispatch(loadFavorite(res.data.data));
+		} catch (error) {
+			console.log(error);
+		} finally {
+		}
+	};
+
 	return (
 		<View style={styles.container}>
-			<View>
-				<Image source={{ uri: imageURL }} style={styles.image} />
-			</View>
-			<View style={styles.textBox}>
-				<Text style={styles.text}>{ProductsData.name}</Text>
-				<View style={styles.row}>
-					<Text style={styles.price}>{ProductsData.price}</Text>
+			<Image source={{ uri: appendUrl(photo) }} style={styles.image} />
+			<View style={styles.itemsContainer}>
+				<View style={styles.nameContainer}>
+					<Text style={styles.itemName}>{name}</Text>
+					{discount && (
+						<View style={styles.discount}>
+							<Text style={styles.dscountText}>{discount}%</Text>
+						</View>
+					)}
+					<TouchableOpacity
+						onPress={onAddFavorite}
+						hitSlop={{ bottom: 10, top: 10, right: 10, left: 10 }}
+					>
+						{isInFavorite ? (
+							<HeartIconRed fill={COLORS.red} />
+						) : (
+							<HeartIconBorder fill={COLORS.red} />
+						)}
+					</TouchableOpacity>
+				</View>
+				<View style={styles.nameContainer}>
+					<View>
+						{price_old && <Text style={styles.oldPrice}>{price_old} ₽</Text>}
+						<Text style={styles.price}>{price}₽</Text>
+					</View>
 					<DefaultButton
 						containerStyle={styles.button}
-						secondary={true}
+						secondary={isInCart}
+						onPress={onCartPress}
 					>
 						<View style={styles.buttonContainer}>
-							<Text style={[styles.inactiveCartText]}>
+							<Text
+								style={[isInCart ? styles.inactiveCartText : styles.cartText]}
+							>
 								{STRINGS.addToCart}
 							</Text>
-							<BasketIcon fill={COLORS.cartColor3} />
+							<BasketIcon fill={isInCart ? COLORS.cartColor3 : COLORS.white} />
 						</View>
 					</DefaultButton>
 				</View>
 			</View>
+			{/* <View>
+				<Image source={{ uri: appendUrl(photo) }} style={styles.image} />
+			</View>
+			<View style={styles.textBox}>
+				<Text style={styles.text}>{name}</Text>
+				<View style={styles.row}>
+					<Text style={styles.price}>{price}</Text>
+					<DefaultButton
+						containerStyle={styles.button}
+						secondary={isInCart}
+						onPress={onCartPress}
+					>
+						<View style={styles.buttonContainer}>
+							<Text
+								style={[isInCart ? styles.inactiveCartText : styles.cartText]}
+							>
+								{STRINGS.addToCart}
+							</Text>
+							<BasketIcon fill={isInCart ? COLORS.cartColor3 : COLORS.white} />
+						</View>
+					</DefaultButton>
+				</View>
+			</View> */}
 		</View>
 	);
 }
 
 const styles = StyleSheet.create({
-	buttonContainer: {
+	container: {
+		padding: 10,
 		flexDirection: "row",
+		borderBottomWidth: 1,
+		borderColor: "rgba(113, 113, 113, 0.3)",
 	},
-	inactiveCartText: {
-		color: COLORS.cartColor3,
-		marginRight: 4,
-	},
+
 	image: {
 		width: 100,
-		height: 100,
-		borderRadius: 8,
+		height: 120,
+		borderRadius: 10,
+		marginHorizontal: 10,
 	},
-	container: {
-		// marginHorizontal: 20,
-		paddingHorizontal: 20,
-		paddingVertical: 15,
-		flexDirection: "row",
+
+	itemsContainer: {
 		flex: 1,
-		borderBottomWidth: 1,
-		borderColor: COLORS.lightGray,
-	},
-
-	text: {
-		color: COLORS.defaultBlack,
-		fontSize: 13,
-		// width: "80%",
-		fontWeight: "700",
-		letterSpacing: 0.5
-	},
-	textBox: {
-		paddingHorizontal: 15,
-		marginRight: 120,
-		// justifyContent: "space-between",
-	},
-
-	row: {
-		flexDirection: "row",
+		flexDirection: "column",
 		justifyContent: "space-between",
-		paddingRight: 50,
-		// flex: 1,
+		paddingHorizontal: 5,
+	},
+
+	nameContainer: {
+		flexDirection: "row",
 		alignItems: "flex-end",
-		marginBottom: 5,
+		justifyContent: "space-between",
+	},
+
+	itemName: {
+		color: COLORS.defaultBlack,
+		fontSize: 16,
+	},
+
+	dscountText: {
+		fontSize: 12,
+		color: COLORS.blue,
+	},
+
+	discount: {
+		borderRadius: 8,
+		padding: 4,
+		backgroundColor: COLORS.white,
 	},
 
 	price: {
+		fontSize: 16,
 		color: COLORS.blue,
-		fontSize: 15,
+	},
+
+	oldPrice: {
+		fontSize: 14,
+		color: COLORS.defaultBlack,
+		textDecorationLine: "line-through",
+	},
+
+	buttonContainer: {
+		flexDirection: "row",
+		margin: 0,
+	},
+
+	cartText: {
+		color: COLORS.white,
+	},
+
+	inactiveCartText: {
+		color: COLORS.cartColor3,
 	},
 
 	button: {
-		backgroundColor: COLORS.white,
-		// flex: 1,
-		// marginLeft: 10,
-	},
-
-	buttonText: {
-		color: COLORS.defaultBlack,
+		width: 120,
+		height: 40,
+		margin: 0,
 	},
 });

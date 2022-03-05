@@ -8,13 +8,17 @@ import { useAppSelector } from "@novomarkt/store/hooks";
 import { selectUser } from "@novomarkt/store/slices/userSlice";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StyleSheet, View } from "react-native";
+import { Image, ImageBackground, StyleSheet, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { selectAppSettings } from "@novomarkt/store/slices/appSettings";
 import AnimatedLottieView from "lottie-react-native";
 import { COLORS } from "@novomarkt/constants/colors";
+import Text from "@novomarkt/components/general/Text";
 
 let Stack = createNativeStackNavigator();
+
+let image =
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png";
 
 const AppRouter = () => {
 	const insets = useSafeAreaInsets();
@@ -80,6 +84,7 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		right: 0,
 		left: 0,
+		opacity: 0.6,
 		backgroundColor: COLORS.white,
 	},
 });

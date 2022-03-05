@@ -1,3 +1,4 @@
+import Text from "@novomarkt/components/general/Text";
 import { COLORS, GRADIENT_COLORS } from "@novomarkt/constants/colors";
 import React, { ReactElement } from "react";
 import {
@@ -11,7 +12,6 @@ import {
 	ViewStyle,
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
-import Text from "./Text";
 
 export interface DefaultButtonProps {
 	text?: string;
@@ -24,7 +24,7 @@ export interface DefaultButtonProps {
 	active?: boolean;
 }
 
-const DefaultButton = ({
+const FavoritesButton = ({
 	onPress,
 	text,
 	children,
@@ -67,7 +67,7 @@ const DefaultButton = ({
 	);
 };
 
-export default DefaultButton;
+export default FavoritesButton;
 
 const styles = StyleSheet.create({
 	content: {
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
 		flexDirection: "row",
 		padding: 1,
 		justifyContent: "center",
-		// marginHorizontal: 25,
+		marginHorizontal: 25,
 		marginTop: 10,
 		borderRadius: 8,
 		shadowColor: "#000",

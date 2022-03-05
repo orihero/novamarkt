@@ -3,18 +3,27 @@ import { Image, StyleSheet, TextInput, View } from "react-native";
 import Text from "@novomarkt/components/general/Text";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { COLORS } from "@novomarkt/constants/colors";
+//@ts-ignore
 import MirImg from "../../../../assets/images/mir.png";
+//@ts-ignore
 import VisaImg from "../../../../assets/images/visa.png";
+//@ts-ignore
 import MastercardImg from "../../../../assets/images/mastercard.png";
 
-const OrderDetails = () => {
+const OrderDetails = ({
+	total,
+}: {
+	total: { total: number; count: number };
+}) => {
 	return (
 		<View style={styles.container}>
 			<Text style={styles.headerTxt}>{STRINGS.orderDetails}</Text>
 			<View style={styles.box}>
 				<View style={styles.row}>
-					<Text>{STRINGS.items} (1) </Text>
-					<Text style={styles.price}>1890 ₽</Text>
+					<Text>
+						{STRINGS.items} ({total.count}){" "}
+					</Text>
+					<Text style={styles.price}>{total.total} ₽</Text>
 				</View>
 				<View style={styles.row}>
 					<View
@@ -37,7 +46,7 @@ const OrderDetails = () => {
 				</View>
 				<View style={styles.rowFooter}>
 					<Text style={styles.footerTxt}>{STRINGS.totalPrice}</Text>
-					<Text style={styles.total}> 1890 ₽ </Text>
+					<Text style={styles.total}> {total.total} ₽ </Text>
 				</View>
 			</View>
 		</View>

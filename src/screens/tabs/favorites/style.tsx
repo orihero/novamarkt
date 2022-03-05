@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
 		fontSize: 20,
 		color: COLORS.defaultBlack,
 		fontWeight: "700",
-		letterSpacing: 0.5
+		letterSpacing: 0.5,
 	},
 
 	content: {
@@ -36,5 +36,20 @@ export const styles = StyleSheet.create({
 		fontSize: 16,
 		marginVertical: 15,
 		color: COLORS.defaultBlack,
+	},
+
+	empty: {
+		flex: 1,
+		backgroundColor: COLORS.white,
+	},
+
+	emptyBox: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+	},
+
+	emptyText: {
+		fontSize: 22,
 	},
 });

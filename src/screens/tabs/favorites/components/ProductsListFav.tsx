@@ -5,13 +5,13 @@ import { STRINGS } from "@novomarkt/locales/strings";
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { ProductItemResponse } from "@novomarkt/api/types";
-import ProductItem from "./ProductItem";
+import ProductItem from "../../home/components/ProductItem";
 
 export interface PropularProductsProps {
 	title?: string;
 }
 
-export const ProductsList = ({
+const ProductsListFav = ({
 	title = STRINGS.popularProducts,
 }: PropularProductsProps) => {
 	const [products, setProducts] = useState<ProductItemResponse[]>([]);
@@ -26,20 +26,19 @@ export const ProductsList = ({
 	}, []);
 	return (
 		<View style={styles.container}>
-			<Text style={styles.title}>{title}</Text>
 			<FlatList
-				horizontal
-				showsHorizontalScrollIndicator={false}
+				numColumns={2}
 				data={products}
-				renderItem={(props) => <ProductItem {...props} />}
 				style={styles.container}
+				showsHorizontalScrollIndicator={false}
+				renderItem={(props) => <ProductItem {...props} />}
 				contentContainerStyle={styles.contentContainerStyle}
 			/>
 		</View>
 	);
 };
 
-export default ProductsList;
+export default ProductsListFav;
 
 const styles = StyleSheet.create({
 	title: {
@@ -50,6 +49,6 @@ const styles = StyleSheet.create({
 		fontWeight: "700",
 		letterSpacing: 0.5,
 	},
-	container: { marginBottom: 20 },
+	container: { marginBottom: 20, marginHorizontal: 0 },
 	contentContainerStyle: { paddingHorizontal: 12 },
 });

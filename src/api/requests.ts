@@ -1,6 +1,7 @@
 import { LoginState } from "@novomarkt/screens/auth/login/hooks";
 import { RegisterState } from "@novomarkt/screens/auth/register/hooks";
 import { store } from "@novomarkt/store/configureStore";
+import { userLoggedOut } from "@novomarkt/store/slices/userSlice";
 import axios, { AxiosResponse } from "axios";
 import {
 	AddCardRequest,
@@ -13,6 +14,7 @@ import {
 	ProductItemResponse,
 	QuestionsResponse,
 	SendQuestionValue,
+	SliderTypes,
 } from "./types";
 
 export let url = "https://novamarket.qwertyuz.ru/api";
@@ -27,6 +29,17 @@ axios.interceptors.request.use((config) => {
 	}
 	return config;
 });
+
+axios.interceptors.response.use(
+	(config) => config,
+	(error) => {
+		if (error && error.response && error.response.status == 401) {
+			//@ts-ignore
+			store.dispatch(userLoggedOut());
+		}
+		return error;
+	}
+);
 
 export const appendUrl = (str: string) => {
 	return `${assetUrl}${str}`;
@@ -51,7 +64,9 @@ let requests = {
 		register: (credentials: RegisterState) =>
 			axios.post<
 				{ token: string; code: string },
-				AxiosResponse<{ data: { token: string; code: string } }>,
+				AxiosResponse<{
+					data: { token: string; code: string };
+				}>,
 				RegisterState
 			>(`${url}/user/sign-up`, credentials),
 		verify: (credentials: { code: string; phone: string }, token: string) =>
@@ -60,13 +75,9 @@ let requests = {
 			}),
 	},
 	profile: {
-		getProfile: () =>
-			axios.get<{ data: LoginResponse }>(`${url}/user/profile`),
+		getProfile: () => axios.get<{ data: LoginResponse }>(`${url}/user/profile`),
 		editProfile: (data: Partial<LoginResponse>) =>
-			axios.post<any, any, FormData>(
-				`${url}/user/update`,
-				formData(data)
-			),
+			axios.post<any, any, FormData>(`${url}/user/update`, formData(data)),
 		addCard: (creds: AddCardRequest) =>
 			axios.post(`${url}/user/card-add`, creds),
 		getCardTypes: () =>
@@ -104,10 +115,33 @@ let requests = {
 
 		addToCart: (creds: { product_id: number; amount: number }) =>
 			axios.post(`${url}/cart/add`, creds),
+
+		clearCart: () => axios.post(`${url}/cart/clear`),
+
+		increaseItem: (creds: { product_id: number; amount: number }) =>
+			axios.post(`${url}/cart/add`, creds),
+
+		decreaseItem: (creds: { product_id: number }) =>
+			axios.post(`${url}/cart/minus`, creds),
+
+		removeItem: (creds: { product_id: number }) =>
+			axios.post(`${url}/cart/remove`, creds),
 	},
 
 	news: {
 		getNews: () => axios.get<BaseResponse<NewsItemResponse>>(`${url}/news`),
+	},
+
+	favorites: {
+		addFavorite: (creds: { product_id: number }) =>
+			axios.post(`${url}/product/set-favorite`, creds),
+
+		getFavorites: () =>
+			axios.get<BaseResponse<ProductItemResponse>>(`${url}/product/favorites`),
+	},
+
+	slider: {
+		getSliders: () => axios.get<BaseResponse<SliderTypes>>(`${url}/slider`),
 	},
 };
 export default requests;

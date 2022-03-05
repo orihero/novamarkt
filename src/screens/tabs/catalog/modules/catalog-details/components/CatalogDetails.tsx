@@ -14,32 +14,20 @@ import {
 } from "react-native";
 
 export interface CatalogDetailsProps {
-	image?: string;
 	name?: string;
 	photo?: string;
+	id?: number;
 }
 
 const CatalogDetails = ({
-	item: { image, name, photo },
+	item: { name, photo, id },
 }: ListRenderItemInfo<CatalogDetailsProps>) => {
 	let navigation = useNavigation();
-	let routes = useRoute();
-	const [categories, setCategories] = useState([]);
-	let effect = async () => {
-		try {
-			let res = await requests.categories.getSubCategories(
-				//@ts-ignore
-				routes.params?.id
-			);
-			setCategories(res.data.data);
-		} catch (error) {}
-	};
-	useEffect(() => {
-		effect();
-	}, []);
 	return (
 		<TouchableWithoutFeedback
-			onPress={() => navigation.navigate(ROUTES.CATALOG_PRODUCTS as any)}
+			onPress={() =>
+				navigation.navigate(ROUTES.CATALOG_PRODUCTS as any, { id })
+			}
 		>
 			<View style={styles.container}>
 				<Image

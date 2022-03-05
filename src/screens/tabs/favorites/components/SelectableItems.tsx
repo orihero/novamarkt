@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
 	container: {
 		paddingHorizontal: 20,
 		paddingVertical: 8,
-		borderBottomWidth: 1.5,
-		borderColor: COLORS.lightGray,
+		borderBottomWidth: 1,
+		borderColor: "rgba(113, 113, 113, 0.3)",
 		flexDirection: "row",
 		justifyContent: "space-between",
 	},

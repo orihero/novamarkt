@@ -1,7 +1,7 @@
 import SearchHeader from "@novomarkt/components/navigation/SearchHeader";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React, { useState } from "react";
+import React from "react";
 import { ScrollView, View } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
 //@ts-ignore
@@ -23,14 +23,11 @@ export let carouselData: CarouselItemProp[] = [
 ];
 
 const HomeView = () => {
-	let { setActiveSlide, activeSlide } = useHomeScreenHooks();
+	let { setActiveSlide, activeSlide, slide } = useHomeScreenHooks();
 	return (
 		<>
 			<SearchHeader />
-			<ScrollView
-				style={styles.scroll}
-				showsVerticalScrollIndicator={false}
-			>
+			<ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
 				<View style={styles.container}>
 					<Carousel
 						onSnapToItem={(index) => setActiveSlide(index)}

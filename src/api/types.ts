@@ -55,8 +55,14 @@ export interface ProductItemResponse {
 	photo: string;
 }
 
-export interface CartItemResponse extends ProductItemResponse {
+export interface CartItemResponse {
 	amount: number;
+	price: number;
+	product: ProductItemResponse;
+}
+
+export interface FavoriteItemResponse {
+	product: ProductItemResponse;
 }
 
 export interface Self {
@@ -142,4 +148,8 @@ export interface SendQuestionValue {
 	name?: string;
 	email?: string;
 	message?: string;
+}
+
+export interface SliderTypes {
+	photo: string;
 }

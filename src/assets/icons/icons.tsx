@@ -96,12 +96,7 @@ export function CheckedItem(props: SvgProps) {
 			xmlns="http://www.w3.org/2000/svg"
 			{...props}
 		>
-			<Rect
-				width={29}
-				height={29}
-				rx={2}
-				fill="url(#paint0_linear_0_1413)"
-			/>
+			<Rect width={29} height={29} rx={2} fill="url(#paint0_linear_0_1413)" />
 			<G clipPath="url(#clip0_0_1413)">
 				<Path
 					d="M11.454 14.24l2.108 2.109 3.984-3.983"
@@ -165,12 +160,7 @@ export function PlayIcon(props: SvgProps) {
 			xmlns="http://www.w3.org/2000/svg"
 			{...props}
 		>
-			<Circle
-				cx={12.5}
-				cy={12.5}
-				r={12.5}
-				fill="url(#paint0_linear_0_1045)"
-			/>
+			<Circle cx={12.5} cy={12.5} r={12.5} fill="url(#paint0_linear_0_1045)" />
 			<Path d="M17.5 12.5L10 16.83V8.17l7.5 4.33z" fill={props?.fill} />
 			<Defs>
 				<LinearGradient
@@ -848,6 +838,42 @@ export function GmailIcon(props: SvgProps) {
 			<Path
 				d="M24.322 1.757v14.806c0 .84-.637 1.481-1.472 1.481h-1.472V4.606l-8.833 6.382-8.832-6.382v13.438H2.24c-.835 0-1.472-.64-1.472-1.48V1.756A1.452 1.452 0 012.24.277h.491l9.814 7.156L22.36.276h.49a1.45 1.45 0 011.473 1.48z"
 				fill="#fff"
+			/>
+		</Svg>
+	);
+}
+
+export function HeartIconRed(props: SvgProps) {
+	return (
+		<Svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			width={20}
+			height={20}
+			{...props}
+		>
+			<Path
+				d="M7 3c-1.536 0-3.078.5-4.25 1.7-2.343 2.4-2.279 6.1 0 8.5L12 23l9.25-9.8c2.279-2.4 2.343-6.1 0-8.5-2.343-2.3-6.157-2.3-8.5 0l-.75.8-.75-.8C10.078 3.5 8.535 3 7 3z"
+				fill="#e03c2a"
+				// className="fill-c0392b"
+			/>
+		</Svg>
+	);
+}
+
+export function HeartIconBorder(props: SvgProps) {
+	return (
+		<Svg
+			viewBox="0 0 512 512"
+			xmlns="http://www.w3.org/2000/svg"
+			width={21}
+			height={20}
+			{...props}
+		>
+			<Path
+				d="M340.8 98.4c50.7 0 91.9 41.3 91.9 92.3 0 26.2-10.9 49.8-28.3 66.6L256 407.1 105 254.6c-15.8-16.6-25.6-39.1-25.6-63.9 0-51 41.1-92.3 91.9-92.3 38.2 0 70.9 23.4 84.8 56.8 13.7-33.3 46.5-56.8 84.7-56.8m0-15.4C307 83 276 98.8 256 124.8c-20-26-51-41.8-84.8-41.8C112.1 83 64 131.3 64 190.7c0 27.9 10.6 54.4 29.9 74.6L245.1 418l10.9 11 10.9-11 148.3-149.8c21-20.3 32.8-47.9 32.8-77.5C448 131.3 399.9 83 340.8 83z"
+				fill="#fa4141"
+				className="fill-000000"
 			/>
 		</Svg>
 	);

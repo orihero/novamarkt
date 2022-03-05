@@ -1,6 +1,10 @@
 import requests, { appendUrl } from "@novomarkt/api/requests";
 import { ProductItemResponse } from "@novomarkt/api/types";
-import { BasketIcon, HeartIcon } from "@novomarkt/assets/icons/icons";
+import {
+	BasketIcon,
+	HeartIconBorder,
+	HeartIconRed,
+} from "@novomarkt/assets/icons/icons";
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
@@ -8,13 +12,19 @@ import { ROUTES } from "@novomarkt/constants/routes";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { useAppSelector } from "@novomarkt/store/hooks";
-import { cartSelector } from "@novomarkt/store/slices/cartSlice";
+import { toggleLoading } from "@novomarkt/store/slices/appSettings";
+import { cartSelector, loadCart } from "@novomarkt/store/slices/cartSlice";
+import {
+	favoriteSelector,
+	loadFavorite,
+} from "@novomarkt/store/slices/favoriteSlice";
 import { useNavigation } from "@react-navigation/core";
 import React, { ReactElement } from "react";
 import {
 	Image,
 	ListRenderItemInfo,
 	StyleSheet,
+	TouchableOpacity,
 	TouchableWithoutFeedback,
 	View,
 } from "react-native";
@@ -23,37 +33,76 @@ import { useDispatch } from "react-redux";
 const ProductItem = ({
 	item,
 }: ListRenderItemInfo<ProductItemResponse>): ReactElement => {
-	let secondary = true;
+	let { photo, brand, category, name, price, discount, price_old, id } = item;
 	const dispatch = useDispatch();
 	let navigation = useNavigation();
 	const cart = useAppSelector(cartSelector);
-	console.log(cart);
+	let isInCart = !!cart[id];
+	const favorite = useAppSelector(favoriteSelector);
+	let isInFavorite = !!favorite[id];
 
-	let { photo, brand, category, name, price, discount, price_old } = item;
+	// console.log(id);
 
-	// const onCartPress = async () => {
-	// 	try {
-	// 		let res = await requests.products.addToCart({
-	// 			amount,
-	// 			product_id,
-	// 		});
-	// 	} catch (error) {}
-	// };
+	const onCartPress = async () => {
+		try {
+			if (isInCart) {
+				//TODO remove from cart
+				dispatch(toggleLoading());
+				let clear = await requests.products.removeItem({
+					product_id: id,
+				});
+				let cartGet = await requests.products.getCarts();
+				dispatch(loadCart(cartGet.data.data));
+				dispatch(toggleLoading());
+			} else {
+				dispatch(toggleLoading());
+				let res = await requests.products.addToCart({
+					amount: 1,
+					product_id: id,
+				});
+				let cartRes = await requests.products.getCarts();
+				dispatch(loadCart(cartRes.data.data));
+				dispatch(toggleLoading());
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const onAddFavorite = async () => {
+		try {
+			dispatch(toggleLoading());
+			let res = await requests.favorites.addFavorite({
+				product_id: id,
+			});
+			dispatch(loadFavorite(res.data.data));
+		} catch (error) {
+			console.log(error);
+		} finally {
+			dispatch(toggleLoading());
+		}
+	};
 
 	return (
 		<TouchableWithoutFeedback
 			onPress={() =>
 				//@ts-ignore
-				navigation.navigate(ROUTES.PRODUCT_DETAILS, { item })
+				navigation.navigate(ROUTES.PRODUCT_DETAILS, { item, id })
 			}
 		>
 			<View style={styles.container}>
-				<Image
-					source={{ uri: appendUrl(photo) }}
-					style={styles.image}
-				/>
+				<Image source={{ uri: appendUrl(photo) }} style={styles.image} />
 				<View style={styles.absolute}>
-					<HeartIcon fill={COLORS.red} />
+					<TouchableOpacity
+						onPress={onAddFavorite}
+						hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}
+					>
+						{isInFavorite ? (
+							<HeartIconRed fill={COLORS.red} />
+						) : (
+							<HeartIconBorder fill={COLORS.red} stroke={COLORS.red} />
+						)}
+					</TouchableOpacity>
 					{discount && (
 						<View style={styles.discount}>
 							<Text style={styles.dscountText}>{discount}%</Text>
@@ -78,23 +127,16 @@ const ProductItem = ({
 					</View>
 					<DefaultButton
 						containerStyle={styles.button}
-						secondary={secondary}
+						secondary={isInCart}
+						onPress={onCartPress}
 					>
 						<View style={styles.buttonContainer}>
 							<Text
-								style={[
-									secondary
-										? styles.inactiveCartText
-										: styles.cartText,
-								]}
+								style={[isInCart ? styles.inactiveCartText : styles.cartText]}
 							>
 								{STRINGS.addToCart}
 							</Text>
-							<BasketIcon
-								fill={
-									secondary ? COLORS.cartColor3 : COLORS.white
-								}
-							/>
+							<BasketIcon fill={isInCart ? COLORS.cartColor3 : COLORS.white} />
 						</View>
 					</DefaultButton>
 				</View>

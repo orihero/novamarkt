@@ -1,8 +1,9 @@
 import { COLORS } from "@novomarkt/constants/colors";
 import AppRouter from "@novomarkt/routes/AppRouter";
 import { persistor, store } from "@novomarkt/store/configureStore";
+import { toggleLoading } from "@novomarkt/store/slices/appSettings";
 import AnimatedLottieView from "lottie-react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { Platform, StyleSheet, UIManager, View } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
@@ -15,6 +16,11 @@ if (Platform.OS === "android") {
 }
 
 const App = () => {
+	useEffect(() => {
+		if (store.getState().appSettings.loading) {
+			store.dispatch(toggleLoading());
+		}
+	}, []);
 	return (
 		<SafeAreaProvider>
 			<Provider store={store}>

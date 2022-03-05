@@ -24,7 +24,7 @@ const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addToCart: (state, { payload }: PayloadAction<CartItemResponse>) => {
-			state[payload.id?.toString() || ""] = payload;
+			state[payload.product.id?.toString() || ""] = payload;
 			return state;
 		},
 		removeFromCart: (state, action: PayloadAction<string>) => {
@@ -39,15 +39,30 @@ const cartSlice = createSlice({
 		loadCart: (state, action: PayloadAction<CartItemResponse[]>) => {
 			let obj = action.payload.reduce((previous, current) => {
 				if (!previous) {
-					return { [current.id]: current };
+					return { [current.product.id]: current };
 				}
-				return { ...previous, [current.id]: current };
-			});
+				return { ...previous, [current.product.id]: current };
+			}, {});
+			return obj;
 		},
 	},
 });
 
 export const cartSelector = (state: RootState) => state.cart;
+
+export const cartArraySelector = (state: RootState) =>
+	Object.keys(state.cart).map((e) => {
+		return state.cart[e];
+	});
+
+export const cartTotalSelector = (state: RootState) => {
+	let keys = Object.keys(state.cart);
+	let count = keys.length;
+	let total = keys.reduce((prev, current) => {
+		return prev + state.cart[current].price;
+	}, 0);
+	return { count, total };
+};
 
 export const { loadCart, addToCart } = cartSlice.actions;
 

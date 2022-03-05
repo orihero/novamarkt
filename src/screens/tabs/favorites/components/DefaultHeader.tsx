@@ -2,7 +2,7 @@ import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, ViewStyle } from "react-native";
 
 export interface DefaultHeaderProps {
 	name?: string;
@@ -20,8 +20,9 @@ export default DefaultHeader;
 
 const styles = StyleSheet.create({
 	container: {
-		marginVertical: 20,
-		marginHorizontal: 20,
+		backgroundColor: COLORS.white,
+		paddingHorizontal: 20,
+		paddingVertical: 15,
 	},
 	text: {
 		fontSize: 20,

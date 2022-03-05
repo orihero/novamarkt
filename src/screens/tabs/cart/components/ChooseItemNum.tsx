@@ -1,3 +1,5 @@
+import requests, { appendUrl } from "@novomarkt/api/requests";
+import { CartItemResponse } from "@novomarkt/api/types";
 import {
 	CrashIcon,
 	HeartIcon,
@@ -6,11 +8,13 @@ import {
 } from "@novomarkt/assets/icons/icons";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS, GRADIENT_COLORS } from "@novomarkt/constants/colors";
-import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
+import { toggleLoading } from "@novomarkt/store/slices/appSettings";
+import { loadCart } from "@novomarkt/store/slices/cartSlice";
 import React from "react";
 import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
+import { useDispatch } from "react-redux";
 
 export let imageURL =
 	"https://static.theblacktux.com/products/suits/gray-suit/1_2018_0326_TBT_Spring-Ecomm_Shot03_-31_w1_1812x1875.jpg?width=1024";
@@ -20,14 +24,65 @@ export let ProductsData = {
 	price: "1400  ₽",
 };
 
-export default function ChooseItemNum() {
+export default function ChooseItemNum({ data }: { data: CartItemResponse }) {
+	const dispatch = useDispatch();
+	let id = data.product.id;
+	const onAddItem = async () => {
+		try {
+			dispatch(toggleLoading());
+			let res = await requests.products.increaseItem({
+				amount: 1,
+				product_id: id,
+			});
+			let cartRes = await requests.products.getCarts();
+			dispatch(loadCart(cartRes.data.data));
+		} catch (error) {
+			console.log(error);
+		} finally {
+			dispatch(toggleLoading());
+		}
+	};
+
+	const onDecreaseItem = async () => {
+		try {
+			dispatch(toggleLoading());
+			let res = await requests.products.decreaseItem({
+				product_id: id,
+			});
+			let cartRes = await requests.products.getCarts();
+			dispatch(loadCart(cartRes.data.data));
+		} catch (error) {
+			console.log(error);
+		} finally {
+			dispatch(toggleLoading());
+		}
+	};
+
+	const onRemoveItem = async () => {
+		try {
+			dispatch(toggleLoading());
+			let res = await requests.products.removeItem({
+				product_id: id,
+			});
+			let cartRes = await requests.products.getCarts();
+			dispatch(loadCart(cartRes.data.data));
+		} catch (error) {
+			console.log(error);
+		} finally {
+			dispatch(toggleLoading());
+		}
+	};
+
 	return (
 		<View style={styles.container}>
 			<View>
-				<Image style={styles.leftImage} source={{ uri: imageURL }} />
+				<Image
+					style={styles.leftImage}
+					source={{ uri: appendUrl(data.product.photo) }}
+				/>
 			</View>
 			<View style={styles.textBox}>
-				<Text style={styles.headerTxt}>{ProductsData.name}</Text>
+				<Text style={styles.headerTxt}>{data.product.name}</Text>
 				<Text style={styles.itemTxt}>
 					{STRINGS.color}
 					<Text> Белый</Text>
@@ -37,11 +92,13 @@ export default function ChooseItemNum() {
 					<Text> XXL - 44</Text>
 				</Text>
 				<View style={styles.rowTxt}>
-					<Text style={styles.blueTxt}>1400 ₽</Text>
-					<Text style={styles.lineThrough}>2000 рубл</Text>
+					<Text style={styles.blueTxt}>{data.product.price} ₽</Text>
+					<Text style={styles.lineThrough}>
+						{data.product.price_old} ₽
+					</Text>
 				</View>
 				<View style={styles.counter}>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={onDecreaseItem}>
 						<LinearGradient
 							start={{ x: 0, y: 0 }}
 							end={{ x: 3, y: 0 }}
@@ -52,9 +109,9 @@ export default function ChooseItemNum() {
 						</LinearGradient>
 					</TouchableOpacity>
 					<View style={styles.topBottom}>
-						<Text>1 шт</Text>
+						<Text>{data.amount} шт</Text>
 					</View>
-					<TouchableOpacity>
+					<TouchableOpacity onPress={onAddItem}>
 						<LinearGradient
 							start={{ x: 0, y: 0 }}
 							end={{ x: 3, y: 0 }}
@@ -68,7 +125,12 @@ export default function ChooseItemNum() {
 			</View>
 			<View style={styles.iconBox}>
 				<HeartIcon fill={COLORS.gray} />
-				<CrashIcon fill={COLORS.gray} />
+				<TouchableOpacity
+					onPress={onRemoveItem}
+					hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}
+				>
+					<CrashIcon fill={COLORS.gray} />
+				</TouchableOpacity>
 			</View>
 		</View>
 	);
@@ -128,6 +190,7 @@ const styles = StyleSheet.create({
 	counter: {
 		// alignItems: "center",
 		flexDirection: "row",
+		width: 150,
 	},
 
 	iconBox: {
@@ -155,10 +218,11 @@ const styles = StyleSheet.create({
 
 	topBottom: {
 		// height: "100%",
-		paddingHorizontal: 15,
+		width: 50,
 		borderColor: COLORS.whiteGray,
 		borderTopWidth: 1,
 		borderBottomWidth: 1,
 		justifyContent: "center",
+		alignItems: "center",
 	},
 });
