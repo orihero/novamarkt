@@ -1,9 +1,10 @@
+import { appendUrl } from "@novomarkt/api/requests";
+import { SliderTypes } from "@novomarkt/api/types";
 import { COLORS } from "@novomarkt/constants/colors";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import React, { JSXElementConstructor, ReactElement } from "react";
 import { Image, StyleSheet, View } from "react-native";
 import { AdditionalParallaxProps } from "react-native-snap-carousel";
-import { CarouselItemProp } from "..";
 
 export type CarouselItemProps = { item: string; index: number };
 
@@ -12,12 +13,12 @@ export let DotElement = ({ active }) => {
 };
 
 const CarouselItem = (
-	{ item }: { item: CarouselItemProp; index: number },
+	{ item }: { item: SliderTypes; index: number },
 	parallaxProps?: AdditionalParallaxProps
 ): ReactElement<any, string | JSXElementConstructor<any>> | null => {
 	return (
 		<View>
-			<Image source={{ uri: item }} style={styles.image} />
+			<Image source={{ uri: appendUrl(item.photo) }} style={styles.image} />
 		</View>
 	);
 };

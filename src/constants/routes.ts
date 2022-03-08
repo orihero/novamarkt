@@ -26,5 +26,6 @@ export const ROUTES = {
 	FILTER: "filter",
 	CHATS: "chats",
 	LOCATION: "location",
-	SEARCH:"search"
+	SEARCH: "search",
+	NEWS_DETAILS: "news-details",
 };

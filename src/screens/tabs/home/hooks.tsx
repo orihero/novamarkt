@@ -1,5 +1,5 @@
 import requests from "@novomarkt/api/requests";
-import { CartItemResponse } from "@novomarkt/api/types";
+import { CartItemResponse, SliderTypes } from "@novomarkt/api/types";
 import { loadCart } from "@novomarkt/store/slices/cartSlice";
 import { loadFavorite } from "@novomarkt/store/slices/favoriteSlice";
 import { useEffect, useState } from "react";
@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 
 export const useHomeScreenHooks = () => {
 	const [activeSlide, setActiveSlide] = useState(0);
-	const [slide, setSlide] = useState();
+	const [slide, setSlide] = useState<SliderTypes[]>([]);
 	const dispatch = useDispatch();
 
 	const effect = async () => {
@@ -39,10 +39,14 @@ export const useHomeScreenHooks = () => {
 
 	useEffect(() => {
 		getFavs();
-	}, [getFavs]);
+	}, []);
 
 	useEffect(() => {
 		effect();
+	}, []);
+
+	useEffect(() => {
+		getSlides();
 	}, []);
 
 	return { activeSlide, setActiveSlide, slide };

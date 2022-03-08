@@ -185,10 +185,12 @@ export const styles = StyleSheet.create({
 
 	marginBottom: {
 		marginBottom: 40,
+		marginHorizontal: 20,
 	},
 
 	marginBottomEnd: {
 		marginBottom: 80,
+		marginHorizontal: 20,
 	},
 
 	productImage: {

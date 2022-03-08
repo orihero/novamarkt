@@ -10,26 +10,25 @@ import NewsItem, { NewsItemProps } from "./NewsItem";
 export let newsData: NewsItemProps[] = [
 	{
 		image: "https://ydbrand.imgix.net/YD/Products/19ASUX04_BLK_1.png",
-		content:
-			"New Year Sale Vector Art, Icons, and Graphics for Free Download",
+		content: "New Year Sale Vector Art, Icons, and Graphics for Free Download",
 		date: "12.10.2021",
 	},
 	{
-		content:
-			"New Year Sale Vector Art, Icons, and Graphics for Free Download",
-		image: "https://static.vecteezy.com/system/resources/thumbnails/000/262/606/small/Winter-sale-Banner2.jpg",
+		content: "New Year Sale Vector Art, Icons, and Graphics for Free Download",
+		image:
+			"https://static.vecteezy.com/system/resources/thumbnails/000/262/606/small/Winter-sale-Banner2.jpg",
 		date: "12.10.2021",
 	},
 	{
-		content:
-			"New Year Sale Vector Art, Icons, and Graphics for Free Download",
-		image: "https://static.vecteezy.com/system/resources/thumbnails/000/262/606/small/Winter-sale-Banner2.jpg",
+		content: "New Year Sale Vector Art, Icons, and Graphics for Free Download",
+		image:
+			"https://static.vecteezy.com/system/resources/thumbnails/000/262/606/small/Winter-sale-Banner2.jpg",
 		date: "12.10.2021",
 	},
 	{
-		content:
-			"New Year Sale Vector Art, Icons, and Graphics for Free Download",
-		image: "https://static.vecteezy.com/system/resources/thumbnails/000/262/606/small/Winter-sale-Banner2.jpg",
+		content: "New Year Sale Vector Art, Icons, and Graphics for Free Download",
+		image:
+			"https://static.vecteezy.com/system/resources/thumbnails/000/262/606/small/Winter-sale-Banner2.jpg",
 		date: "12.10.2021",
 	},
 ];
@@ -56,7 +55,7 @@ const NewsList = ({ title = STRINGS.news }: NewsData) => {
 				horizontal
 				showsHorizontalScrollIndicator={false}
 				data={news}
-				renderItem={NewsItem}
+				renderItem={(props) => <NewsItem {...props} />}
 				style={styles.container}
 				contentContainerStyle={styles.contentContainerStyle}
 			/>

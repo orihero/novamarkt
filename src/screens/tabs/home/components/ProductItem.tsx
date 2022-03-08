@@ -41,12 +41,9 @@ const ProductItem = ({
 	const favorite = useAppSelector(favoriteSelector);
 	let isInFavorite = !!favorite[id];
 
-	// console.log(id);
-
 	const onCartPress = async () => {
 		try {
 			if (isInCart) {
-				//TODO remove from cart
 				dispatch(toggleLoading());
 				let clear = await requests.products.removeItem({
 					product_id: id,
@@ -134,7 +131,7 @@ const ProductItem = ({
 							<Text
 								style={[isInCart ? styles.inactiveCartText : styles.cartText]}
 							>
-								{STRINGS.addToCart}
+								{isInCart ? `${STRINGS.addToCart}е` : `${STRINGS.addToCart}у`}
 							</Text>
 							<BasketIcon fill={isInCart ? COLORS.cartColor3 : COLORS.white} />
 						</View>

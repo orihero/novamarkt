@@ -20,6 +20,6 @@ export const styles = StyleSheet.create({
 	},
 
 	columns: {
-		alignSelf: "center",
+		marginHorizontal: 10,
 	},
 });

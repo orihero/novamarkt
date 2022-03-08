@@ -1,19 +1,33 @@
 import { appendUrl } from "@novomarkt/api/requests";
 import { COLORS } from "@novomarkt/constants/colors";
+import { ROUTES } from "@novomarkt/constants/routes";
+import { useNavigation } from "@react-navigation/native";
 import React, { ReactElement } from "react";
-import { Image, ListRenderItemInfo, StyleSheet, View } from "react-native";
+import {
+	Image,
+	ListRenderItemInfo,
+	StyleSheet,
+	TouchableOpacity,
+	View,
+} from "react-native";
 
 export type BrandItemProps = {
 	photo: string;
+	id: number;
 };
 
 const BrandItem = ({
-	item: { photo },
+	item: { photo, id },
 }: ListRenderItemInfo<BrandItemProps>): ReactElement => {
+	let navigation = useNavigation();
 	return (
-		<View style={styles.container}>
-			<Image source={{ uri: appendUrl(photo) }} style={styles.image} />
-		</View>
+		<TouchableOpacity
+			onPress={() => navigation.navigate(ROUTES.CATALOG_PRODUCTS, { id })}
+		>
+			<View style={styles.container}>
+				<Image source={{ uri: appendUrl(photo) }} style={styles.image} />
+			</View>
+		</TouchableOpacity>
 	);
 };
 

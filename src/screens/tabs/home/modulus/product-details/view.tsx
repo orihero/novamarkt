@@ -1,5 +1,4 @@
 import { appendUrl } from "@novomarkt/api/requests";
-import { ProductItemResponse } from "@novomarkt/api/types";
 import {
 	ArrowBottomMarked,
 	BasketIcon,
@@ -9,7 +8,6 @@ import {
 import DefaultButton from "@novomarkt/components/general/DefaultButton";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
-import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import CommentItem from "@novomarkt/screens/tabs/settings/modules/comments/components/CommentItem";
 import { useRoute } from "@react-navigation/core";
@@ -18,16 +16,12 @@ import {
 	FlatList,
 	Image,
 	LayoutAnimation,
-	ListRenderItemInfo,
 	ScrollView,
 	TouchableOpacity,
 	View,
 } from "react-native";
-import Carousel, { Pagination } from "react-native-snap-carousel";
-import ProductItem from "../../components/ProductItem";
-import ProductsList, { productsData } from "../../components/ProductsList";
+import ProductsList from "../../components/ProductsList";
 import BackHeaderDefault from "./components/BackHeaderDefault";
-import CustomCarouselItem from "./components/CustomCarouselItem";
 import ReviewBox from "./components/ReviewBox";
 import { styles } from "./style";
 
@@ -54,9 +48,7 @@ const ProductDetailsView = ({}): ReactElement => {
 					<Text style={styles.headerText}>{item.price}</Text>
 					<DefaultButton containerStyle={styles.buttonCon}>
 						<View style={styles.button}>
-							<Text style={styles.buttonText}>
-								{STRINGS.addToCart}
-							</Text>
+							<Text style={styles.buttonText}>{STRINGS.addToCart}</Text>
 							<BasketIcon fill={COLORS.white} />
 						</View>
 					</DefaultButton>
@@ -65,23 +57,6 @@ const ProductDetailsView = ({}): ReactElement => {
 					source={{ uri: appendUrl(item.photo) }}
 					style={styles.productImage}
 				/>
-				{/* <Carousel
-						onSnapToItem={(index) => setActiveSlide(index)}
-						itemWidth={WINDOW_WIDTH}
-						windowSize={WINDOW_WIDTH}
-						sliderWidth={WINDOW_WIDTH}
-						itemHeight={200}
-						sliderHeight={200}
-						data={carouselPhoto}
-						renderItem={CustomCarouselItem}
-						pagingEnabled
-					/>
-					<Pagination
-						activeDotIndex={activeSlide}
-						dotsLength={customCarouselData.length}
-						// dotElement={<DotElement />}
-						// inactiveDotElement={<DotElement inactive={true} />}
-					/> */}
 				<Text style={styles.itemName}>{item.name}</Text>
 				<View style={styles.credit}>
 					<View>
@@ -96,9 +71,7 @@ const ProductDetailsView = ({}): ReactElement => {
 				</View>
 				<View>
 					<View style={styles.compos}>
-						<Text style={styles.composition}>
-							{STRINGS.composition}
-						</Text>
+						<Text style={styles.composition}>{STRINGS.composition}</Text>
 						<RightArrow fill={COLORS.blue} />
 					</View>
 					{item.options?.map((e) => {
@@ -110,7 +83,7 @@ const ProductDetailsView = ({}): ReactElement => {
 						);
 					})}
 				</View>
-				<DefaultButton>
+				<DefaultButton containerStyle={{ marginHorizontal: 20 }}>
 					<Text style={styles.buttonTxt}>{STRINGS.allDetails}</Text>
 				</DefaultButton>
 				<TouchableOpacity
@@ -134,10 +107,7 @@ const ProductDetailsView = ({}): ReactElement => {
 						<View style={styles.rowHeader}>
 							<Text style={styles.txt}>Сортировать по:</Text>
 							<Text style={styles.blueText}>Дате</Text>
-							<ArrowBottomMarked
-								fill={COLORS.blue}
-								style={styles.arrow}
-							/>
+							<ArrowBottomMarked fill={COLORS.blue} style={styles.arrow} />
 							<Text style={styles.blueText2}>Оценке</Text>
 						</View>
 						<FlatList
@@ -149,17 +119,13 @@ const ProductDetailsView = ({}): ReactElement => {
 				) : null}
 				<Text style={styles.flexEnd}>{STRINGS.comments}</Text>
 				<DefaultButton containerStyle={styles.marginBottom}>
-					<Text style={styles.buttonReview}>
-						{STRINGS.sendReview}
-					</Text>
+					<Text style={styles.buttonReview}>{STRINGS.sendReview}</Text>
 				</DefaultButton>
 				<View style={{ marginHorizontal: 10 }}>
 					<ProductsList title={STRINGS.advertBlock} />
 				</View>
 				<DefaultButton containerStyle={styles.marginBottomEnd}>
-					<Text style={styles.buttonReview}>
-						{STRINGS.sendCustomer}
-					</Text>
+					<Text style={styles.buttonReview}>{STRINGS.sendCustomer}</Text>
 				</DefaultButton>
 			</ScrollView>
 		</View>

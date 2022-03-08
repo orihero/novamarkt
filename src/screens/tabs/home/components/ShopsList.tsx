@@ -24,7 +24,7 @@ const ShopsList = () => {
 				horizontal
 				showsHorizontalScrollIndicator={false}
 				data={categories}
-				renderItem={BrandItem}
+				renderItem={(props) => <BrandItem {...props} />}
 				style={styles.container}
 				contentContainerStyle={styles.contentContainerStyle}
 			/>

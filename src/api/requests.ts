@@ -1,11 +1,13 @@
 import { LoginState } from "@novomarkt/screens/auth/login/hooks";
 import { RegisterState } from "@novomarkt/screens/auth/register/hooks";
+import { BrandItemProps } from "@novomarkt/screens/tabs/home/components/BrandItem";
 import { store } from "@novomarkt/store/configureStore";
 import { userLoggedOut } from "@novomarkt/store/slices/userSlice";
 import axios, { AxiosResponse } from "axios";
 import {
 	AddCardRequest,
 	BaseResponse,
+	Brand,
 	CardItem,
 	CardTypeItem,
 	CartItemResponse,
@@ -31,7 +33,11 @@ axios.interceptors.request.use((config) => {
 });
 
 axios.interceptors.response.use(
-	(config) => config,
+	(config) => {
+		console.log(config.config.url);
+
+		return config;
+	},
 	(error) => {
 		if (error && error.response && error.response.status == 401) {
 			//@ts-ignore
@@ -107,6 +113,14 @@ let requests = {
 	products: {
 		getProducts: () =>
 			axios.get<BaseResponse<ProductItemResponse>>(`${url}/product`),
+		getProductsWithID: (id: number) =>
+			axios.get<BaseResponse<ProductItemResponse>>(
+				`${url}/product/by-category?id=${id}`
+			),
+		getProductsWithBrand: (id: number) =>
+			axios.get<BaseResponse<ProductItemResponse>>(
+				`${url}/product/by-brand?id=${id}`
+			),
 		searchProducts: (query: string) =>
 			axios.get<BaseResponse<ProductItemResponse>>(
 				`${url}/product/search?query=${query}`
@@ -130,6 +144,8 @@ let requests = {
 
 	news: {
 		getNews: () => axios.get<BaseResponse<NewsItemResponse>>(`${url}/news`),
+		getNewsDetails: (id: number) =>
+			axios.get<BaseResponse<NewsItemResponse>>(`${url}/news/detail?id=${id}`),
 	},
 
 	favorites: {
@@ -141,7 +157,8 @@ let requests = {
 	},
 
 	slider: {
-		getSliders: () => axios.get<BaseResponse<SliderTypes>>(`${url}/slider`),
+		getSliders: () =>
+			axios.get<BaseResponse<SliderTypes>>(`${url}/slider?type=mobile`),
 	},
 };
 export default requests;

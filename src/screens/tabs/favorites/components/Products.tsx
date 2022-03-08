@@ -119,7 +119,7 @@ export default function Products({
 							<Text
 								style={[isInCart ? styles.inactiveCartText : styles.cartText]}
 							>
-								{STRINGS.addToCart}
+								{isInCart ? `${STRINGS.addToCart}е` : `${STRINGS.addToCart}у`}
 							</Text>
 							<BasketIcon fill={isInCart ? COLORS.cartColor3 : COLORS.white} />
 						</View>
@@ -215,10 +215,12 @@ const styles = StyleSheet.create({
 
 	cartText: {
 		color: COLORS.white,
+		marginRight: 10,
 	},
 
 	inactiveCartText: {
 		color: COLORS.cartColor3,
+		marginRight: 10,
 	},
 
 	button: {

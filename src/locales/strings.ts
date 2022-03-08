@@ -2,6 +2,7 @@ import LocalizedStrings from "react-native-localization";
 
 export const STRINGS = new LocalizedStrings({
 	ru: {
+		back: "Назад",
 		save: "Сохранить",
 		continue: "Продолжить",
 		name: "Имя",
@@ -27,7 +28,7 @@ export const STRINGS = new LocalizedStrings({
 		brands: "Бренды",
 		popularProducts: "Популярные товары",
 		yourShops: "Ваши магазины",
-		addToCart: "В корзину",
+		addToCart: "В корзин",
 		email: "Э-маил",
 		phone: "Телефон",
 		dateOfBirth: "Дата рождения",

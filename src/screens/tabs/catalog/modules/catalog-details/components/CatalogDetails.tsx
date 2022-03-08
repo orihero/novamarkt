@@ -30,10 +30,7 @@ const CatalogDetails = ({
 			}
 		>
 			<View style={styles.container}>
-				<Image
-					style={styles.image}
-					source={{ uri: appendUrl(photo as any) }}
-				/>
+				<Image style={styles.image} source={{ uri: appendUrl(photo as any) }} />
 				<Text style={styles.text}>{name}</Text>
 			</View>
 		</TouchableWithoutFeedback>

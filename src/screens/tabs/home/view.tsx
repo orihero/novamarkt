@@ -4,8 +4,6 @@ import { STRINGS } from "@novomarkt/locales/strings";
 import React from "react";
 import { ScrollView, View } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
-//@ts-ignore
-import { CarouselItemProp } from ".";
 import BrandsList from "./components/BrandsList";
 import CarouselItem from "./components/CarouselItem";
 import CategoriesList from "./components/CategoriesList";
@@ -15,19 +13,19 @@ import ShopsList from "./components/ShopsList";
 import { useHomeScreenHooks } from "./hooks";
 import { styles } from "./style";
 
-export let carouselData: CarouselItemProp[] = [
-	"https://www.dmarge.com/wp-content/uploads/2019/04/skinny-jeans.jpg",
-	"https://i.ytimg.com/vi/GXFHUqQQuDg/maxresdefault.jpg",
-	"https://www.dmarge.com/wp-content/uploads/2019/04/skinny-jeans.jpg",
-	"https://i.ytimg.com/vi/GXFHUqQQuDg/maxresdefault.jpg",
-];
+// export let carouselData: CarouselItemProp[] = [
+// 	"https://www.dmarge.com/wp-content/uploads/2019/04/skinny-jeans.jpg",
+// 	"https://i.ytimg.com/vi/GXFHUqQQuDg/maxresdefault.jpg",
+// 	"https://www.dmarge.com/wp-content/uploads/2019/04/skinny-jeans.jpg",
+// 	"https://i.ytimg.com/vi/GXFHUqQQuDg/maxresdefault.jpg",
+// ];
 
 const HomeView = () => {
 	let { setActiveSlide, activeSlide, slide } = useHomeScreenHooks();
 	return (
 		<>
 			<SearchHeader />
-			<ScrollView style={styles.scroll} showsVerticalScrollIndicator={false}>
+			<ScrollView style={styles.scroll}>
 				<View style={styles.container}>
 					<Carousel
 						onSnapToItem={(index) => setActiveSlide(index)}
@@ -36,14 +34,11 @@ const HomeView = () => {
 						sliderWidth={WINDOW_WIDTH}
 						itemHeight={200}
 						sliderHeight={200}
-						data={carouselData}
+						data={slide}
 						renderItem={CarouselItem}
 						pagingEnabled
 					/>
-					<Pagination
-						activeDotIndex={activeSlide}
-						dotsLength={carouselData.length}
-					/>
+					<Pagination activeDotIndex={activeSlide} dotsLength={slide.length} />
 				</View>
 				<BrandsList />
 				<ShopsList />

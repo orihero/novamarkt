@@ -43,7 +43,7 @@ const FavoriteView = () => {
 	};
 	useEffect(() => {
 		effect();
-	}, [effect]);
+	}, []);
 
 	if (fav.length <= 0) {
 		return (
