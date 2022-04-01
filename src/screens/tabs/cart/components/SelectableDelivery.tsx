@@ -1,54 +1,53 @@
+import requests from "@novomarkt/api/requests";
+import { DeliveryMethodResponse } from "@novomarkt/api/types";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 
 const SelectableDelivery = () => {
 	const [activeIndex, setIsActive] = useState(0);
+	const [delivery, setDelivery] = useState<DeliveryMethodResponse[]>();
+
+	const effect = async () => {
+		try {
+			let res = await requests.products.deliveryMethods();
+			setDelivery(res.data.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		effect();
+	}, []);
+
 	return (
 		<View style={styles.container}>
 			<Text style={styles.headerTxt}>{STRINGS.deliveryChoose}</Text>
-			<TouchableOpacity
-				style={activeIndex === 0 ? styles.activeBox : styles.box}
-				onPress={() => setIsActive(0)}
-			>
-				<View
-					style={
-						activeIndex === 0 ? styles.activeBorder : styles.border
-					}
-				>
-					<View
-						style={
-							activeIndex === 0 ? styles.activeDot : styles.dot
-						}
-					></View>
-				</View>
-				<View style={styles.textBox}>
-					<Text style={styles.text}>{STRINGS.pickUpPoints}</Text>
-					<Text style={styles.comment}>с 9 ноября , от 1 ₽</Text>
-				</View>
-			</TouchableOpacity>
-			<TouchableOpacity
-				style={activeIndex === 1 ? styles.activeBox : styles.box}
-				onPress={() => setIsActive(1)}
-			>
-				<View
-					style={
-						activeIndex === 1 ? styles.activeBorder : styles.border
-					}
-				>
-					<View
-						style={
-							activeIndex === 1 ? styles.activeDot : styles.dot
-						}
-					></View>
-				</View>
-				<View style={styles.textBox}>
-					<Text style={styles.text}>{STRINGS.courerDelivery}</Text>
-					<Text style={styles.comment}>с 9 ноября , от 199 ₽</Text>
-				</View>
-			</TouchableOpacity>
+			{delivery?.map((item, i) => {
+				return (
+					<>
+						<TouchableOpacity
+							style={activeIndex == i ? styles.activeBox : styles.box}
+							onPress={() => setIsActive(i)}
+						>
+							<View
+								style={activeIndex === i ? styles.activeBorder : styles.border}
+							>
+								<View
+									style={activeIndex === i ? styles.activeDot : styles.dot}
+								></View>
+							</View>
+							<View style={styles.textBox}>
+								<Text style={styles.text}>{item.name}</Text>
+								<Text style={styles.comment}>{item.description}</Text>
+							</View>
+						</TouchableOpacity>
+					</>
+				);
+			})}
 		</View>
 	);
 };

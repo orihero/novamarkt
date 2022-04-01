@@ -9,13 +9,9 @@ import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { cartTotalSelector } from "@novomarkt/store/slices/cartSlice";
-import {
-	favoriteSelector,
-	favoriteTotalSelector,
-} from "@novomarkt/store/slices/favoriteSlice";
+import { favoriteArraySelector } from "@novomarkt/store/slices/favoriteSlice";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useCallback } from "react";
-import { StyleSheet } from "react-native";
 import { SvgProps } from "react-native-svg";
 import { useSelector } from "react-redux";
 import CartStack from "./cart";
@@ -36,8 +32,7 @@ const TabNavigation = () => {
 	}, []);
 
 	let total = useSelector(cartTotalSelector);
-
-	let totalFav = useSelector(favoriteTotalSelector);
+	let favs = useSelector(favoriteArraySelector);
 
 	return (
 		<Tab.Navigator
@@ -79,7 +74,7 @@ const TabNavigation = () => {
 				options={{
 					tabBarIcon: renderTabIcon(HeartIcon),
 					tabBarLabel: STRINGS.favorites,
-					tabBarBadge: totalFav.count == 0 ? undefined : totalFav.count,
+					tabBarBadge: favs?.length == 0 ? undefined : favs.length,
 				}}
 			/>
 			<Tab.Screen

@@ -11,6 +11,7 @@ import {
 	CardItem,
 	CardTypeItem,
 	CartItemResponse,
+	DeliveryMethodResponse,
 	LoginResponse,
 	NewsItemResponse,
 	ProductItemResponse,
@@ -103,6 +104,10 @@ let requests = {
 		getBrands: () => axios.get(`${url}/category?type=brand`),
 	},
 
+	shops: {
+		getShops: () => axios.get(`${url}/shop`),
+	},
+
 	frequentQuestions: {
 		getQuestions: () =>
 			axios.get<{ data: QuestionsResponse[] }>(`${url}/question`),
@@ -140,6 +145,9 @@ let requests = {
 
 		removeItem: (creds: { product_id: number }) =>
 			axios.post(`${url}/cart/remove`, creds),
+
+		deliveryMethods: () =>
+			axios.get<BaseResponse<DeliveryMethodResponse>>(`${url}/delivery`),
 	},
 
 	news: {
@@ -159,6 +167,14 @@ let requests = {
 	slider: {
 		getSliders: () =>
 			axios.get<BaseResponse<SliderTypes>>(`${url}/slider?type=mobile`),
+	},
+
+	sort: {
+		getRecently: () => axios.get(`${url}/product?sort=recently`),
+		getNewAdded: () => axios.get(`${url}/product?sort=new`),
+		getExpensive: () => axios.get(`${url}/product?sort=price_up`),
+		getCheap: () => axios.get(`${url}/product?sort=price_down`),
+		getPopular: () => axios.get(`${url}/product?sort=popular`),
 	},
 };
 export default requests;

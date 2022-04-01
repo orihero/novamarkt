@@ -17,9 +17,14 @@ import {
 	loadFavorite,
 } from "@novomarkt/store/slices/favoriteSlice";
 import React from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+	Image,
+	LayoutAnimation,
+	StyleSheet,
+	TouchableOpacity,
+	View,
+} from "react-native";
 import { useDispatch } from "react-redux";
-import FavoritesButton from "./FavoritesButton";
 
 export let imageURL =
 	"https://static.theblacktux.com/products/suits/gray-suit/1_2018_0326_TBT_Spring-Ecomm_Shot03_-31_w1_1812x1875.jpg?width=1024";
@@ -36,6 +41,8 @@ export default function Products({
 	id,
 	discount,
 	price_old,
+	isFavorite,
+	getProducts,
 }: ProductItemResponse) {
 	const dispatch = useDispatch();
 	const cart = useAppSelector(cartSelector);
@@ -56,6 +63,7 @@ export default function Products({
 				} catch (error) {
 					console.log(error);
 				} finally {
+					effect();
 				}
 			} else {
 				let res = await requests.products.addToCart({
@@ -68,18 +76,32 @@ export default function Products({
 		} catch (error) {
 			console.log(error);
 		} finally {
+			effect();
+		}
+	};
+
+	const effect = async () => {
+		try {
+			let res = await requests.favorites.getFavorites();
+			// setFavorites(res.data.data);
+		} catch (error) {
+			console.log(error);
 		}
 	};
 
 	const onAddFavorite = async () => {
 		try {
+			dispatch(toggleLoading());
 			let res = await requests.favorites.addFavorite({
 				product_id: id,
 			});
-			dispatch(loadFavorite(res.data.data));
+			let r = await requests.favorites.getFavorites();
+			dispatch(loadFavorite(r.data.data));
 		} catch (error) {
 			console.log(error);
 		} finally {
+			dispatch(toggleLoading());
+			LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
 		}
 	};
 
@@ -98,7 +120,7 @@ export default function Products({
 						onPress={onAddFavorite}
 						hitSlop={{ bottom: 10, top: 10, right: 10, left: 10 }}
 					>
-						{isInFavorite ? (
+						{isFavorite === true ? (
 							<HeartIconRed fill={COLORS.red} />
 						) : (
 							<HeartIconBorder fill={COLORS.red} />

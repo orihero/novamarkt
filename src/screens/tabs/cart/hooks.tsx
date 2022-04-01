@@ -10,7 +10,6 @@ export const useCartScreenHooks = () => {
 		try {
 			dispatch(toggleLoading());
 			let res = await requests.products.clearCart();
-			console.log(res);
 			let cartGet = await requests.products.getCarts();
 			dispatch(loadCart(cartGet.data.data));
 		} catch (error) {

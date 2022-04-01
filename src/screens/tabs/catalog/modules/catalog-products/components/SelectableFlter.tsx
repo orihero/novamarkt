@@ -1,8 +1,9 @@
 import { BottomArrow, FilterIcon } from "@novomarkt/assets/icons/icons";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
+import { STRINGS } from "@novomarkt/locales/strings";
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 
 const SelectableFlter = () => {
 	return (
@@ -15,6 +16,31 @@ const SelectableFlter = () => {
 				<Text style={styles.text}>Фильтры</Text>
 				<FilterIcon fill={COLORS.blue} />
 			</TouchableOpacity>
+			{/* <Modal
+				style={styles.view}
+				isVisible={isModalVisible}
+				onSwipeComplete={toggleModal}
+				onBackdropPress={toggleModal}
+				swipeDirection={["up", "left", "right", "down"]}
+			>
+				<View style={styles.modal}>
+					<TouchableOpacity onPress={toggleModal}>
+						<Text style={styles.modalText}>{STRINGS.recentlyAdded}</Text>
+					</TouchableOpacity>
+					<TouchableOpacity onPress={toggleModal}>
+						<Text style={styles.modalText}>{STRINGS.popular}</Text>
+					</TouchableOpacity>
+					<TouchableOpacity onPress={toggleModal}>
+						<Text style={styles.modalText}>{STRINGS.firstCheap}</Text>
+					</TouchableOpacity>
+					<TouchableOpacity onPress={toggleModal}>
+						<Text style={styles.modalText}>{STRINGS.firsExpensive}</Text>
+					</TouchableOpacity>
+					<TouchableOpacity onPress={toggleModal}>
+						<Text style={styles.modalText}>{STRINGS.newAdded}</Text>
+					</TouchableOpacity>
+				</View>
+			</Modal> */}
 		</View>
 	);
 };
@@ -29,7 +55,6 @@ const styles = StyleSheet.create({
 		borderColor: COLORS.lightGray,
 		flexDirection: "row",
 		justifyContent: "space-between",
-        
 	},
 	text: {
 		color: COLORS.blue,

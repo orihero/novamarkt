@@ -22,11 +22,13 @@ export const useHomeScreenHooks = () => {
 	const getFavs = async () => {
 		try {
 			let res = await requests.favorites.getFavorites();
-			dispatch(loadFavorite(res.data.data));
 		} catch (error) {
 			console.log(error);
 		}
 	};
+	useEffect(() => {
+		effect();
+	}, []);
 
 	const getSlides = async () => {
 		try {

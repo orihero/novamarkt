@@ -19,18 +19,23 @@ export interface CatalogDetailsProps {
 	id?: number;
 }
 
-const CatalogDetails = ({
-	item: { name, photo, id },
-}: ListRenderItemInfo<CatalogDetailsProps>) => {
+const CatalogDetails = ({ item }: ListRenderItemInfo<CatalogDetailsProps>) => {
 	let navigation = useNavigation();
+	let { name, photo, id } = item || {};
 	return (
 		<TouchableWithoutFeedback
 			onPress={() =>
-				navigation.navigate(ROUTES.CATALOG_PRODUCTS as any, { id })
+				navigation.navigate(
+					ROUTES.CATALOG_PRODUCTS as never,
+					{ id, name } as never
+				)
 			}
 		>
 			<View style={styles.container}>
-				<Image style={styles.image} source={{ uri: appendUrl(photo as any) }} />
+				<Image
+					style={styles.image}
+					source={{ uri: appendUrl(photo as string) }}
+				/>
 				<Text style={styles.text}>{name}</Text>
 			</View>
 		</TouchableWithoutFeedback>

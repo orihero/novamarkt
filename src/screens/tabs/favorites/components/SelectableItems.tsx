@@ -12,13 +12,14 @@ import {
 
 export interface SelectableItemsProps {
 	onPress?: (event: GestureResponderEvent) => void;
+	headerText?: string;
 }
 
-const SelectableItems = ({ onPress }: SelectableItemsProps) => {
+const SelectableItems = ({ onPress, headerText }: SelectableItemsProps) => {
 	return (
 		<View style={styles.container}>
 			<TouchableOpacity style={styles.row} onPress={onPress}>
-				<Text style={styles.text}>{STRINGS.recentlyAdded}</Text>
+				<Text style={styles.text}>{headerText}</Text>
 				<BottomArrow fill={COLORS.blue} />
 			</TouchableOpacity>
 		</View>

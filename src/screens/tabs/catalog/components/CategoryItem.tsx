@@ -9,17 +9,10 @@ import {
 	Dimensions,
 	Image,
 	ListRenderItemInfo,
-	ScrollView,
 	StyleSheet,
-	TouchableOpacity,
 	TouchableWithoutFeedback,
 	View,
 } from "react-native";
-
-// export interface CategoryItemProps {
-// 	image?: string;
-// 	name?: string;
-// }
 
 const CategoryItem = ({
 	item: { photo, name, id },
@@ -27,15 +20,10 @@ const CategoryItem = ({
 	let navigation: any = useNavigation();
 	return (
 		<TouchableWithoutFeedback
-			onPress={() =>
-				navigation.navigate(ROUTES.CATALOG_DETAILS, { id, name })
-			}
+			onPress={() => navigation.navigate(ROUTES.CATALOG_DETAILS, { id, name })}
 		>
 			<View style={styles.container}>
-				<Image
-					style={styles.image}
-					source={{ uri: appendUrl(photo as any) }}
-				/>
+				<Image style={styles.image} source={{ uri: appendUrl(photo as any) }} />
 				<Text style={styles.text}>{name}</Text>
 			</View>
 		</TouchableWithoutFeedback>

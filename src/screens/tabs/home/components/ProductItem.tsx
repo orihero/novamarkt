@@ -19,6 +19,7 @@ import {
 	loadFavorite,
 } from "@novomarkt/store/slices/favoriteSlice";
 import { useNavigation } from "@react-navigation/core";
+import { is } from "immer/dist/internal";
 import React, { ReactElement } from "react";
 import {
 	Image,
@@ -32,14 +33,27 @@ import { useDispatch } from "react-redux";
 
 const ProductItem = ({
 	item,
-}: ListRenderItemInfo<ProductItemResponse>): ReactElement => {
-	let { photo, brand, category, name, price, discount, price_old, id } = item;
+	getProducts,
+}: ListRenderItemInfo<ProductItemResponse> & {
+	getProducts?: () => void;
+}): ReactElement => {
+	let {
+		photo,
+		brand,
+		category,
+		name,
+		price,
+		discount,
+		price_old,
+		id,
+		isFavorite,
+	} = item;
 	const dispatch = useDispatch();
 	let navigation = useNavigation();
 	const cart = useAppSelector(cartSelector);
 	let isInCart = !!cart[id];
-	const favorite = useAppSelector(favoriteSelector);
-	let isInFavorite = !!favorite[id];
+	const fav = useAppSelector(favoriteSelector);
+	let isFav = !!fav[id];
 
 	const onCartPress = async () => {
 		try {
@@ -72,7 +86,8 @@ const ProductItem = ({
 			let res = await requests.favorites.addFavorite({
 				product_id: id,
 			});
-			dispatch(loadFavorite(res.data.data));
+			let r = await requests.favorites.getFavorites();
+			dispatch(loadFavorite(r.data.data));
 		} catch (error) {
 			console.log(error);
 		} finally {
@@ -94,7 +109,7 @@ const ProductItem = ({
 						onPress={onAddFavorite}
 						hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}
 					>
-						{isInFavorite ? (
+						{isFav ? (
 							<HeartIconRed fill={COLORS.red} />
 						) : (
 							<HeartIconBorder fill={COLORS.red} stroke={COLORS.red} />

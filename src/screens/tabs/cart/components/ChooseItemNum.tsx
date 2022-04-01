@@ -3,16 +3,29 @@ import { CartItemResponse } from "@novomarkt/api/types";
 import {
 	CrashIcon,
 	HeartIcon,
+	HeartIconBorder,
+	HeartIconRed,
 	MinusIcon,
 	PlusCounterIcon,
 } from "@novomarkt/assets/icons/icons";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS, GRADIENT_COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
+import { useAppSelector } from "@novomarkt/store/hooks";
 import { toggleLoading } from "@novomarkt/store/slices/appSettings";
 import { loadCart } from "@novomarkt/store/slices/cartSlice";
-import React from "react";
-import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+	favoriteSelector,
+	loadFavorite,
+} from "@novomarkt/store/slices/favoriteSlice";
+import React, { useState } from "react";
+import {
+	Image,
+	LayoutAnimation,
+	StyleSheet,
+	TouchableOpacity,
+	View,
+} from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { useDispatch } from "react-redux";
 
@@ -25,8 +38,12 @@ export let ProductsData = {
 };
 
 export default function ChooseItemNum({ data }: { data: CartItemResponse }) {
+	const [shouldShow, setShouldShow] = useState(true);
 	const dispatch = useDispatch();
 	let id = data.product.id;
+	const fav = useAppSelector(favoriteSelector);
+	let isFav = !!fav[id];
+
 	const onAddItem = async () => {
 		try {
 			dispatch(toggleLoading());
@@ -70,6 +87,22 @@ export default function ChooseItemNum({ data }: { data: CartItemResponse }) {
 			console.log(error);
 		} finally {
 			dispatch(toggleLoading());
+			LayoutAnimation.configureNext(LayoutAnimation.Presets.linear);
+		}
+	};
+
+	const onAddFavorite = async () => {
+		try {
+			dispatch(toggleLoading());
+			let res = await requests.favorites.addFavorite({
+				product_id: id,
+			});
+			let r = await requests.favorites.getFavorites();
+			dispatch(loadFavorite(r.data.data));
+		} catch (error) {
+			console.log(error);
+		} finally {
+			dispatch(toggleLoading());
 		}
 	};
 
@@ -93,9 +126,7 @@ export default function ChooseItemNum({ data }: { data: CartItemResponse }) {
 				</Text>
 				<View style={styles.rowTxt}>
 					<Text style={styles.blueTxt}>{data.product.price} ₽</Text>
-					<Text style={styles.lineThrough}>
-						{data.product.price_old} ₽
-					</Text>
+					<Text style={styles.lineThrough}>{data.product.price_old} ₽</Text>
 				</View>
 				<View style={styles.counter}>
 					<TouchableOpacity onPress={onDecreaseItem}>
@@ -124,7 +155,16 @@ export default function ChooseItemNum({ data }: { data: CartItemResponse }) {
 				</View>
 			</View>
 			<View style={styles.iconBox}>
-				<HeartIcon fill={COLORS.gray} />
+				<TouchableOpacity
+					onPress={onAddFavorite}
+					hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}
+				>
+					{isFav ? (
+						<HeartIconRed fill={COLORS.red} />
+					) : (
+						<HeartIconBorder fill={COLORS.red} stroke={COLORS.red} />
+					)}
+				</TouchableOpacity>
 				<TouchableOpacity
 					onPress={onRemoveItem}
 					hitSlop={{ left: 10, right: 10, top: 10, bottom: 10 }}

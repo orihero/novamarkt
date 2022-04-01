@@ -25,8 +25,8 @@ const PopularCategories = () => {
 				showsVerticalScrollIndicator={false}
 				numColumns={2}
 				data={categories}
-				renderItem={CategoryItem}
 				style={styles.container}
+				renderItem={(props) => <CategoryItem {...props} />}
 				contentContainerStyle={styles.contentContainerStyle}
 			/>
 		</View>

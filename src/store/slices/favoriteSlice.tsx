@@ -1,18 +1,13 @@
-import {
-	CartItemResponse,
-	FavoriteItemResponse,
-	ProductItemResponse,
-} from "@novomarkt/api/types";
-import { ProductItemProps } from "@novomarkt/screens/tabs/home/components/ProductItem";
+import { ProductItemResponse } from "@novomarkt/api/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../configureStore";
 
 export interface FavoriteItemProps {
-	data: ProductItemProps;
+	data: ProductItemResponse;
 	count: number;
 }
 export interface FavoriteItemProps {
-	data: ProductItemProps;
+	data: ProductItemResponse;
 	count: number;
 }
 
@@ -38,7 +33,6 @@ const favoriteSlice = createSlice({
 			}, {});
 			return st;
 		},
-		clearFavorite: () => initialState,
 
 		loadFavorite: (state, action: PayloadAction<ProductItemResponse[]>) => {
 			let obj = action.payload.reduce((previous, current) => {

@@ -4,12 +4,10 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
 	container: {
-		// paddingVertical: 40,
 		backgroundColor: COLORS.white,
 	},
 
 	header: {
-		// marginTop: 20,
 		paddingHorizontal: 20,
 		paddingVertical: 10,
 		flexDirection: "row",
@@ -27,6 +25,8 @@ export const styles = StyleSheet.create({
 	},
 
 	button: {
+		width: 130,
+		height: 40,
 		flexDirection: "row",
 	},
 
@@ -94,7 +94,6 @@ export const styles = StyleSheet.create({
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",
-		// marginHorizontal: 20,
 		paddingHorizontal: 20,
 		paddingVertical: 15,
 		marginTop: 20,
@@ -139,9 +138,6 @@ export const styles = StyleSheet.create({
 	},
 
 	blueText: {
-		// textDecorationLine: "underline",
-		// textDecorationStyle: 'solid',
-		// textDecorationColor: COLORS.blue,
 		borderBottomWidth: 1,
 		borderBottomColor: COLORS.blue,
 		marginLeft: 10,
@@ -197,5 +193,21 @@ export const styles = StyleSheet.create({
 		width: WINDOW_WIDTH - 20,
 		height: 400,
 		alignSelf: "center",
+	},
+
+	buttonContainer: {
+		flexDirection: "row",
+		margin: 0,
+	},
+
+	cartText: {
+		color: COLORS.white,
+		marginRight: 4,
+		fontWeight: "700",
+	},
+	inactiveCartText: {
+		color: COLORS.cartColor3,
+		marginRight: 8,
+		fontFamily: "Montserrat-Medium",
 	},
 });

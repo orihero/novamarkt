@@ -16,8 +16,8 @@ const CatalogProductsView = ({}): ReactElement => {
 	const [products, setProducts] = useState<ProductItemResponse[]>();
 
 	let {
-		params: { id },
-	} = useRoute();
+		params: { id, name },
+	}: any = useRoute();
 
 	let effect = async () => {
 		try {
@@ -44,7 +44,7 @@ const CatalogProductsView = ({}): ReactElement => {
 
 	return (
 		<View style={styles.container}>
-			<BackHeader hasSearch={true} style={styles.header} name={"Костюмы"} />
+			<BackHeader hasSearch={true} style={styles.header} name={name} />
 			<ScrollView>
 				<Image source={{ uri: BannerURL }} style={styles.banner} />
 				<ScrollableMenu />

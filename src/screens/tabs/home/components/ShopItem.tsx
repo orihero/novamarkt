@@ -1,4 +1,5 @@
 import { appendUrl } from "@novomarkt/api/requests";
+import { ShopsItemResponse } from "@novomarkt/api/types";
 import { COLORS } from "@novomarkt/constants/colors";
 import { ROUTES } from "@novomarkt/constants/routes";
 import { useNavigation } from "@react-navigation/native";
@@ -11,14 +12,9 @@ import {
 	View,
 } from "react-native";
 
-export type BrandItemProps = {
-	photo: string;
-	id: number;
-};
-
-const BrandItem = ({
+const ShopsItem = ({
 	item: { photo, id },
-}: ListRenderItemInfo<BrandItemProps>): ReactElement => {
+}: ListRenderItemInfo<ShopsItemResponse>): ReactElement => {
 	let navigation: any = useNavigation();
 	return (
 		<TouchableOpacity
@@ -31,7 +27,7 @@ const BrandItem = ({
 	);
 };
 
-export default BrandItem;
+export default ShopsItem;
 
 const styles = StyleSheet.create({
 	container: {

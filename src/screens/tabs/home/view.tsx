@@ -13,13 +13,6 @@ import ShopsList from "./components/ShopsList";
 import { useHomeScreenHooks } from "./hooks";
 import { styles } from "./style";
 
-// export let carouselData: CarouselItemProp[] = [
-// 	"https://www.dmarge.com/wp-content/uploads/2019/04/skinny-jeans.jpg",
-// 	"https://i.ytimg.com/vi/GXFHUqQQuDg/maxresdefault.jpg",
-// 	"https://www.dmarge.com/wp-content/uploads/2019/04/skinny-jeans.jpg",
-// 	"https://i.ytimg.com/vi/GXFHUqQQuDg/maxresdefault.jpg",
-// ];
-
 const HomeView = () => {
 	let { setActiveSlide, activeSlide, slide } = useHomeScreenHooks();
 	return (

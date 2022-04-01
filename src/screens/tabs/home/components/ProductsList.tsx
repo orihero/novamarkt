@@ -15,14 +15,14 @@ export const ProductsList = ({
 	title = STRINGS.popularProducts,
 }: PropularProductsProps) => {
 	const [products, setProducts] = useState<ProductItemResponse[]>([]);
-	let effect = async () => {
+	const getProducts = async () => {
 		try {
 			let res = await requests.products.getProducts();
 			setProducts(res.data.data);
 		} catch (error) {}
 	};
 	useEffect(() => {
-		effect();
+		getProducts();
 	}, []);
 	return (
 		<View style={styles.container}>
@@ -31,7 +31,9 @@ export const ProductsList = ({
 				horizontal
 				showsHorizontalScrollIndicator={false}
 				data={products}
-				renderItem={(props) => <ProductItem {...props} />}
+				renderItem={(props) => (
+					<ProductItem {...props} getProducts={getProducts} />
+				)}
 				style={styles.container}
 				contentContainerStyle={styles.contentContainerStyle}
 			/>

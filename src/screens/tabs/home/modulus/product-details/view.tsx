@@ -1,4 +1,4 @@
-import { appendUrl } from "@novomarkt/api/requests";
+import requests, { appendUrl } from "@novomarkt/api/requests";
 import {
 	ArrowBottomMarked,
 	BasketIcon,
@@ -10,7 +10,10 @@ import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
 import CommentItem from "@novomarkt/screens/tabs/settings/modules/comments/components/CommentItem";
-import { useRoute } from "@react-navigation/core";
+import { useAppSelector } from "@novomarkt/store/hooks";
+import { toggleLoading } from "@novomarkt/store/slices/appSettings";
+import { cartSelector, loadCart } from "@novomarkt/store/slices/cartSlice";
+import { useNavigation, useRoute } from "@react-navigation/core";
 import React, { ReactElement, useState } from "react";
 import {
 	FlatList,
@@ -20,25 +23,56 @@ import {
 	TouchableOpacity,
 	View,
 } from "react-native";
+import { useDispatch } from "react-redux";
 import ProductsList from "../../components/ProductsList";
 import BackHeaderDefault from "./components/BackHeaderDefault";
 import ReviewBox from "./components/ReviewBox";
 import { styles } from "./style";
 
-export let customCarouselData: string[] = [
-	"https://jooinn.com/images/model-girl-1.jpg",
-	"https://wallpapercave.com/wp/wp7105804.jpg",
-	"https://c4.wallpaperflare.com/wallpaper/403/913/79/girl-girl-beautiful-beautiful-wallpaper-preview.jpg",
-];
+// export let customCarouselData: string[] = [
+// 	"https://jooinn.com/images/model-girl-1.jpg",
+// 	"https://wallpapercave.com/wp/wp7105804.jpg",
+// 	"https://c4.wallpaperflare.com/wallpaper/403/913/79/girl-girl-beautiful-beautiful-wallpaper-preview.jpg",
+// ];
 
 const ProductDetailsView = ({}): ReactElement => {
 	let {
-		params: { item },
+		params: { item, id },
 	} = useRoute();
 	const [activeSlide, setActiveSlide] = useState(0);
 	const [shouldShow, setShouldShow] = useState(true);
 	let carouselPhoto = () => {
 		item`${appendUrl}`.photo;
+	};
+
+	const dispatch = useDispatch();
+	let navigation = useNavigation();
+	const cart = useAppSelector(cartSelector);
+	let isInCart = !!cart[id];
+
+	const onCartPress = async () => {
+		try {
+			if (isInCart) {
+				dispatch(toggleLoading());
+				let clear = await requests.products.removeItem({
+					product_id: id,
+				});
+				let cartGet = await requests.products.getCarts();
+				dispatch(loadCart(cartGet.data.data));
+				dispatch(toggleLoading());
+			} else {
+				dispatch(toggleLoading());
+				let res = await requests.products.addToCart({
+					amount: 1,
+					product_id: id,
+				});
+				let cartRes = await requests.products.getCarts();
+				dispatch(loadCart(cartRes.data.data));
+				dispatch(toggleLoading());
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 	return (
 		<View style={styles.container}>
@@ -46,10 +80,18 @@ const ProductDetailsView = ({}): ReactElement => {
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<View style={styles.header}>
 					<Text style={styles.headerText}>{item.price}</Text>
-					<DefaultButton containerStyle={styles.buttonCon}>
-						<View style={styles.button}>
-							<Text style={styles.buttonText}>{STRINGS.addToCart}</Text>
-							<BasketIcon fill={COLORS.white} />
+					<DefaultButton
+						containerStyle={styles.button}
+						secondary={isInCart}
+						onPress={onCartPress}
+					>
+						<View style={styles.buttonContainer}>
+							<Text
+								style={[isInCart ? styles.inactiveCartText : styles.cartText]}
+							>
+								{isInCart ? `${STRINGS.addToCart}е` : `${STRINGS.addToCart}у`}
+							</Text>
+							<BasketIcon fill={isInCart ? COLORS.cartColor3 : COLORS.white} />
 						</View>
 					</DefaultButton>
 				</View>

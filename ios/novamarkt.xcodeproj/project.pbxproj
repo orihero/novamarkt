@@ -11,6 +11,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		2D3E38D354FEFC4E550CC950 /* libPods-novamarkt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB16ACB2167FE2CC84C321E /* libPods-novamarkt.a */; };
 		2EBB8A5EE20B491D9E40F004 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 709967A5397642629A4B4B9D /* Montserrat-Regular.ttf */; };
 		387DF06FF9D940B6A8D8B844 /* Montserrat-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 717A30B6E4434E9C8DA58C06 /* Montserrat-ExtraLight.ttf */; };
 		3B40DD920D004E84A0B70AB4 /* Montserrat-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82817D21C59D48EAAB3B2151 /* Montserrat-Thin.ttf */; };
@@ -18,7 +19,6 @@
 		416EC77E63C6449E830B2290 /* Montserrat-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0645C53BAE74B75950199AF /* Montserrat-BoldItalic.ttf */; };
 		5EC445501E3C4119BB85EEF2 /* Montserrat-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F53CFEF998D4CF99019C5CA /* Montserrat-ExtraBoldItalic.ttf */; };
 		67EE94113D38400F9B8A0A92 /* Montserrat-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A901F5E06A0B4F00BB40C3F8 /* Montserrat-BlackItalic.ttf */; };
-		74581E0AB5DC1EAE17C79F9D /* libPods-novamarkt-novamarktTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58EF0D54932F579CD76E4451 /* libPods-novamarkt-novamarktTests.a */; };
 		7D24465EC0BB46B796429E47 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 124C6AF8CF494A298E6649CD /* Montserrat-SemiBold.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		95B9CA8640F74A09B2417D01 /* Montserrat-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D0043234AD7343B182E03E0E /* Montserrat-ThinItalic.ttf */; };
@@ -27,8 +27,8 @@
 		B982C9FA1394477ABCE718DC /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8295A23F4A2E4BBE833C7470 /* Montserrat-Medium.ttf */; };
 		BBC722D5764849759B88E0E4 /* Montserrat-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9AE0B955664B4BDD8E3B5392 /* Montserrat-SemiBoldItalic.ttf */; };
 		C736614AEB6D41F9ADF0CE09 /* Montserrat-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 404406DF6644478CB5762D16 /* Montserrat-ExtraLightItalic.ttf */; };
+		C88CD810F49413C5FD1D43EC /* libPods-novamarkt-novamarktTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C016C475F94E9B2DB16C4C6 /* libPods-novamarkt-novamarktTests.a */; };
 		EBFB56494ECA49719044F380 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2561EA56E0634219A75D0BCA /* Montserrat-Bold.ttf */; };
-		F84CE72236963ED4784AE08A /* libPods-novamarkt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 629686888F74659A7A3CE4F2 /* libPods-novamarkt.a */; };
 		FCA940C246564A60B37DB1D3 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CD3A7BDD3E104E0F896FDFA1 /* Montserrat-Light.ttf */; };
 		FCD3031272554EC388376394 /* Montserrat-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AEAB2CAED4BE4FCCBC267BC2 /* Montserrat-LightItalic.ttf */; };
 		FFB769DCC9764B55899A85E0 /* Montserrat-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FBCB1FCBFD8441EC8A6036E5 /* Montserrat-ExtraBold.ttf */; };
@@ -55,30 +55,30 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = novamarkt/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = novamarkt/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = novamarkt/main.m; sourceTree = "<group>"; };
-		1965CAF7291C0FBE1BA1BB87 /* Pods-novamarkt-novamarktTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-novamarkt-novamarktTests.release.xcconfig"; path = "Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests.release.xcconfig"; sourceTree = "<group>"; };
 		2561EA56E0634219A75D0BCA /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Bold.ttf"; path = "../src/assets/fonts/Montserrat-Bold.ttf"; sourceTree = "<group>"; };
-		288684427188A3539F4203F5 /* Pods-novamarkt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-novamarkt.debug.xcconfig"; path = "Target Support Files/Pods-novamarkt/Pods-novamarkt.debug.xcconfig"; sourceTree = "<group>"; };
 		2F53CFEF998D4CF99019C5CA /* Montserrat-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Montserrat-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		404406DF6644478CB5762D16 /* Montserrat-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Montserrat-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		4C0001E1A6694C5B96122B85 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Black.ttf"; path = "../src/assets/fonts/Montserrat-Black.ttf"; sourceTree = "<group>"; };
-		4E649E53AF07D2E063172314 /* Pods-novamarkt-novamarktTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-novamarkt-novamarktTests.debug.xcconfig"; path = "Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests.debug.xcconfig"; sourceTree = "<group>"; };
-		58EF0D54932F579CD76E4451 /* libPods-novamarkt-novamarktTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-novamarkt-novamarktTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		629686888F74659A7A3CE4F2 /* libPods-novamarkt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-novamarkt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		709967A5397642629A4B4B9D /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Regular.ttf"; path = "../src/assets/fonts/Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		717A30B6E4434E9C8DA58C06 /* Montserrat-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraLight.ttf"; path = "../src/assets/fonts/Montserrat-ExtraLight.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = novamarkt/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82817D21C59D48EAAB3B2151 /* Montserrat-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Thin.ttf"; path = "../src/assets/fonts/Montserrat-Thin.ttf"; sourceTree = "<group>"; };
 		8295A23F4A2E4BBE833C7470 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Medium.ttf"; path = "../src/assets/fonts/Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		8BB16ACB2167FE2CC84C321E /* libPods-novamarkt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-novamarkt.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C016C475F94E9B2DB16C4C6 /* libPods-novamarkt-novamarktTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-novamarkt-novamarktTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		940AC3D1B7F6C8993AFA10B3 /* Pods-novamarkt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-novamarkt.debug.xcconfig"; path = "Target Support Files/Pods-novamarkt/Pods-novamarkt.debug.xcconfig"; sourceTree = "<group>"; };
 		9AE0B955664B4BDD8E3B5392 /* Montserrat-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Montserrat-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
 		A901F5E06A0B4F00BB40C3F8 /* Montserrat-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-BlackItalic.ttf"; path = "../src/assets/fonts/Montserrat-BlackItalic.ttf"; sourceTree = "<group>"; };
 		AEAB2CAED4BE4FCCBC267BC2 /* Montserrat-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-LightItalic.ttf"; path = "../src/assets/fonts/Montserrat-LightItalic.ttf"; sourceTree = "<group>"; };
+		B40272922906BCF879D8CBCD /* Pods-novamarkt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-novamarkt.release.xcconfig"; path = "Target Support Files/Pods-novamarkt/Pods-novamarkt.release.xcconfig"; sourceTree = "<group>"; };
 		C32030C0681E46898C4A2F04 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-MediumItalic.ttf"; path = "../src/assets/fonts/Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
 		CD3A7BDD3E104E0F896FDFA1 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Light.ttf"; path = "../src/assets/fonts/Montserrat-Light.ttf"; sourceTree = "<group>"; };
 		D0043234AD7343B182E03E0E /* Montserrat-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ThinItalic.ttf"; path = "../src/assets/fonts/Montserrat-ThinItalic.ttf"; sourceTree = "<group>"; };
-		DA28280F25E8EE5547C197D9 /* Pods-novamarkt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-novamarkt.release.xcconfig"; path = "Target Support Files/Pods-novamarkt/Pods-novamarkt.release.xcconfig"; sourceTree = "<group>"; };
+		DCABB520F6190FE409C71979 /* Pods-novamarkt-novamarktTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-novamarkt-novamarktTests.debug.xcconfig"; path = "Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E0645C53BAE74B75950199AF /* Montserrat-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-BoldItalic.ttf"; path = "../src/assets/fonts/Montserrat-BoldItalic.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F3D67B5A120B415393E9C137 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-Italic.ttf"; path = "../src/assets/fonts/Montserrat-Italic.ttf"; sourceTree = "<group>"; };
+		F95177D8792ED4B54BAF67F6 /* Pods-novamarkt-novamarktTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-novamarkt-novamarktTests.release.xcconfig"; path = "Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests.release.xcconfig"; sourceTree = "<group>"; };
 		FBCB1FCBFD8441EC8A6036E5 /* Montserrat-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "Montserrat-ExtraBold.ttf"; path = "../src/assets/fonts/Montserrat-ExtraBold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,7 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74581E0AB5DC1EAE17C79F9D /* libPods-novamarkt-novamarktTests.a in Frameworks */,
+				C88CD810F49413C5FD1D43EC /* libPods-novamarkt-novamarktTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,7 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F84CE72236963ED4784AE08A /* libPods-novamarkt.a in Frameworks */,
+				2D3E38D354FEFC4E550CC950 /* libPods-novamarkt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,22 +136,10 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				629686888F74659A7A3CE4F2 /* libPods-novamarkt.a */,
-				58EF0D54932F579CD76E4451 /* libPods-novamarkt-novamarktTests.a */,
+				8BB16ACB2167FE2CC84C321E /* libPods-novamarkt.a */,
+				8C016C475F94E9B2DB16C4C6 /* libPods-novamarkt-novamarktTests.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		4C4BCF0D6FE95280B72E4CE1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				288684427188A3539F4203F5 /* Pods-novamarkt.debug.xcconfig */,
-				DA28280F25E8EE5547C197D9 /* Pods-novamarkt.release.xcconfig */,
-				4E649E53AF07D2E063172314 /* Pods-novamarkt-novamarktTests.debug.xcconfig */,
-				1965CAF7291C0FBE1BA1BB87 /* Pods-novamarkt-novamarktTests.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -170,7 +158,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				AC01E3D0925648F694322817 /* Resources */,
-				4C4BCF0D6FE95280B72E4CE1 /* Pods */,
+				8BBCE6A881DAD05708F7F2A0 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -184,6 +172,18 @@
 				00E356EE1AD99517003FC87E /* novamarktTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8BBCE6A881DAD05708F7F2A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				940AC3D1B7F6C8993AFA10B3 /* Pods-novamarkt.debug.xcconfig */,
+				B40272922906BCF879D8CBCD /* Pods-novamarkt.release.xcconfig */,
+				DCABB520F6190FE409C71979 /* Pods-novamarkt-novamarktTests.debug.xcconfig */,
+				F95177D8792ED4B54BAF67F6 /* Pods-novamarkt-novamarktTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		AC01E3D0925648F694322817 /* Resources */ = {
@@ -219,12 +219,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "novamarktTests" */;
 			buildPhases = (
-				1B4B384E9B048B2AE70478EF /* [CP] Check Pods Manifest.lock */,
+				2352AA42EE4E750DC7AFE34F /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				8DF9478D6A98D4012C55ACB9 /* [CP] Embed Pods Frameworks */,
-				B7FDE1DB860D27E57D3B88F1 /* [CP] Copy Pods Resources */,
+				DEA34815BE1F95AA60EBA7D7 /* [CP] Embed Pods Frameworks */,
+				2977E0A643041C67D00888D0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -240,14 +240,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "novamarkt" */;
 			buildPhases = (
-				C176D3A09133C1349305B16B /* [CP] Check Pods Manifest.lock */,
+				DC930C139701061ACC289D00 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				64455F2ED19AA5325D4A050F /* [CP] Embed Pods Frameworks */,
-				4D20E8F70F9A9A879DAA5B02 /* [CP] Copy Pods Resources */,
+				C75AFF5589A5EF4DD7C92E31 /* [CP] Embed Pods Frameworks */,
+				8E2364E3EE542D6B4E899E7C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -346,7 +346,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
-		1B4B384E9B048B2AE70478EF /* [CP] Check Pods Manifest.lock */ = {
+		2352AA42EE4E750DC7AFE34F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -368,58 +368,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4D20E8F70F9A9A879DAA5B02 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		64455F2ED19AA5325D4A050F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8DF9478D6A98D4012C55ACB9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B7FDE1DB860D27E57D3B88F1 /* [CP] Copy Pods Resources */ = {
+		2977E0A643041C67D00888D0 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -436,7 +385,41 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C176D3A09133C1349305B16B /* [CP] Check Pods Manifest.lock */ = {
+		8E2364E3EE542D6B4E899E7C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C75AFF5589A5EF4DD7C92E31 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-novamarkt/Pods-novamarkt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC930C139701061ACC289D00 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -456,6 +439,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEA34815BE1F95AA60EBA7D7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-novamarkt-novamarktTests/Pods-novamarkt-novamarktTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -510,7 +510,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4E649E53AF07D2E063172314 /* Pods-novamarkt-novamarktTests.debug.xcconfig */;
+			baseConfigurationReference = DCABB520F6190FE409C71979 /* Pods-novamarkt-novamarktTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -537,7 +537,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1965CAF7291C0FBE1BA1BB87 /* Pods-novamarkt-novamarktTests.release.xcconfig */;
+			baseConfigurationReference = F95177D8792ED4B54BAF67F6 /* Pods-novamarkt-novamarktTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -561,7 +561,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 288684427188A3539F4203F5 /* Pods-novamarkt.debug.xcconfig */;
+			baseConfigurationReference = 940AC3D1B7F6C8993AFA10B3 /* Pods-novamarkt.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -589,7 +589,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA28280F25E8EE5547C197D9 /* Pods-novamarkt.release.xcconfig */;
+			baseConfigurationReference = B40272922906BCF879D8CBCD /* Pods-novamarkt.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

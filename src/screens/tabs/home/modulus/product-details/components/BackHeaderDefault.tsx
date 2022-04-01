@@ -8,6 +8,7 @@ import {
 } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
 import { useAppSelector } from "@novomarkt/store/hooks";
+import { toggleLoading } from "@novomarkt/store/slices/appSettings";
 import {
 	favoriteSelector,
 	loadFavorite,
@@ -24,37 +25,36 @@ import { useDispatch } from "react-redux";
 
 const BackHeaderDefault = ({}): ReactElement => {
 	let {
-		params: { item },
+		params: { item, id },
 	} = useRoute();
 	let navigation = useNavigation();
 	const dispatch = useDispatch();
 	const favorite = useAppSelector(favoriteSelector);
-	let isInFavorite = !!favorite[item.id];
+	let isInFavorite = !!favorite[id];
 
 	const onAddFavorite = async () => {
 		try {
-			if (isInFavorite) {
-				let res = await requests.favorites.addFavorite({
-					product_id: item.id,
-				});
-			} else {
-				let res = await requests.favorites.addFavorite({
-					product_id: item.id,
-				});
-				let favoriteRes = await requests.favorites.addFavorite();
-				dispatch(loadFavorite(favoriteRes.data.data));
-			}
+			dispatch(toggleLoading());
+			let res = await requests.favorites.addFavorite({
+				product_id: id,
+			});
+			let r = await requests.favorites.getFavorites();
+			dispatch(loadFavorite(r.data.data));
 		} catch (error) {
 			console.log(error);
+		} finally {
+			dispatch(toggleLoading());
 		}
 	};
 
 	return (
 		<View style={styles.row}>
-			<LeftArrow
+			<TouchableOpacity
 				onPress={() => navigation.goBack()}
 				hitSlop={{ left: 20, right: 20, top: 20, bottom: 20 }}
-			/>
+			>
+				<LeftArrow />
+			</TouchableOpacity>
 			<View style={styles.upload}>
 				<TouchableOpacity
 					onPress={onAddFavorite}

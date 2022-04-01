@@ -42,17 +42,28 @@ export interface Category {
 	photo?: string;
 }
 
+export interface Shop {
+	id: number;
+	name: string;
+	photo: string;
+	date: string;
+}
+
 export interface ProductItemResponse {
 	id: number;
 	name: string;
 	price: number;
 	price_old: number;
-	discount?: any;
+	discount: number;
 	brand: Brand;
 	category: Category;
 	views: number;
 	rating: number;
 	photo: string;
+	isFavorite: boolean;
+	credit_label: string;
+	shop: Shop;
+	getProducts?: () => void;
 }
 
 export interface CartItemResponse {
@@ -152,4 +163,19 @@ export interface SendQuestionValue {
 
 export interface SliderTypes {
 	photo: string;
+}
+
+export interface DeliveryMethodResponse {
+	id: number;
+	name: string;
+	description: string;
+	photo: string;
+	date: string;
+}
+
+export interface ShopsItemResponse {
+	id: number;
+	name: string;
+	photo: string;
+	date: string;
 }

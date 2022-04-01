@@ -1,31 +1,44 @@
 import { appendUrl } from "@novomarkt/api/requests";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
+import { ROUTES } from "@novomarkt/constants/routes";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
+import { useNavigation } from "@react-navigation/native";
 import React, { ReactElement } from "react";
-import { Image, ListRenderItemInfo, StyleSheet, View } from "react-native";
+import {
+	Image,
+	ListRenderItemInfo,
+	StyleSheet,
+	TouchableOpacity,
+	View,
+} from "react-native";
 
 export interface CategoryItemProps {
 	name: string;
 	photo: string;
+	id: string;
 }
 
 const CategoryItem = ({
-	item: { photo, name },
+	item,
 }: ListRenderItemInfo<CategoryItemProps>): ReactElement => {
+	const navigation: any = useNavigation();
+	console.log(item);
+
+	let { photo, name, id } = item || {};
+
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity
+			style={styles.container}
+			onPress={() => navigation.navigate(ROUTES.CATALOG_DETAILS, { id, name })}
+		>
 			<View style={styles.nameContainer}>
-				<Text
-					numberOfLines={2}
-					ellipsizeMode="tail"
-					style={styles.text}
-				>
+				<Text numberOfLines={2} ellipsizeMode="tail" style={styles.text}>
 					{name}
 				</Text>
 			</View>
 			<Image style={styles.image} source={{ uri: appendUrl(photo) }} />
-		</View>
+		</TouchableOpacity>
 	);
 };
 

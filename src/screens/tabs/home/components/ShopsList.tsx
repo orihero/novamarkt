@@ -5,13 +5,14 @@ import { STRINGS } from "@novomarkt/locales/strings";
 import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import BrandItem from "./BrandItem";
+import ShopsItem from "./ShopItem";
 
 const ShopsList = () => {
-	const [categories, setCategories] = useState([]);
+	const [shops, setShops] = useState([]);
 	let effect = async () => {
 		try {
-			let res = await requests.brands.getBrands();
-			setCategories(res.data.data);
+			let res = await requests.shops.getShops();
+			setShops(res.data.data);
 		} catch (error) {}
 	};
 	useEffect(() => {
@@ -23,8 +24,8 @@ const ShopsList = () => {
 			<FlatList
 				horizontal
 				showsHorizontalScrollIndicator={false}
-				data={categories}
-				renderItem={(props) => <BrandItem {...props} />}
+				data={shops}
+				renderItem={(props) => <ShopsItem {...props} />}
 				style={styles.container}
 				contentContainerStyle={styles.contentContainerStyle}
 			/>
