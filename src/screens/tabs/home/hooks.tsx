@@ -26,9 +26,6 @@ export const useHomeScreenHooks = () => {
 			console.log(error);
 		}
 	};
-	useEffect(() => {
-		effect();
-	}, []);
 
 	const getSlides = async () => {
 		try {

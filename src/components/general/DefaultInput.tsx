@@ -13,6 +13,7 @@ import Text from "./Text";
 
 export interface DefaultInputProps {
 	title?: string;
+	autoFocus?: boolean;
 	placeholder?: string;
 	titleStyle?: StyleProp<TextStyle>;
 	containerStyle?: ViewStyle;
@@ -70,6 +71,7 @@ const DefaultInput = ({
 	onChange,
 	value,
 	keyboardType,
+	autoFocus,
 }: DefaultInputProps) => {
 	return (
 		<View style={[styles.container, containerStyle]}>
@@ -83,6 +85,7 @@ const DefaultInput = ({
 				onChangeText={onChange}
 				value={value}
 				keyboardType={keyboardType}
+				autoFocus={autoFocus}
 			/>
 		</View>
 	);

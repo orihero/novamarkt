@@ -5,11 +5,11 @@ import { STRINGS } from "@novomarkt/locales/strings";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 
-const ReviewBox = () => {
+const ReviewBox = ({ percent }) => {
 	return (
 		<View style={styles.container}>
 			<View style={styles.box1}>
-				<Text style={styles.bigger}>4.5</Text>
+				<Text style={styles.bigger}>{percent ? percent : 0}</Text>
 				<Text style={styles.reviewTxt}>{STRINGS.withReviews}</Text>
 				<View style={styles.stars}>
 					<MarkedStar fill={COLORS.blue} />
@@ -74,12 +74,12 @@ const styles = StyleSheet.create({
 		backgroundColor: COLORS.lightGray,
 		borderRadius: 8,
 		flexDirection: "row",
-        justifyContent: 'space-between',
+		justifyContent: "space-between",
 	},
 
-    box1: {
-        paddingRight: 10,
-    },
+	box1: {
+		paddingRight: 10,
+	},
 
 	stars: {
 		flexDirection: "row",
@@ -92,32 +92,32 @@ const styles = StyleSheet.create({
 
 	reviewTxt: {
 		fontSize: 12,
-        width: 100,
-        marginBottom: 10,
+		width: 100,
+		marginBottom: 10,
 	},
 
 	diagram: {
 		flexDirection: "row",
-        marginVertical: 2,
+		marginVertical: 2,
 	},
 
-    diagramRow: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginHorizontal: 5,
-    },
-    
-	blue: {
-        // width: 100,
-        paddingHorizontal: 50,
-		borderBottomWidth: 2,
-        borderColor: COLORS.blue
+	diagramRow: {
+		flexDirection: "row",
+		alignItems: "center",
+		marginHorizontal: 5,
 	},
-	
-    gray: {
-        // width: 100,
-        paddingHorizontal: 20,
+
+	blue: {
+		// width: 100,
+		paddingHorizontal: 50,
 		borderBottomWidth: 2,
-        borderColor: COLORS.whiteGray,
+		borderColor: COLORS.blue,
+	},
+
+	gray: {
+		// width: 100,
+		paddingHorizontal: 20,
+		borderBottomWidth: 2,
+		borderColor: COLORS.whiteGray,
 	},
 });

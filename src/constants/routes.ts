@@ -28,4 +28,5 @@ export const ROUTES = {
 	LOCATION: "location",
 	SEARCH: "search",
 	NEWS_DETAILS: "news-details",
+	SEND_REVIEW: "send_review",
 };

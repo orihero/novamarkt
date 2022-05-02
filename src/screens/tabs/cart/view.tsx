@@ -40,7 +40,7 @@ const CartView = () => {
 		<>
 			<DefaultHeader name={STRINGS.cart} />
 			<ScrollView style={styles.container}>
-				<LocationBox />
+				{/* <LocationBox /> */}
 				<OrderDetails total={cartTotal} />
 				{cart.map((e) => {
 					return <ChooseItemNum data={e} />;
@@ -54,7 +54,7 @@ const CartView = () => {
 					onPress={onClearCart}
 				/>
 				<DefaultButton
-					onPress={() => navigation.navigate(ROUTES.CHECKOUT as any)}
+					onPress={() => navigation.navigate(ROUTES.CHECKOUT, cart)}
 					text={STRINGS.continueOrdering}
 					containerStyle={[styles.button, styles.bottom]}
 					textStyle={styles.buttonTxt}

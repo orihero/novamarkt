@@ -1,11 +1,8 @@
 import { ROUTES } from "@novomarkt/constants/routes";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import CategoryItem from "../catalog/components/CategoryItem";
-import CatalogDetails from "../catalog/modules/catalog-details/components/CatalogDetails";
 import CatalogDetailsView from "../catalog/modules/catalog-details/view";
 import CatalogProductsView from "../catalog/modules/catalog-products/view";
-import PopularCategories from "./components/CategoriesList";
 import NewsDetailsView from "./modulus/news-details/view";
 import ProductDetailsView from "./modulus/product-details/view";
 import HomeView from "./view";

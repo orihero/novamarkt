@@ -179,3 +179,21 @@ export interface ShopsItemResponse {
 	photo: string;
 	date: string;
 }
+
+export interface SendReviewProps {
+	product_id: number;
+	review: string;
+	rate: number;
+}
+
+export interface OrderSend {
+	address: string;
+	comment: string;
+	payment_id: number;
+	delivery_id: number;
+	receiver: number;
+	name: string;
+	lastName: string;
+	email: string;
+	phone: string;
+}

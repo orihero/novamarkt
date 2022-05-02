@@ -10,6 +10,10 @@ import { ProductItemProps } from "@novomarkt/screens/tabs/home/components/Produc
 import React from "react";
 import { ListRenderItemInfo, StyleSheet, View } from "react-native";
 
+interface Props {
+	review: string;
+}
+
 const CommentItem = ({
 	item: { name, image, shopName, price },
 }: ListRenderItemInfo<ProductItemProps>) => {
@@ -42,7 +46,7 @@ const CommentItem = ({
 export default CommentItem;
 
 const styles = StyleSheet.create({
-	container: {
+	containerComment: {
 		flex: 1,
 		backgroundColor: COLORS.white,
 	},

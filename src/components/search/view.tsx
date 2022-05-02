@@ -8,11 +8,11 @@ import { useSearchHook } from "./hooks";
 import { styles } from "./styles";
 
 const Search = () => {
-	let { result, searchWithQuery } = useSearchHook();
+	let { result, onStateChange } = useSearchHook();
 
 	return (
 		<View style={styles.container}>
-			<SearchBackHeader autoFocus={true} onChange={searchWithQuery} />
+			<SearchBackHeader autoFocus={true} onChange={onStateChange("text")} />
 			<FlatList
 				data={result}
 				renderItem={({ item }) => {

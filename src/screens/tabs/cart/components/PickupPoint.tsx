@@ -1,44 +1,48 @@
-import React from "react";
-import {
-	Image,
-	StyleSheet,
-	TouchableNativeFeedbackBase,
-	TouchableOpacity,
-	TouchableWithoutFeedback,
-	View,
-} from "react-native";
+import { appendUrl } from "@novomarkt/api/requests";
+import DefaultInput from "@novomarkt/components/general/DefaultInput";
 import Text from "@novomarkt/components/general/Text";
-import { STRINGS } from "@novomarkt/locales/strings";
 import { COLORS } from "@novomarkt/constants/colors";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
+import { STRINGS } from "@novomarkt/locales/strings";
 import { useNavigation } from "@react-navigation/core";
-import { ROUTES } from "@novomarkt/constants/routes";
+import React from "react";
+import { Image, StyleSheet, View } from "react-native";
 
-export let imageURL =
-	"https://static.theblacktux.com/products/suits/gray-suit/1_2018_0326_TBT_Spring-Ecomm_Shot03_-31_w1_1812x1875.jpg?width=1024";
-
-const PickupPoint = () => {
+const PickupPoint = ({ items }) => {
 	let navigation = useNavigation();
 	return (
 		<View style={styles.container}>
-			<Text style={styles.headerTxt}>{STRINGS.pickupPoint}</Text>
-			<TouchableOpacity
-				style={styles.button}
-				onPress={() => navigation.navigate(ROUTES.CHECKOUT_POINT)}
-			>
-				<Text style={styles.buttonTxt}>
-					{STRINGS.selectPickupPoint}
-				</Text>
-			</TouchableOpacity>
+			<Text style={styles.headerTxt}>{STRINGS.pickupPoint}*</Text>
+			<DefaultInput
+				inputStyle={{ width: WINDOW_WIDTH - 40, padding: 10 }}
+				containerStyle={{ marginBottom: 0 }}
+				placeholder={"Tashkent, Uzbekistan"}
+			/>
 			<View style={styles.box}>
 				<Text style={styles.boxTxt}>
 					Срок доставки будет расчитан после выбора пункт самовывоза
 				</Text>
-				<View style={styles.boxNum}>
-					<Image source={{ uri: imageURL }} style={styles.boxImage} />
-					<View style={styles.imageNum}>
-						<Text style={styles.num}>1</Text>
-					</View>
+				<View
+					style={{
+						flexDirection: "row",
+						flexWrap: "wrap",
+					}}
+				>
+					{items.map((e) => {
+						return (
+							<View style={styles.boxNum}>
+								<Image
+									source={{ uri: appendUrl(e.product.photo) }}
+									style={styles.boxImage}
+								/>
+								{e.amount && (
+									<View style={styles.imageNum}>
+										<Text style={styles.num}>{e.amount}</Text>
+									</View>
+								)}
+							</View>
+						);
+					})}
 				</View>
 			</View>
 		</View>
@@ -48,7 +52,7 @@ const PickupPoint = () => {
 export default PickupPoint;
 
 const styles = StyleSheet.create({
-	container: {
+	pickupContainer: {
 		marginVertical: 10,
 		marginHorizontal: 20,
 	},
@@ -101,9 +105,9 @@ const styles = StyleSheet.create({
 	},
 
 	boxNum: {
-		marginTop: 10,
-		flexDirection: "row",
 		zIndex: 2,
+		margin: 5,
+		flexDirection: "row",
 	},
 
 	imageNum: {

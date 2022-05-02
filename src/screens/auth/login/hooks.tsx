@@ -39,9 +39,7 @@ const useLoginHook = () => {
 					errors: Record<keyof LoginState, string>;
 				}>;
 				if (err.response) {
-					let vals = Object.values(err.response.data.errors).join(
-						","
-					);
+					let vals = Object.values(err.response.data.errors).join(",");
 					setError(vals);
 				} else {
 					setError("Something went wrong");
@@ -61,8 +59,7 @@ const useLoginHook = () => {
 		}
 	};
 
-	let onForgotPassNavigation = () =>
-		navigation.navigate(ROUTES.FORGOTPASSWORD);
+	let onForgotPassNavigation = () => navigation.navigate(ROUTES.FORGOTPASSWORD);
 
 	let onLoginNavigation = () => navigation.navigate(ROUTES.REGISTER);
 

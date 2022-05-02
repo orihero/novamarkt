@@ -18,30 +18,22 @@ const RecipientBox = () => {
 	const [shouldShow, setShouldShow] = useState(true);
 	const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 	return (
-		<View style={styles.container}>
-			<Text style={styles.headerTxt}>{STRINGS.recipient}</Text>
-			<View style={styles.box}>
+		<View style={styles.recipientContainer}>
+			<Text style={styles.recipHeaderTxt}>{STRINGS.recipient}</Text>
+			<View style={styles.recipBox}>
 				<View style={styles.switch}>
 					<Text style={styles.notMe}>{STRINGS.itsNotMe}</Text>
 					<Switch
 						hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
 						trackColor={{ false: "#767577", true: COLORS.blue }}
-						thumbColor={
-							isEnabled ? "rgba(0, 82, 255)" : COLORS.white
-						}
+						thumbColor={isEnabled ? "rgba(0, 82, 255)" : COLORS.white}
 						ios_backgroundColor="#3e3e3e"
 						onValueChange={toggleSwitch}
 						value={isEnabled}
 					/>
 				</View>
-				<TextInput
-					placeholder={STRINGS.inputName}
-					style={styles.input}
-				/>
-				<TextInput
-					placeholder={STRINGS.inputLastName}
-					style={styles.input}
-				/>
+				<TextInput placeholder={STRINGS.inputName} style={styles.input} />
+				<TextInput placeholder={STRINGS.inputLastName} style={styles.input} />
 				<TextInput
 					placeholder={STRINGS.email}
 					style={styles.input}
@@ -60,9 +52,7 @@ const RecipientBox = () => {
 						setShouldShow(!shouldShow);
 					}}
 				>
-					<Text style={styles.underline}>
-						+ Дополнительный номер телефона
-					</Text>
+					<Text style={styles.underline}>+ Дополнительный номер телефона</Text>
 				</TouchableOpacity>
 				{!shouldShow ? (
 					<TextInput
@@ -72,10 +62,7 @@ const RecipientBox = () => {
 					/>
 				) : null}
 			</View>
-			<DefaultButton
-				containerStyle={styles.button}
-				text={STRINGS.addOrder}
-			/>
+			<DefaultButton containerStyle={styles.button} text={STRINGS.addOrder} />
 		</View>
 	);
 };
@@ -83,18 +70,18 @@ const RecipientBox = () => {
 export default RecipientBox;
 
 const styles = StyleSheet.create({
-	container: {
+	recipientContainer: {
 		marginHorizontal: 20,
 	},
 
-	headerTxt: {
+	recipHeaderTxt: {
 		fontSize: 19,
 		color: COLORS.defaultBlack,
 		fontWeight: "700",
 		letterSpacing: 0.5,
 	},
 
-	box: {
+	recipBox: {
 		padding: 15,
 		borderRadius: 8,
 		elevation: 5,

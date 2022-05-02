@@ -55,7 +55,7 @@ const SelectableDelivery = () => {
 export default SelectableDelivery;
 
 const styles = StyleSheet.create({
-	container: {
+	deliveryContainer: {
 		marginHorizontal: 20,
 	},
 

@@ -14,9 +14,11 @@ import {
 	DeliveryMethodResponse,
 	LoginResponse,
 	NewsItemResponse,
+	OrderSend,
 	ProductItemResponse,
 	QuestionsResponse,
 	SendQuestionValue,
+	SendReviewProps,
 	SliderTypes,
 } from "./types";
 
@@ -148,6 +150,12 @@ let requests = {
 
 		deliveryMethods: () =>
 			axios.get<BaseResponse<DeliveryMethodResponse>>(`${url}/delivery`),
+
+		getReviews: (creds: { product_id: number }) =>
+			axios.get(`${url}/product/reviews?product_id=${creds.product_id}`),
+
+		sendReview: (data: SendReviewProps) =>
+			axios.post(`${url}/product/set-review`, data),
 	},
 
 	news: {
@@ -175,6 +183,11 @@ let requests = {
 		getExpensive: () => axios.get(`${url}/product?sort=price_up`),
 		getCheap: () => axios.get(`${url}/product?sort=price_down`),
 		getPopular: () => axios.get(`${url}/product?sort=popular`),
+	},
+
+	order: {
+		sendOrder: (credentials: OrderSend) =>
+			axios.post(`${url}/order/send`, credentials),
 	},
 };
 export default requests;

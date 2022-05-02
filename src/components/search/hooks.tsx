@@ -7,21 +7,28 @@ import _, { debounce } from "lodash";
 
 export const useSearchHook = () => {
 	let [result, setResult] = useState<ProductItemResponse[]>([]);
-	const query = useSelector(selectQuery);
+	const [state, setState] = useState({
+		text: "",
+	});
+	// const query = useSelector(selectQuery);
 
 	const searchWithQuery = async () => {
 		try {
-			let res = await requests.products.searchProducts(query);
+			let res = await requests.products.searchProducts(state.text);
 			setResult(res.data.data);
 		} catch (error) {
-			// console.log(error);
+			console.log(error);
 		}
 	};
 
-	useEffect(() => {
-		// searchWithQuery();
-		debounce(() => searchWithQuery(), 500);
-	}, [query]);
+	let onStateChange = (key: string) => (value: string) => {
+		setState({ ...state, [key]: value });
+	};
 
-	return { result, searchWithQuery };
+	useEffect(() => {
+		searchWithQuery();
+		debounce(() => searchWithQuery(), 500);
+	}, []);
+
+	return { result, onStateChange };
 };

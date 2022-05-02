@@ -39,7 +39,7 @@ const SearchBackHeader = ({ autoFocus, onChange }: SearchProps) => {
 					placeholderTextColor={COLORS.whiteGray}
 					autoFocus={autoFocus}
 					autoCorrect={false}
-					onChange={onChange}
+					onChangeText={onChange}
 					onFocus={() => {
 						navigation.navigate(ROUTES.SEARCH);
 					}}
