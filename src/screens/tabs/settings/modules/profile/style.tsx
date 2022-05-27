@@ -188,4 +188,20 @@ export const styles = StyleSheet.create({
 		paddingBottom: 10,
 		backgroundColor: COLORS.white,
 	},
+
+	userData: {
+		flex: 1,
+		padding: 15,
+		borderRadius: 8,
+		marginHorizontal: 20,
+		elevation: 5,
+		shadowOpacity: 0.3,
+		shadowRadius: 5,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
+		backgroundColor: COLORS.white,
+		marginVertical: 20,
+	},
 });

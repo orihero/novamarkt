@@ -1,3 +1,4 @@
+import { appendUrl } from "@novomarkt/api/requests";
 import { LoginResponse } from "@novomarkt/api/types";
 import { PlusIcon } from "@novomarkt/assets/icons/icons";
 import { COLORS } from "@novomarkt/constants/colors";
@@ -29,7 +30,7 @@ const Avatar = () => {
 					style={styles.avatar}
 					source={{
 						uri: image
-							? profileData?.photo
+							? appendUrl(profileData?.photo)
 							: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyz-77X11MoGE22xVjjPhbpW6lPj6I0SkcTQ&usqp=CAU",
 					}}
 				/>

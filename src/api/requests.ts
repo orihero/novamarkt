@@ -1,13 +1,11 @@
 import { LoginState } from "@novomarkt/screens/auth/login/hooks";
 import { RegisterState } from "@novomarkt/screens/auth/register/hooks";
-import { BrandItemProps } from "@novomarkt/screens/tabs/home/components/BrandItem";
 import { store } from "@novomarkt/store/configureStore";
 import { userLoggedOut } from "@novomarkt/store/slices/userSlice";
 import axios, { AxiosResponse } from "axios";
 import {
 	AddCardRequest,
 	BaseResponse,
-	Brand,
 	CardItem,
 	CardTypeItem,
 	CartItemResponse,

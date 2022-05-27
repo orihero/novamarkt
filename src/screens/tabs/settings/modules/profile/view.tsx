@@ -1,16 +1,15 @@
-import { LocationIcon, PlusIcon } from "@novomarkt/assets/icons/icons";
-import EditableInput from "@novomarkt/components/general/EditableInput";
+import { appendUrl } from "@novomarkt/api/requests";
+import { LocationIcon } from "@novomarkt/assets/icons/icons";
 import Text from "@novomarkt/components/general/Text";
 import BackHeader from "@novomarkt/components/navigation/BackHeader";
 import { COLORS } from "@novomarkt/constants/colors";
-import { STRINGS } from "@novomarkt/locales/strings";
+import { ROUTES } from "@novomarkt/constants/routes";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { ScrollView, TouchableOpacity, View } from "react-native";
-import Avatar from "../../components/Avatar";
+import { Image, ScrollView, TouchableOpacity, View } from "react-native";
+import CartSelectItem from "./components/cartItem/view";
 import useProfileHook from "./hooks";
 import { styles } from "./style";
-import Modal from "react-native-modal";
-import CartSelectItem from "./components/cartItem/view";
 
 export interface UserData {
 	name: string;
@@ -22,111 +21,120 @@ export interface UserData {
 }
 
 const ProfileView = () => {
+	const navigation = useNavigation();
 	let { onTextChange, profileData, setProfileData, onFieldSubmit } =
 		useProfileHook();
+
 	return (
 		<>
 			<BackHeader style={styles.left} />
 			<ScrollView style={styles.container}>
-				<Text style={styles.header}>Мои данные</Text>
-				<View style={styles.shadowBox}>
-					<View style={styles.row}>
-						<Avatar />
-						<EditableInput
-							titleStyle={styles.head}
-							value={profileData?.name}
-							bigger
-							onChange={onTextChange}
-							placeholder="Имя"
-							onSubmit={onFieldSubmit}
-							name="name"
+				<View
+					style={{
+						flexDirection: "row",
+						justifyContent: "space-between",
+						alignItems: "center",
+					}}
+				>
+					<Text style={styles.header}>Мои данные</Text>
+					<TouchableOpacity
+						onPress={() =>
+							navigation.navigate(ROUTES.USER_EDITING, profileData)
+						}
+						style={{ marginTop: 20, marginHorizontal: 20 }}
+						hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
+					>
+						<Text style={{ color: COLORS.blue }}>Редактировать</Text>
+					</TouchableOpacity>
+				</View>
+				<View style={styles.userData}>
+					<View
+						style={{ flexDirection: "row", justifyContent: "space-between" }}
+					>
+						<Image
+							source={{ uri: appendUrl(profileData?.photo) }}
+							style={{ width: 80, height: 80 }}
 						/>
 					</View>
-					<View style={styles.inputBox}>
-						<EditableInput
-							title={STRINGS.email}
-							value={profileData?.email}
-							onChange={onTextChange}
-							keyboardType="email-address"
-							placeholder=""
-							name="email"
-						/>
-						<EditableInput
-							title={STRINGS.phone}
-							value={profileData?.phone}
-							onChange={onTextChange}
-							placeholder="+998 99 989 2923"
-							keyboardType="phone-pad"
-							name="phone"
-						/>
-						<EditableInput
-							title={STRINGS.dateOfBirth}
-							value={profileData?.date}
-							onChange={onTextChange}
-							placeholder=""
-							keyboardType="numeric"
-							name="date"
-						/>
+					<View
+						style={{
+							flexDirection: "column",
+							marginVertical: 10,
+						}}
+					>
+						<Text>Имя</Text>
+						<Text
+							style={{
+								color: COLORS.defaultBlack,
+								marginVertical: 5,
+							}}
+						>
+							{profileData?.name}
+						</Text>
 					</View>
-					<View>
-						<Text>{STRINGS.sex}</Text>
-						<View style={styles.row}>
-							<TouchableOpacity
-								onPress={() =>
-									setProfileData({
-										...profileData,
-										gender: true,
-									})
-								}
-							>
-								<View style={styles.rowButtons}>
-									<View
-										style={
-											profileData?.gender
-												? styles.dot
-												: styles.dotGray
-										}
-									>
-										<View
-											style={
-												profileData?.gender
-													? styles.background
-													: styles.backgroundGray
-											}
-										/>
-									</View>
-									<Text style={styles.black}>Муж.</Text>
-								</View>
-							</TouchableOpacity>
-
-							<TouchableOpacity
-								onPress={() =>
-									setProfileData({
-										...profileData,
-										gender: false,
-									})
-								}
-							>
-								<View style={styles.rowButtons}>
-									<View
-										style={
-											profileData?.gender
-												? styles.dotGray
-												: styles.dot
-										}
-									>
-										<View
-											style={
-												profileData?.gender
-													? styles.backgroundGray
-													: styles.background
-											}
-										/>
-									</View>
-									<Text style={styles.black}>Жен.</Text>
-								</View>
-							</TouchableOpacity>
-						</View>
+					<View
+						style={{
+							flexDirection: "column",
+							marginVertical: 10,
+						}}
+					>
+						<Text>Э-маил</Text>
+						<Text
+							style={{
+								color: COLORS.defaultBlack,
+								marginVertical: 5,
+							}}
+						>
+							{profileData?.email ? profileData?.email : "Не указано"}
+						</Text>
+					</View>
+					<View
+						style={{
+							flexDirection: "column",
+							marginVertical: 10,
+						}}
+					>
+						<Text>Телефон</Text>
+						<Text
+							style={{
+								color: COLORS.defaultBlack,
+								marginVertical: 5,
+							}}
+						>
+							{profileData?.phone}
+						</Text>
+					</View>
+					<View
+						style={{
+							flexDirection: "column",
+							marginVertical: 10,
+						}}
+					>
+						<Text>Дата рождения</Text>
+						<Text
+							style={{
+								color: COLORS.defaultBlack,
+								marginVertical: 5,
+							}}
+						>
+							{profileData?.birthday}
+						</Text>
+					</View>
+					<View
+						style={{
+							flexDirection: "column",
+							marginVertical: 10,
+						}}
+					>
+						<Text>Пол</Text>
+						<Text
+							style={{
+								color: COLORS.defaultBlack,
+								marginVertical: 5,
+							}}
+						>
+							{profileData?.gender === 1 ? "Мужчина" : "Женшина"}
+						</Text>
 					</View>
 				</View>
 				<View style={styles.shadowBoxTwo}>
@@ -137,15 +145,15 @@ const ProfileView = () => {
 					<Text style={styles.txt}>Адресa клиента</Text>
 					<View style={styles.row}>
 						<LocationIcon fill={COLORS.gray} />
-						<Text style={styles.moscow}>Москва</Text>
+						{profileData?.addresses?.map((e) => {
+							<Text style={styles.moscow}>{e}</Text>;
+						})}
 					</View>
 				</View>
 				<View style={styles.delete}>
 					<Text style={styles.txt}>Удаление личного кабинета</Text>
 					<Text>Как только Ваш личный кабинет будет удален</Text>
-					<Text style={styles.blueText}>
-						Удаление личново кабинета
-					</Text>
+					<Text style={styles.blueText}>Удаление личново кабинета</Text>
 				</View>
 				<View style={styles.recover}>
 					<Text style={styles.txt}>Восстановления пароля</Text>

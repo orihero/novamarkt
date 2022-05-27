@@ -35,6 +35,7 @@ const useLoginHook = () => {
 				dispatch(userLoggedIn(res.data));
 			} catch (error) {
 				//Check if server error
+				console.log(error);
 				const err = error as AxiosError<{
 					errors: Record<keyof LoginState, string>;
 				}>;

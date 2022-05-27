@@ -29,4 +29,5 @@ export const ROUTES = {
 	SEARCH: "search",
 	NEWS_DETAILS: "news-details",
 	SEND_REVIEW: "send_review",
+	USER_EDITING: "user_editing",
 };

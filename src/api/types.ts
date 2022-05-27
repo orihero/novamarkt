@@ -1,14 +1,16 @@
 export interface LoginResponse {
-	id: number;
-	device_id: string;
-	token: string;
+	id?: number;
+	device_id?: string;
+	token?: string;
 	name: string;
 	phone: string;
 	email?: any;
 	photo: string;
-	balance: number;
-	date: string;
-	gender: boolean;
+	balance?: number;
+	date?: string;
+	gender: number;
+	birthday?: string;
+	addresses?: [];
 }
 
 export interface RegisterData {
