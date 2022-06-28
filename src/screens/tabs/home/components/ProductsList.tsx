@@ -6,6 +6,8 @@ import React, { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { ProductItemResponse } from "@novomarkt/api/types";
 import ProductItem from "./ProductItem";
+import { useDispatch } from "react-redux";
+import { toggleLoading } from "@novomarkt/store/slices/appSettings";
 
 export interface PropularProductsProps {
 	title?: string;
@@ -14,6 +16,7 @@ export interface PropularProductsProps {
 export const ProductsList = ({
 	title = STRINGS.popularProducts,
 }: PropularProductsProps) => {
+	const dispatch = useDispatch();
 	const [products, setProducts] = useState<ProductItemResponse[]>([]);
 	const getProducts = async () => {
 		try {
@@ -48,10 +51,9 @@ const styles = StyleSheet.create({
 		color: COLORS.defaultBlack,
 		fontSize: 19,
 		marginLeft: 16,
-		marginBottom: 20,
 		fontWeight: "700",
 		letterSpacing: 0.5,
 	},
-	container: { marginBottom: 20 },
+	container: { marginBottom: 10 },
 	contentContainerStyle: { paddingHorizontal: 12 },
 });

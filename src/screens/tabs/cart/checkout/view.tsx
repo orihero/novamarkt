@@ -82,144 +82,146 @@ const CheckoutView = () => {
 	};
 
 	return (
-		<ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+		<>
 			<BackHeader name={STRINGS.checkout} style={styles.backHeader} />
-			{/* <SelectableDelivery /> */}
-			<View style={styles.deliveryContainer}>
-				<Text style={styles.headerTxt}>{STRINGS.deliveryChoose}</Text>
-				{delivery?.map((item, i) => {
-					return (
-						<>
-							<TouchableOpacity
-								style={activeIndex == i ? styles.activeBox : styles.box}
-								onPress={() => setIsActive(i)}
-							>
-								<View
-									style={
-										activeIndex === i ? styles.activeBorder : styles.border
-									}
+			<ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+				{/* <SelectableDelivery /> */}
+				<View style={styles.deliveryContainer}>
+					<Text style={styles.headerTxt}>{STRINGS.deliveryChoose}</Text>
+					{delivery?.map((item, i) => {
+						return (
+							<>
+								<TouchableOpacity
+									style={activeIndex == i ? styles.activeBox : styles.box}
+									onPress={() => setIsActive(i)}
 								>
 									<View
-										style={activeIndex === i ? styles.activeDot : styles.dot}
-									></View>
-								</View>
-								<View style={styles.textBox}>
-									<Text style={styles.text}>{item.name}</Text>
-									<Text style={styles.comment}>{item.description}</Text>
-								</View>
-							</TouchableOpacity>
-						</>
-					);
-				})}
-			</View>
-			<View style={styles.pickupContainer}>
-				<Text style={styles.pickupHeaderTxt}>{STRINGS.pickupPoint}*</Text>
-				<DefaultInput
-					inputStyle={{ width: WINDOW_WIDTH - 40, padding: 10 }}
-					containerStyle={{ marginBottom: 0 }}
-					placeholder={"Tashkent, Uzbekistan"}
-					onChange={onStateChange("address")}
-				/>
-				<View style={styles.pickupBox}>
-					<Text style={styles.boxTxt}>
-						Срок доставки будет расчитан после выбора пункт самовывоза
-					</Text>
-					<View
-						style={{
-							flexDirection: "row",
-							flexWrap: "wrap",
-						}}
-					>
-						{item?.map((e) => {
-							return (
-								<View style={styles.boxNum}>
-									<Image
-										source={{ uri: appendUrl(e.product.photo) }}
-										style={styles.boxImage}
-									/>
-									{e.amount && (
-										<View style={styles.imageNum}>
-											<Text style={styles.num}>{e.amount}</Text>
-										</View>
-									)}
-								</View>
-							);
-						})}
-					</View>
+										style={
+											activeIndex === i ? styles.activeBorder : styles.border
+										}
+									>
+										<View
+											style={activeIndex === i ? styles.activeDot : styles.dot}
+										></View>
+									</View>
+									<View style={styles.textBox}>
+										<Text style={styles.text}>{item.name}</Text>
+										<Text style={styles.comment}>{item.description}</Text>
+									</View>
+								</TouchableOpacity>
+							</>
+						);
+					})}
 				</View>
-			</View>
-			{/* <PickupPoint items={item} /> */}
-			{/* <RecipientBox /> */}
-			<View style={styles.recipientContainer}>
-				<Text style={styles.recipHeaderTxt}>{STRINGS.recipient}</Text>
-				<View style={styles.recipBox}>
-					<View style={styles.switch}>
-						<Text style={styles.notMe}>{STRINGS.itsNotMe}</Text>
-						<Switch
-							hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
-							trackColor={{ false: "#767577", true: COLORS.blue }}
-							thumbColor={isEnabled ? "rgba(0, 82, 255)" : COLORS.white}
-							ios_backgroundColor="#3e3e3e"
-							onValueChange={toggleSwitch}
-							value={isEnabled}
-						/>
-					</View>
-					<TextInput
-						placeholder={STRINGS.inputName}
-						style={styles.input}
-						onChangeText={onStateChange("name")}
+				<View style={styles.pickupContainer}>
+					<Text style={styles.pickupHeaderTxt}>{STRINGS.pickupPoint}*</Text>
+					<DefaultInput
+						inputStyle={{ width: WINDOW_WIDTH - 40, padding: 10 }}
+						containerStyle={{ marginBottom: 0 }}
+						placeholder={"Tashkent, Uzbekistan"}
+						onChange={onStateChange("address")}
 					/>
-					<TextInput
-						placeholder={STRINGS.inputLastName}
-						style={styles.input}
-						onChangeText={onStateChange("lastName")}
-					/>
-					<TextInput
-						placeholder={STRINGS.email}
-						style={styles.input}
-						keyboardType={"email-address"}
-						onChangeText={onStateChange("email")}
-					/>
-					<TextInput
-						placeholder={STRINGS.phoneNumber}
-						style={styles.input}
-						keyboardType={"phone-pad"}
-						onChangeText={onStateChange("phone")}
-					/>
-					<TouchableOpacity
-						onPress={() => {
-							LayoutAnimation.configureNext(
-								LayoutAnimation.Presets.easeInEaseOut
-							);
-							setShouldShow(!shouldShow);
-						}}
-					>
-						<Text style={styles.underline}>
-							+ Дополнительный номер телефона
+					<View style={styles.pickupBox}>
+						<Text style={styles.boxTxt}>
+							Срок доставки будет расчитан после выбора пункт самовывоза
 						</Text>
-					</TouchableOpacity>
-					{!shouldShow ? (
-						<TextInput
-							placeholder="Comment"
-							style={styles.input}
-							onChangeText={onStateChange("comment")}
-						/>
-					) : null}
+						<View
+							style={{
+								flexDirection: "row",
+								flexWrap: "wrap",
+							}}
+						>
+							{item?.map((e) => {
+								return (
+									<View style={styles.boxNum}>
+										<Image
+											source={{ uri: appendUrl(e.product.photo) }}
+											style={styles.boxImage}
+										/>
+										{e.amount && (
+											<View style={styles.imageNum}>
+												<Text style={styles.num}>{e.amount}</Text>
+											</View>
+										)}
+									</View>
+								);
+							})}
+						</View>
+					</View>
 				</View>
-				<DefaultButton
-					containerStyle={styles.recipButton}
-					text={STRINGS.addOrder}
-					onPress={sendOrder}
-				/>
-			</View>
-			<Snackbar
-				visible={visibleSnackbar}
-				onDismiss={toggleSnackbar}
-				duration={4000}
-			>
-				Заказ оформлен успешно!
-			</Snackbar>
-		</ScrollView>
+				{/* <PickupPoint items={item} /> */}
+				{/* <RecipientBox /> */}
+				<View style={styles.recipientContainer}>
+					<Text style={styles.recipHeaderTxt}>{STRINGS.recipient}</Text>
+					<View style={styles.recipBox}>
+						<View style={styles.switch}>
+							<Text style={styles.notMe}>{STRINGS.itsNotMe}</Text>
+							<Switch
+								hitSlop={{ top: 10, left: 10, right: 10, bottom: 10 }}
+								trackColor={{ false: "#767577", true: COLORS.blue }}
+								thumbColor={isEnabled ? "rgba(0, 82, 255)" : COLORS.white}
+								ios_backgroundColor="#3e3e3e"
+								onValueChange={toggleSwitch}
+								value={isEnabled}
+							/>
+						</View>
+						<TextInput
+							placeholder={STRINGS.inputName}
+							style={styles.input}
+							onChangeText={onStateChange("name")}
+						/>
+						<TextInput
+							placeholder={STRINGS.inputLastName}
+							style={styles.input}
+							onChangeText={onStateChange("lastName")}
+						/>
+						<TextInput
+							placeholder={STRINGS.email}
+							style={styles.input}
+							keyboardType={"email-address"}
+							onChangeText={onStateChange("email")}
+						/>
+						<TextInput
+							placeholder={STRINGS.phoneNumber}
+							style={styles.input}
+							keyboardType={"phone-pad"}
+							onChangeText={onStateChange("phone")}
+						/>
+						<TouchableOpacity
+							onPress={() => {
+								LayoutAnimation.configureNext(
+									LayoutAnimation.Presets.easeInEaseOut
+								);
+								setShouldShow(!shouldShow);
+							}}
+						>
+							<Text style={styles.underline}>
+								+ Дополнительный номер телефона
+							</Text>
+						</TouchableOpacity>
+						{!shouldShow ? (
+							<TextInput
+								placeholder="Comment"
+								style={styles.input}
+								onChangeText={onStateChange("comment")}
+							/>
+						) : null}
+					</View>
+					<DefaultButton
+						containerStyle={styles.recipButton}
+						text={STRINGS.addOrder}
+						onPress={sendOrder}
+					/>
+				</View>
+				<Snackbar
+					visible={visibleSnackbar}
+					onDismiss={toggleSnackbar}
+					duration={4000}
+				>
+					Заказ оформлен успешно!
+				</Snackbar>
+			</ScrollView>
+		</>
 	);
 };
 

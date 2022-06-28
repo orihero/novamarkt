@@ -152,6 +152,8 @@ let requests = {
 		getReviews: (creds: { product_id: number }) =>
 			axios.get(`${url}/product/reviews?product_id=${creds.product_id}`),
 
+		reviewsList: () => axios.get(`${url}/product/reviews?product_id=15`),
+
 		sendReview: (data: SendReviewProps) =>
 			axios.post(`${url}/product/set-review`, data),
 	},
@@ -186,6 +188,7 @@ let requests = {
 	order: {
 		sendOrder: (credentials: OrderSend) =>
 			axios.post(`${url}/order/send`, credentials),
+		listOrders: () => axios.get(`${url}/order`),
 	},
 };
 export default requests;

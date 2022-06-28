@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
 
 	input: {
 		width: "35%",
+		color: COLORS.defaultBlack,
 		paddingVertical: Platform.OS === "android" ? 0 : 10,
 	},
 });

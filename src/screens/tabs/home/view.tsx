@@ -1,9 +1,12 @@
+import requests from "@novomarkt/api/requests";
 import SearchHeader from "@novomarkt/components/navigation/SearchHeader";
 import { WINDOW_WIDTH } from "@novomarkt/constants/sizes";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React from "react";
-import { ScrollView, View } from "react-native";
+import { toggleLoading } from "@novomarkt/store/slices/appSettings";
+import React, { useEffect, useState } from "react";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Carousel, { Pagination } from "react-native-snap-carousel";
+import { useDispatch } from "react-redux";
 import BrandsList from "./components/BrandsList";
 import CarouselItem from "./components/CarouselItem";
 import CategoriesList from "./components/CategoriesList";
@@ -14,8 +17,11 @@ import { useHomeScreenHooks } from "./hooks";
 import { styles } from "./style";
 
 const HomeView = () => {
-	let { setActiveSlide, activeSlide, slide } = useHomeScreenHooks();
-	return (
+	let { setActiveSlide, activeSlide, slide, loading } = useHomeScreenHooks();
+
+	return loading == true ? (
+		<View />
+	) : (
 		<>
 			<SearchHeader />
 			<ScrollView style={styles.scroll}>
@@ -46,3 +52,10 @@ const HomeView = () => {
 };
 
 export default HomeView;
+
+const style = StyleSheet.create({
+	container: {
+		flex: 1,
+		backgroundColor: "#fff",
+	},
+});

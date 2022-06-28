@@ -53,7 +53,7 @@ const ProfileView = () => {
 					>
 						<Image
 							source={{ uri: appendUrl(profileData?.photo) }}
-							style={{ width: 80, height: 80 }}
+							style={{ width: 80, height: 80, borderRadius: 100 }}
 						/>
 					</View>
 					<View

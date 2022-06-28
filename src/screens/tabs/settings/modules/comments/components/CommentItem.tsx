@@ -1,3 +1,4 @@
+import requests from "@novomarkt/api/requests";
 import {
 	Checked,
 	MarkedStar,
@@ -7,7 +8,7 @@ import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
 import { STRINGS } from "@novomarkt/locales/strings";
 import { ProductItemProps } from "@novomarkt/screens/tabs/home/components/ProductItem";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ListRenderItemInfo, StyleSheet, View } from "react-native";
 
 interface Props {
@@ -17,6 +18,22 @@ interface Props {
 const CommentItem = ({
 	item: { name, image, shopName, price },
 }: ListRenderItemInfo<ProductItemProps>) => {
+	const [reviews, setReviews] = useState();
+	const getReviewsList = async () => {
+		try {
+			let res = await requests.products.reviewsList();
+			setReviews(res.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		getReviewsList();
+	}, []);
+
+	console.log(reviews);
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.boxes}>

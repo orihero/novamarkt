@@ -5,9 +5,10 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: COLORS.white,
+		// alignItems: "center",
 	},
 
 	list: {
-		marginHorizontal: 15,
+		marginHorizontal: 10,
 	},
 });

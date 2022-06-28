@@ -8,10 +8,12 @@ export const styles = StyleSheet.create({
 	},
 
 	backHeader: {
-		marginVertical: 20,
-		marginHorizontal: 20,
+		paddingVertical: 20,
+		backgroundColor: COLORS.white,
+		paddingHorizontal: 20,
 	},
 	deliveryContainer: {
+		marginVertical: 10,
 		marginHorizontal: 20,
 	},
 
@@ -221,6 +223,7 @@ export const styles = StyleSheet.create({
 		paddingVertical: Platform.OS == "android" ? 10 : 15,
 		backgroundColor: COLORS.lightGray,
 		borderColor: COLORS.whiteGray,
+		color: COLORS.defaultBlack,
 	},
 
 	underline: {

@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
 	},
 
 	header: {
-		marginVertical: 10,
+		marginVertical: 20,
 		marginHorizontal: 20,
 	},
 
@@ -20,8 +20,8 @@ export const styles = StyleSheet.create({
 
 	itemBox: {
 		// padding: 10,
-		marginVertical: 10,
-		marginHorizontal: 20,
+		// marginVertical: 10,
+		// marginHorizontal: 20,
 		backgroundColor: COLORS.lightGray,
 	},
 });

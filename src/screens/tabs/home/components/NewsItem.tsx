@@ -98,8 +98,9 @@ const styles = StyleSheet.create({
 	},
 	image: {
 		width: WINDOW_WIDTH / 2 - 20,
-		height: 100,
-		borderRadius: 8,
+		height: 130,
+		borderTopLeftRadius: 8,
+		borderTopRightRadius: 8,
 	},
 	content: {
 		padding: 8,

@@ -1,22 +1,34 @@
 import { BottomArrow, FilterIcon } from "@novomarkt/assets/icons/icons";
 import Text from "@novomarkt/components/general/Text";
 import { COLORS } from "@novomarkt/constants/colors";
+import { ROUTES } from "@novomarkt/constants/routes";
 import { STRINGS } from "@novomarkt/locales/strings";
-import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
 import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
+import ReactNativeModal from "react-native-modal";
 
 const SelectableFlter = () => {
+	const navigate = useNavigation();
+	const [isModalVisible, setIsModalVisible] = useState(false);
+
+	const toggleModal = () => {
+		setIsModalVisible(!isModalVisible);
+	};
 	return (
 		<View style={styles.container}>
-			<TouchableOpacity style={styles.row}>
+			<TouchableOpacity style={styles.row} onPress={toggleModal}>
 				<Text style={styles.text}>Популярные</Text>
 				<BottomArrow fill={COLORS.blue} />
 			</TouchableOpacity>
-			<TouchableOpacity style={styles.row}>
+			<TouchableOpacity
+				style={styles.row}
+				onPress={() => navigate.navigate(ROUTES.FILTER)}
+			>
 				<Text style={styles.text}>Фильтры</Text>
 				<FilterIcon fill={COLORS.blue} />
 			</TouchableOpacity>
-			{/* <Modal
+			<ReactNativeModal
 				style={styles.view}
 				isVisible={isModalVisible}
 				onSwipeComplete={toggleModal}
@@ -40,7 +52,7 @@ const SelectableFlter = () => {
 						<Text style={styles.modalText}>{STRINGS.newAdded}</Text>
 					</TouchableOpacity>
 				</View>
-			</Modal> */}
+			</ReactNativeModal>
 		</View>
 	);
 };
@@ -64,5 +76,23 @@ const styles = StyleSheet.create({
 	row: {
 		flexDirection: "row",
 		alignItems: "center",
+	},
+
+	view: {
+		justifyContent: "flex-end",
+		margin: 0,
+	},
+
+	modal: {
+		padding: 20,
+		borderTopLeftRadius: 8,
+		borderTopRightRadius: 8,
+		backgroundColor: COLORS.white,
+	},
+
+	modalText: {
+		fontSize: 16,
+		marginVertical: 15,
+		color: COLORS.defaultBlack,
 	},
 });

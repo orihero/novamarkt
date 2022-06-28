@@ -21,5 +21,6 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 15,
 		borderColor: COLORS.whiteGray,
 		backgroundColor: COLORS.lightGray,
+		color: COLORS.defaultBlack,
 	},
 });

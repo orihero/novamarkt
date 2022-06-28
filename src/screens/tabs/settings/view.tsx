@@ -1,3 +1,4 @@
+import { appendUrl } from "@novomarkt/api/requests";
 import {
 	BorderedLikeIcon,
 	BorderedStarIcon,
@@ -20,31 +21,40 @@ import React from "react";
 import { ScrollView, View } from "react-native";
 import SettingsItem from "./components/SettingsItem";
 import useSettingsHook from "./hooks";
+import useProfileHook from "./modules/profile/hooks";
 import { styles } from "./style";
+
+export interface UserData {
+	name: string;
+}
 
 const SettingsView = ({}) => {
 	let { onLogOut } = useSettingsHook();
 	let navigation = useNavigation();
+	let { profileData } = useProfileHook();
+
 	return (
 		<ScrollView style={styles.container}>
-			<Text style={styles.headerText}>Доброе утро</Text>
+			<Text style={styles.headerText}>
+				Добро пожаловать, {profileData?.name}
+			</Text>
 			<View style={styles.itemsBox}>
 				<SettingsItem
 					onPress={() => navigation.navigate(ROUTES.ORDER)}
 					text={"Мои заказы"}
 					icon={() => <ShopIcon fill={COLORS.defaultBlack} />}
 				/>
-				<SettingsItem
+				{/* <SettingsItem
 					onPress={() => navigation.navigate(ROUTES.COMMENT)}
 					text={"Отзывы"}
 					icon={() => <BorderedStarIcon fill={COLORS.defaultBlack} />}
-				/>
-				<SettingsItem
+				/> */}
+				{/* <SettingsItem
 					text={"Избранные товары"}
 					icon={() => <BorderedLikeIcon fill={COLORS.defaultBlack} />}
-				/>
+				/> */}
 				<SettingsItem
-					onPress={() => navigation.navigate(ROUTES.MESSAGE)}
+					onPress={() => navigation.navigate(ROUTES.CHATS)}
 					text={"Мои сообщения"}
 					icon={() => <CommentIcon fill={COLORS.defaultBlack} />}
 				/>
@@ -67,16 +77,17 @@ const SettingsView = ({}) => {
 					onPress={() => navigation.navigate(ROUTES.CONTACTS)}
 					icon={() => <ContactIcon stroke={COLORS.defaultBlack} />}
 				/>
-				<SettingsItem
+				{/* <SettingsItem
 					text={"Чаты"}
 					onPress={() => navigation.navigate(ROUTES.CHATS)}
 					icon={() => <ChatIcon fill={COLORS.defaultBlack} />}
-				/>
-				<SettingsItem
+				/> */}
+				{/* <SettingsItem
 					text={"Позвонить"}
 					icon={() => <PhoneIcon stroke={COLORS.defaultBlack} />}
-				/>
+				/> */}
 				<SettingsItem
+					onPress={() => navigation.navigate(ROUTES.MESSAGE)}
 					text={"Чат с поддержкой"}
 					icon={() => <MessageIcon stroke={COLORS.defaultBlack} />}
 				/>

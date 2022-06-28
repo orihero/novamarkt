@@ -95,6 +95,7 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 15,
 		paddingVertical: Platform.OS == "android" ? 10 : 15,
 		fontStyle: "italic",
+		color: COLORS.defaultBlack,
 	},
 
 	bigger: {

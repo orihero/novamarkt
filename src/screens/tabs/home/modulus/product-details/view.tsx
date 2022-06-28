@@ -61,6 +61,10 @@ const ProductDetailsView = ({}): ReactElement => {
 		item`${appendUrl}`.photo;
 	};
 
+	// let productFilter = () => {
+	// 	item`${appendUrl}`.filter;
+	// };
+
 	const toggleModal = () => {
 		setModalOpen(!modalOpen);
 	};
@@ -146,7 +150,7 @@ const ProductDetailsView = ({}): ReactElement => {
 			<BackHeaderDefault />
 			<ScrollView showsVerticalScrollIndicator={false}>
 				<View style={styles.header}>
-					<Text style={styles.headerText}>{item.price}</Text>
+					<Text style={styles.headerText}>{item.price} руб</Text>
 					<DefaultButton
 						containerStyle={styles.button}
 						secondary={isInCart}
@@ -176,6 +180,12 @@ const ProductDetailsView = ({}): ReactElement => {
 						<Text style={styles.creditPriceText}>
 							{item.price_old} {STRINGS.creditPrice}
 						</Text>
+					</View>
+				</View>
+				<View style={styles.itemName}>
+					<Text style={styles.filterName}>fghgh</Text>
+					<View style={styles.filters}>
+						<Text>123</Text>
 					</View>
 				</View>
 				<View>
@@ -241,6 +251,7 @@ const ProductDetailsView = ({}): ReactElement => {
 						))}
 					</View>
 				) : null}
+				{/* kljlk */}
 				<Text style={styles.flexEnd}>{STRINGS.comments}</Text>
 				<DefaultButton
 					containerStyle={styles.marginBottom}

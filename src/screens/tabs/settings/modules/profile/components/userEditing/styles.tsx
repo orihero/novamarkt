@@ -6,12 +6,13 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		paddingHorizontal: 20,
+		paddingVertical: 20,
 		backgroundColor: COLORS.white,
 	},
 
 	userImg: {
 		alignSelf: "center",
-		marginVertical: 10,
+		marginVertical: 20,
 		flexDirection: "column",
 		alignItems: "center",
 	},
@@ -26,6 +27,7 @@ export const styles = StyleSheet.create({
 
 	input: {
 		flex: 1,
+		color: COLORS.defaultBlack,
 		borderBottomWidth: 1,
 		marginVertical: Platform.OS === "ios" ? 10 : 0,
 	},

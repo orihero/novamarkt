@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
 	},
 	price: {
 		color: COLORS.blue,
-		fontSize: 15,
+		fontSize: 16,
 		marginVertical: 10,
 		fontWeight: "700",
 		letterSpacing: 0.5,
@@ -239,6 +239,7 @@ const styles = StyleSheet.create({
 
 	oldPrice: {
 		color: COLORS.gray,
+		fontSize: 12,
 		textDecorationLine: "line-through",
 	},
 });

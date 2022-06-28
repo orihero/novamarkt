@@ -17,10 +17,7 @@ const FilterView = () => {
 			<SwitchComponent text={STRINGS.getToday} />
 			<SwitchComponent text={STRINGS.moreCashback} />
 			<ChooseBrands />
-			<DefaultButton
-				containerStyle={styles.button}
-				text="Показать 1 товар"
-			/>
+			<DefaultButton containerStyle={styles.button} text="Показать 1 товар" />
 		</View>
 	);
 };

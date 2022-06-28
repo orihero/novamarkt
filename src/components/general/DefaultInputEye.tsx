@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
 	input: {
 		// borderWidth: 1,
 		width: "90%",
+		color: COLORS.defaultBlack,
 		fontFamily: "Montserrat-Medium",
 	},
 	container: {

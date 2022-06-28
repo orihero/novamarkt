@@ -60,6 +60,7 @@ export interface ProductItemResponse {
 	brand: Brand;
 	category: Category;
 	views: number;
+	filters: object;
 	rating: number;
 	photo: string;
 	isFavorite: boolean;
@@ -198,4 +199,11 @@ export interface OrderSend {
 	lastName: string;
 	email: string;
 	phone: string;
+}
+
+export interface OrderList {
+	id: number;
+	name: string;
+	description: string;
+	photo: string;
 }

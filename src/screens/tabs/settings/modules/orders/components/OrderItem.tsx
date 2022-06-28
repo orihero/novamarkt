@@ -1,4 +1,5 @@
 //@ts-ignore
+import { appendUrl } from "@novomarkt/api/requests";
 import MasterCard from "@novomarkt/assets/images/mastercard.png";
 //@ts-ignore
 import MirCard from "@novomarkt/assets/images/mir.png";
@@ -10,9 +11,10 @@ import { ProductItemProps } from "@novomarkt/screens/tabs/home/components/Produc
 import React from "react";
 import {
 	Image,
-	ListRenderItemInfo, StyleSheet,
+	ListRenderItemInfo,
+	StyleSheet,
 	Text,
-	View
+	View,
 } from "react-native";
 
 const OrderItem = ({
@@ -21,7 +23,7 @@ const OrderItem = ({
 	return (
 		<View style={styles.shadowBox}>
 			<View>
-				<Image source={{ uri: image }} style={styles.img} />
+				<Image source={{ uri: appendUrl(image) }} style={styles.img} />
 				<Text style={styles.price}>{price}</Text>
 			</View>
 			<View style={styles.contentBox}>
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
 	},
 
 	name: {
-        marginTop: 10,
+		marginTop: 10,
 		marginBottom: 5,
 		fontSize: 13,
 		color: COLORS.defaultBlack,

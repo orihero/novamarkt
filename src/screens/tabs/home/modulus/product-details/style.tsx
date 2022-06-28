@@ -100,7 +100,32 @@ export const styles = StyleSheet.create({
 		borderBottomWidth: 1,
 		borderColor: COLORS.lightGray,
 	},
-
+	filters: {
+		fontSize: 15,
+		color: COLORS.defaultBlack,
+		fontWeight: "700",
+		letterSpacing: 0.5,
+		width: 85,
+		height: 55,
+		elevation: 2,
+		shadowOpacity: 0.3,
+		shadowRadius: 3,
+		shadowOffset: {
+			width: 0,
+			height: 0,
+		},
+		backgroundColor: COLORS.white,
+		justifyContent: "center",
+		alignItems: "center",
+		borderRadius: 8,
+	},
+	filterName: {
+		color: COLORS.defaultBlack,
+		fontSize: 15,
+		fontWeight: "700",
+		letterSpacing: 0.5,
+		marginVertical: 20,
+	},
 	composition: {
 		color: COLORS.defaultBlack,
 		fontSize: 15,

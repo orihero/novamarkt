@@ -18,6 +18,7 @@ import DatePicker from "react-native-date-picker";
 import { LoginResponse } from "@novomarkt/api/types";
 import { useDispatch } from "react-redux";
 import { toggleLoading } from "@novomarkt/store/slices/appSettings";
+import DefaultButton from "@novomarkt/components/general/DefaultButton";
 
 export const UserEditingForm = () => {
 	const dispatch = useDispatch();
@@ -157,11 +158,20 @@ export const UserEditingForm = () => {
 						badgeStyle={{ margin: 0 }}
 						onChangeValue={onStateChange}
 					/>
-					<TouchableOpacity onPress={onUpdateProfile}>
+					{/* <TouchableOpacity onPress={onUpdateProfile}>
 						<Text>Save</Text>
-					</TouchableOpacity>
+					</TouchableOpacity> */}
 				</View>
 			</View>
+			<DefaultButton
+				containerStyle={{
+					position: "absolute",
+					bottom: 40,
+					left: 20,
+					right: 20,
+				}}
+				text="Сохранить"
+			/>
 		</View>
 	);
 };

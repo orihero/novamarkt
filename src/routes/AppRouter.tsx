@@ -34,28 +34,16 @@ const AppRouter = () => {
 					}}
 				>
 					{!user.token ? (
-						<Stack.Screen
-							name={ROUTES.AUTH}
-							component={AuthStack}
-						/>
+						<Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
 					) : (
 						<>
-							<Stack.Screen
-								name={ROUTES.TABS}
-								component={TabNavigation}
-							/>
+							<Stack.Screen name={ROUTES.TABS} component={TabNavigation} />
 							<Stack.Screen
 								name={ROUTES.CHECKOUT_POINT}
 								component={CheckoutPointScreen}
 							/>
-							<Stack.Screen
-								name={ROUTES.AUTH}
-								component={AuthStack}
-							/>
-							<Stack.Screen
-								name={ROUTES.SEARCH}
-								component={Search}
-							/>
+							<Stack.Screen name={ROUTES.AUTH} component={AuthStack} />
+							<Stack.Screen name={ROUTES.SEARCH} component={Search} />
 						</>
 					)}
 				</Stack.Navigator>
@@ -84,7 +72,7 @@ const styles = StyleSheet.create({
 		bottom: 0,
 		right: 0,
 		left: 0,
-		opacity: 0.6,
+		opacity: 1,
 		backgroundColor: COLORS.white,
 	},
 });

@@ -14,8 +14,7 @@ import ChatPersonComponent from "./components/ChatPerson";
 const ChatsView = () => {
 	return (
 		<View style={styles.container}>
-			<BackHeader name="Чаты" style={styles.header} />
-			<Text style={styles.title}>{STRINGS.chats}</Text>
+			<BackHeader name="Мои сообщения" style={styles.header} />
 			<ScrollView style={styles.itemBox}>
 				<ChatPersonComponent />
 				<ChatPersonComponent />

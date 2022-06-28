@@ -6,19 +6,18 @@ export const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		backgroundColor: "#fff",
-		paddingVertical: 20,
+		paddingVertical: 10,
 	},
 
 	header: {
 		fontSize: 20,
 		color: COLORS.defaultBlack,
-		marginTop: 20,
 		marginHorizontal: 20,
 	},
 
 	shadowBox: {
 		padding: 15,
-		marginVertical: 10,
+		// marginVertical: 10,
 		borderRadius: 8,
 		elevation: 5,
 		shadowOpacity: 0.3,
@@ -185,7 +184,7 @@ export const styles = StyleSheet.create({
 
 	left: {
 		paddingHorizontal: 20,
-		paddingBottom: 10,
+		paddingVertical: 20,
 		backgroundColor: COLORS.white,
 	},
 

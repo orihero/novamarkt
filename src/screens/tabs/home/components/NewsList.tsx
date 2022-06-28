@@ -44,8 +44,9 @@ const styles = StyleSheet.create({
 		color: COLORS.defaultBlack,
 		fontSize: 19,
 		marginLeft: 16,
-		marginBottom: 20,
+		marginBottom: 10,
+		fontWeight: "700",
 	},
-	container: { marginBottom: 20 },
+	container: { marginBottom: 10 },
 	contentContainerStyle: { paddingHorizontal: 12 },
 });

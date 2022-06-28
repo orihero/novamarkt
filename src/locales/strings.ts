@@ -57,7 +57,7 @@ export const STRINGS = new LocalizedStrings({
 		forPartners: "Партнерам",
 		credit: "Можно купить в рассрочку",
 		creditPrice: "в мес",
-		composition: "Состав",
+		composition: "Характеристики",
 		allDetails: "Вся характеристика",
 		reviews: "Отзывы",
 		withReviews: "На основании отзыва",
