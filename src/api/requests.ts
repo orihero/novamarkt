@@ -20,8 +20,8 @@ import {
 	SliderTypes,
 } from "./types";
 
-export let url = "https://novamarket.qwertyuz.ru/api";
-export let assetUrl = "https://novamarket.qwertyuz.ru";
+export let url = "https://www.novamarket.nolikvid.uz/api";
+export let assetUrl = "https://www.novamarket.nolikvid.uz";
 axios.interceptors.request.use((config) => {
 	let token = store.getState().user.token;
 	if (token) {

@@ -39,13 +39,18 @@ const useRegisterHook = () => {
 				// let res = await axios.get("http://qwerty.uz");
 				//write these data to redux and AsyncStorage
 				//@ts-ignore
+				console.log(res);
+
 				navigation.navigate(ROUTES.VERIFICATION, {
 					phone: state.phone,
 					token: res.data.data.token,
 				});
 			} catch (error) {
 				let err = error as AxiosError<RegisterResponseErrors>;
+				console.log(error);
 				if (axios.isAxiosError(err)) {
+					console.log(error);
+
 					// Access to config, request, and response
 					// err.response?.data.errors[0].phone;
 					let errText = err.response?.data.errors.phone.join(", ");
